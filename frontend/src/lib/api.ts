@@ -1,0 +1,56 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+
+export async function apiFetch<T>(
+  endpoint: string,
+  options: RequestInit = {}
+): Promise<T> {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+
+  const res = await fetch(`${API_URL}${endpoint}`, {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token && { Authorization: `Bearer ${token}` }),
+      ...options.headers,
+    },
+  });
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({ error: 'Request failed' }));
+    throw new Error(error.error || 'Request failed');
+  }
+
+  return res.json();
+}
+
+export const api = {
+  auth: {
+    register: (data: object) => apiFetch('/auth/register', { method: 'POST', body: JSON.stringify(data) }),
+    login: (data: object) => apiFetch('/auth/login', { method: 'POST', body: JSON.stringify(data) }),
+    profile: () => apiFetch('/auth/profile'),
+    updateProfile: (data: object) => apiFetch('/auth/profile', { method: 'PUT', body: JSON.stringify(data) }),
+  },
+  articles: {
+    list: (params?: string) => apiFetch(`/articles${params ? `?${params}` : ''}`),
+    get: (slug: string) => apiFetch(`/articles/${slug}`),
+    bookmarks: () => apiFetch('/articles/bookmarks'),
+    bookmarkStatus: () => apiFetch<number[]>('/articles/bookmarks/status'),
+    toggleBookmark: (id: number) => apiFetch(`/articles/${id}/bookmark`, { method: 'POST' }),
+  },
+  timeline: {
+    list: () => apiFetch('/timeline'),
+    get: (id: number) => apiFetch(`/timeline/${id}`),
+  },
+  journey: {
+    list: () => apiFetch('/journey'),
+  },
+  quiz: {
+    questions: (count = 10) => apiFetch(`/quiz/questions?count=${count}`),
+    submit: (data: object) => apiFetch('/quiz/submit', { method: 'POST', body: JSON.stringify(data) }),
+    leaderboard: () => apiFetch('/quiz/leaderboard'),
+    history: () => apiFetch('/quiz/history'),
+  },
+  gallery: {
+    list: () => apiFetch('/gallery'),
+  },
+};

@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --background: #FAF7F2;
+  --foreground: #1A1A1A;
+  --heritage-red: #C41E3A;
+  --heritage-gold: #D4AF37;
+}
+
+.dark {
+  --background: #0F0F0F;
+  --foreground: #F5F5F5;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-source), system-ui, sans-serif;
+}
+
+@layer components {
+  .museum-card {
+    @apply rounded-lg border border-heritage-gold/20 bg-white/80 shadow-lg backdrop-blur-sm
+           dark:border-heritage-gold/30 dark:bg-heritage-charcoal/80;
+  }
+  .heritage-btn {
+    @apply inline-flex items-center justify-center rounded-md bg-heritage-red px-6 py-3
+           font-medium text-white transition-all hover:bg-heritage-red-dark
+           focus:outline-none focus:ring-2 focus:ring-heritage-gold focus:ring-offset-2;
+  }
+  .heritage-btn-outline {
+    @apply inline-flex items-center justify-center rounded-md border-2 border-heritage-gold
+           px-6 py-3 font-medium text-heritage-red transition-all
+           hover:bg-heritage-gold/10 dark:text-heritage-gold;
+  }
+  .section-title {
+    @apply font-display text-3xl font-bold text-heritage-red md:text-4xl lg:text-5xl
+           dark:text-heritage-gold;
+  }
+}
+
+.leaflet-container {
+  z-index: 0;
+  border-radius: 0.5rem;
+}
+
+/* Masonry gallery */
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+@media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+@media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
