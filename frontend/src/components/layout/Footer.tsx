@@ -19,6 +19,7 @@ export default function Footer() {
                 { label: 'Journey Map', href: '/journey' },
                 { label: 'Ideology', href: '/ideology' },
                 { label: 'Quiz', href: '/quiz' },
+                { label: 'Mini Game', href: '/minigame' },
                 { label: 'Gallery', href: '/gallery' },
               ].map((item) => (
                 <li key={item.href}>

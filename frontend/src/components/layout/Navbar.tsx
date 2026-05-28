@@ -14,6 +14,7 @@ const navLinks = [
   { href: '/journey', label: 'Journey Map' },
   { href: '/ideology', label: 'Ideology' },
   { href: '/quiz', label: 'Quiz' },
+  { href: '/minigame', label: 'Mini Game' },
   { href: '/gallery', label: 'Gallery' },
 ];
 
