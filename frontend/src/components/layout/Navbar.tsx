@@ -15,6 +15,7 @@ const navLinks = [
   { href: '/ideology', label: 'Ideology' },
   { href: '/quiz', label: 'Quiz' },
   { href: '/minigame', label: 'Mini Game' },
+  { href: '/tank-game', label: '🪖 30/4' },
   { href: '/caro', label: 'Caro' },
   { href: '/gallery', label: 'Gallery' },
 ];
