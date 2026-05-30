@@ -46,6 +46,27 @@ export interface QuizQuestion {
   difficulty?: string;
 }
 
+export interface CaroQuestion {
+  id: number;
+  question: string;
+  options: string[];
+  category?: string;
+  difficulty?: string;
+}
+
+export interface CaroMatch {
+  result: 'win' | 'lose' | 'draw';
+  duration_seconds: number;
+  created_at: string;
+}
+
+export interface CaroLeaderboardEntry {
+  username: string;
+  display_name?: string;
+  duration_seconds: number;
+  created_at: string;
+}
+
 export interface GalleryImage {
   id: number;
   title: string;

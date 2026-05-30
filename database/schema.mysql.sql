@@ -94,3 +94,14 @@ CREATE TABLE bookmarks (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE
 );
+
+CREATE TABLE caro_matches (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  result VARCHAR(10) NOT NULL,
+  duration_seconds INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  KEY idx_caro_matches_user (user_id),
+  KEY idx_caro_matches_duration (duration_seconds),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

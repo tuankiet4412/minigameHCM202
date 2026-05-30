@@ -7,6 +7,7 @@ import timelineRoutes from './routes/timelineRoutes.js';
 import journeyRoutes from './routes/journeyRoutes.js';
 import quizRoutes from './routes/quizRoutes.js';
 import galleryRoutes from './routes/galleryRoutes.js';
+import caroRoutes from './routes/caroRoutes.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 
 dotenv.config();
@@ -29,6 +30,7 @@ app.use('/api/articles', articleRoutes);
 app.use('/api/timeline', timelineRoutes);
 app.use('/api/journey', journeyRoutes);
 app.use('/api/quiz', quizRoutes);
+app.use('/api/caro', caroRoutes);
 app.use('/api/gallery', galleryRoutes);
 
 app.use(notFound);

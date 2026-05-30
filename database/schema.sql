@@ -100,8 +100,19 @@ CREATE TABLE IF NOT EXISTS bookmarks (
   UNIQUE(user_id, article_id)
 );
 
+-- Caro matches
+CREATE TABLE IF NOT EXISTS caro_matches (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  result VARCHAR(10) NOT NULL,
+  duration_seconds INTEGER NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_quiz_results_user ON quiz_results(user_id);
 CREATE INDEX IF NOT EXISTS idx_quiz_results_score ON quiz_results(score DESC);
 CREATE INDEX IF NOT EXISTS idx_articles_slug ON articles(slug);
 CREATE INDEX IF NOT EXISTS idx_bookmarks_user ON bookmarks(user_id);
+CREATE INDEX IF NOT EXISTS idx_caro_matches_user ON caro_matches(user_id);
+CREATE INDEX IF NOT EXISTS idx_caro_matches_duration ON caro_matches(duration_seconds ASC);

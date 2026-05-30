@@ -50,6 +50,13 @@ export const api = {
     leaderboard: () => apiFetch('/quiz/leaderboard'),
     history: () => apiFetch('/quiz/history'),
   },
+  caro: {
+    question: () => apiFetch('/caro/question'),
+    verify: (data: object) => apiFetch('/caro/verify', { method: 'POST', body: JSON.stringify(data) }),
+    createMatch: (data: object) => apiFetch('/caro/matches', { method: 'POST', body: JSON.stringify(data) }),
+    matches: (limit = 20) => apiFetch(`/caro/matches?limit=${limit}`),
+    leaderboard: (limit = 10) => apiFetch(`/caro/leaderboard?limit=${limit}`),
+  },
   gallery: {
     list: () => apiFetch('/gallery'),
   },
