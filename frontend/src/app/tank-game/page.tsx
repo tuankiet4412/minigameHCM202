@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Star, RotateCcw, Volume2, VolumeX, Flag } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -686,7 +686,7 @@ export default function TankGamePage() {
                   <div className="rounded-xl border border-white/10 bg-white/5 p-4 flex-1">
                     <p className="text-heritage-gold text-xs font-bold mb-2">💬 Hồ Chí Minh:</p>
                     <p className="text-gray-300 text-xs italic leading-relaxed">
-                      "Không có gì quý hơn độc lập, tự do. Đến ngày thắng lợi, nhân dân ta sẽ xây dựng đất nước đàng hoàng hơn, to đẹp hơn."
+                      &quot;Không có gì quý hơn độc lập, tự do. Đến ngày thắng lợi, nhân dân ta sẽ xây dựng đất nước đàng hoàng hơn, to đẹp hơn.&quot;
                     </p>
                   </div>
 

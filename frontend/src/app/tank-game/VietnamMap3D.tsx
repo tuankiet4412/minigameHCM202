@@ -373,8 +373,9 @@ function BurstParticles({ position, trigger }: { position: THREE.Vector3; trigge
         progressRef.current * 0.8,
         position.z + Math.sin(angle) * r
       );
-      (child as THREE.Mesh).material &&
-        (((child as THREE.Mesh).material as THREE.MeshBasicMaterial).opacity = 1 - progressRef.current);
+      if ((child as THREE.Mesh).material) {
+        ((child as THREE.Mesh).material as THREE.MeshBasicMaterial).opacity = 1 - progressRef.current;
+      }
     });
   });
 
