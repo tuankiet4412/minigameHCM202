@@ -1,4 +1,24 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const getApiUrl = (): string => {
+  let url = process.env.NEXT_PUBLIC_API_URL;
+  if (!url) {
+    url = process.env.NODE_ENV === 'production' 
+      ? 'https://minigamehcm202.onrender.com/api' 
+      : 'http://localhost:5000/api';
+  }
+  
+  // Remove trailing slash if present
+  url = url.replace(/\/$/, '');
+  
+  // Append /api if not already present at the end of the URL
+  if (!url.endsWith('/api')) {
+    url = `${url}/api`;
+  }
+  
+  return url;
+};
+
+const API_URL = getApiUrl();
+
 
 export async function apiFetch<T>(
   endpoint: string,
