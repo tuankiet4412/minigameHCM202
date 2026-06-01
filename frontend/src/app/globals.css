@@ -1,62 +1,171 @@
+@import "leaflet/dist/leaflet.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "leaflet/dist/leaflet.css";
-
 :root {
-  --background: #FAF7F2;
-  --foreground: #1A1A1A;
-  --heritage-red: #C41E3A;
-  --heritage-gold: #D4AF37;
+  --background: 40 33% 97%;
+  --foreground: 0 0% 10%;
+  --muted: 40 20% 92%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 348 74% 44%;
+  --accent-foreground: 0 0% 100%;
+  --border: 43 52% 55% / 0.2;
+  --heritage-red: #c41e3a;
+  --heritage-gold: #d4af37;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
 }
 
 .dark {
-  --background: #0F0F0F;
-  --foreground: #F5F5F5;
+  --background: 240 6% 4%;
+  --foreground: 0 0% 96%;
+  --muted: 240 4% 12%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 43 65% 52%;
+  --accent-foreground: 0 0% 6%;
+  --border: 43 52% 55% / 0.15;
+  --glass-bg: rgba(0, 0, 0, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--heritage-gold) transparent;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
   font-family: var(--font-source), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(196, 30, 58, 0.3);
+  color: inherit;
 }
 
 @layer components {
+  .glass-card {
+    @apply relative overflow-hidden rounded-glass border border-white/10
+           bg-white/60 shadow-glass backdrop-blur-xl
+           dark:border-white/5 dark:bg-white/5;
+  }
+
+  .glass-card::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 rounded-glass opacity-0 transition-opacity duration-500;
+    background: linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.08) 0%,
+      transparent 50%,
+      rgba(196, 30, 58, 0.05) 100%
+    );
+  }
+
+  .glass-card:hover::before {
+    @apply opacity-100;
+  }
+
   .museum-card {
-    @apply rounded-lg border border-heritage-gold/20 bg-white/80 shadow-lg backdrop-blur-sm
-           dark:border-heritage-gold/30 dark:bg-heritage-charcoal/80;
+    @apply glass-card transition-all duration-500
+           hover:-translate-y-1 hover:shadow-elevated hover:border-heritage-gold/30;
   }
+
   .heritage-btn {
-    @apply inline-flex items-center justify-center rounded-md bg-heritage-red px-6 py-3
-           font-medium text-white transition-all hover:bg-heritage-red-dark
-           focus:outline-none focus:ring-2 focus:ring-heritage-gold focus:ring-offset-2;
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full
+           bg-gradient-to-r from-heritage-red to-heritage-red-dark px-8 py-3.5
+           text-sm font-semibold tracking-wide text-white shadow-glow-red
+           transition-all duration-300 hover:scale-[1.02] hover:shadow-glow
+           focus:outline-none focus:ring-2 focus:ring-heritage-gold focus:ring-offset-2
+           active:scale-[0.98];
   }
+
   .heritage-btn-outline {
-    @apply inline-flex items-center justify-center rounded-md border-2 border-heritage-gold
-           px-6 py-3 font-medium text-heritage-red transition-all
-           hover:bg-heritage-gold/10 dark:text-heritage-gold;
-  }
-  .section-title {
-    @apply font-display text-3xl font-bold text-heritage-red md:text-4xl lg:text-5xl
+    @apply relative inline-flex items-center justify-center rounded-full
+           border border-heritage-gold/50 bg-transparent px-8 py-3.5
+           text-sm font-semibold tracking-wide text-heritage-red backdrop-blur-sm
+           transition-all duration-300 hover:border-heritage-gold hover:bg-heritage-gold/10
            dark:text-heritage-gold;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl;
+    background: linear-gradient(135deg, #c41e3a 0%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dark .section-title {
+    background: linear-gradient(135deg, #f4e4bc 0%, #d4af37 50%, #c41e3a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-heritage-gold to-heritage-gold-light bg-clip-text text-transparent;
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  .animated-border {
+    @apply relative;
+  }
+
+  .animated-border::after {
+    content: "";
+    @apply absolute -inset-px rounded-glass opacity-0 transition-opacity duration-500;
+    background: linear-gradient(135deg, #d4af37, #c41e3a, #d4af37);
+    z-index: -1;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 1px;
+  }
+
+  .animated-border:hover::after {
+    @apply opacity-100;
   }
 }
 
 .leaflet-container {
   z-index: 0;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 }
 
-/* Masonry gallery */
 .masonry-grid {
   column-count: 1;
-  column-gap: 1rem;
+  column-gap: 1.25rem;
 }
-@media (min-width: 640px) { .masonry-grid { column-count: 2; } }
-@media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
 
 .masonry-item {
   break-inside: avoid;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.skeleton {
+  @apply animate-pulse rounded-lg bg-muted;
 }

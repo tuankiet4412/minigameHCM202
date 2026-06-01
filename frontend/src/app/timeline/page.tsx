@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import * as Tabs from '@radix-ui/react-tabs';
 import { api } from '@/lib/api';
 import type { TimelineEvent } from '@/lib/types';
 import Modal from '@/components/ui/Modal';
-import Loading from '@/components/ui/Loading';
+import { PageSkeleton } from '@/components/ui/Skeleton';
+import { ScrollReveal } from '@/components/animation/ScrollReveal';
+import { TimelineVertical, TimelineHorizontal, Timeline3DView } from '@/components/timeline/TimelineViews';
+import { cn } from '@/lib/utils';
 
 const fallbackEvents: TimelineEvent[] = [
   { id: 1, year: 1890, title: 'Birth of Ho Chi Minh', description: 'Born in Kim Lien village, Nghe An province.', details: 'Born into a patriotic scholar family.', image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800' },
@@ -21,6 +24,7 @@ export default function TimelinePage() {
   const [events, setEvents] = useState<TimelineEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<TimelineEvent | null>(null);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     api.timeline.list()
@@ -29,60 +33,83 @@ export default function TimelinePage() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <Loading />;
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.documentElement;
+      const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+      setProgress(Math.min(pct, 100));
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  if (loading) return <PageSkeleton />;
 
   return (
-    <div className="py-12 px-4">
-      <div className="mx-auto max-w-4xl text-center mb-16">
-        <h1 className="section-title">Historical Timeline</h1>
-        <p className="mt-4 text-gray-600 dark:text-gray-300">
-          Key milestones in Ho Chi Minh&apos;s journey (1890–1930)
-        </p>
+    <div className="pt-24">
+      <div className="fixed top-20 left-0 right-0 z-40 h-0.5 bg-white/5">
+        <div
+          className="h-full bg-gradient-to-r from-heritage-red via-heritage-gold to-heritage-red transition-all duration-150"
+          style={{ width: `${progress}%` }}
+        />
       </div>
 
-      <div className="relative mx-auto max-w-3xl">
-        <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-heritage-gold/40" aria-hidden />
+      <section className="relative overflow-hidden px-4 pb-16 pt-8">
+        <div className="noise-overlay absolute inset-0 opacity-20" />
+        <ScrollReveal className="relative mx-auto max-w-4xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-heritage-gold">1890 — 1930</p>
+          <h1 className="section-title mt-2">Historical Timeline</h1>
+          <p className="mt-4 text-muted-foreground">
+            Explore pivotal moments through vertical, horizontal, and immersive 3D views
+          </p>
+        </ScrollReveal>
+      </section>
 
-        {events.map((event, i) => (
-          <motion.div
-            key={event.id}
-            initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={`relative mb-12 flex ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-          >
-            <div
-              className={`museum-card w-[calc(50%-2rem)] cursor-pointer p-4 transition-shadow hover:shadow-xl ${i % 2 === 0 ? 'mr-auto' : 'ml-auto'}`}
-              onClick={() => setSelected(event)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && setSelected(event)}
-              aria-label={`View details for ${event.title}`}
-            >
-              <span className="inline-block rounded-full bg-heritage-red px-3 py-1 text-sm font-bold text-white">
-                {event.year}
-              </span>
-              <h3 className="mt-2 font-display text-lg font-semibold">{event.title}</h3>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{event.description}</p>
-            </div>
-            <div className="absolute left-1/2 top-6 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-heritage-gold bg-heritage-red" />
-          </motion.div>
-        ))}
-      </div>
+      <section className="mx-auto max-w-6xl px-4 pb-section">
+        <Tabs.Root defaultValue="vertical" className="w-full">
+          <Tabs.List className="mb-10 flex flex-wrap justify-center gap-2 rounded-full glass-card p-1.5">
+            {(['vertical', 'horizontal', '3d'] as const).map((mode) => (
+              <Tabs.Trigger
+                key={mode}
+                value={mode}
+                className={cn(
+                  'rounded-full px-6 py-2.5 text-sm font-medium capitalize transition-all',
+                  'data-[state=active]:bg-heritage-red data-[state=active]:text-white',
+                  'data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:text-foreground'
+                )}
+              >
+                {mode === '3d' ? '3D View' : `${mode.charAt(0).toUpperCase()}${mode.slice(1)}`}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+
+          <Tabs.Content value="vertical">
+            <TimelineVertical events={events} onSelect={setSelected} />
+          </Tabs.Content>
+          <Tabs.Content value="horizontal">
+            <TimelineHorizontal events={events} onSelect={setSelected} />
+          </Tabs.Content>
+          <Tabs.Content value="3d">
+            <Timeline3DView events={events} />
+            <p className="mt-4 text-center text-sm text-muted-foreground">
+              Drag to rotate • Auto-rotating 3D timeline
+            </p>
+          </Tabs.Content>
+        </Tabs.Root>
+      </section>
 
       <Modal isOpen={!!selected} onClose={() => setSelected(null)} title={selected?.title}>
         {selected && (
           <div>
-            <span className="text-heritage-red font-bold text-lg dark:text-heritage-gold">{selected.year}</span>
+            <span className="font-display text-2xl font-bold text-heritage-gold">{selected.year}</span>
             {selected.image_url && (
-              <div className="relative mt-4 h-48 w-full rounded-lg overflow-hidden">
+              <div className="relative mt-4 h-56 w-full overflow-hidden rounded-glass">
                 <Image src={selected.image_url} alt={selected.title} fill className="object-cover" />
               </div>
             )}
-            <p className="mt-4 text-gray-700 dark:text-gray-300">{selected.description}</p>
+            <p className="mt-4 text-muted-foreground">{selected.description}</p>
             {selected.details && (
-              <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{selected.details}</p>
+              <p className="mt-3 text-sm leading-relaxed">{selected.details}</p>
             )}
           </div>
         )}

@@ -1,12 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { api } from '@/lib/api';
 import type { GalleryImage } from '@/lib/types';
 import Modal from '@/components/ui/Modal';
-import Loading from '@/components/ui/Loading';
+import { PageSkeleton } from '@/components/ui/Skeleton';
+import { ScrollReveal } from '@/components/animation/ScrollReveal';
+
+const MuseumGallery3D = dynamic(() => import('@/components/three/MuseumGallery3D'), { ssr: false });
 
 const fallbackGallery: GalleryImage[] = [
   { id: 1, title: 'Kim Lien Village', description: 'Birthplace in Nghe An', image_url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600', year: 1890 },
@@ -29,60 +33,66 @@ export default function GalleryPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <PageSkeleton />;
 
   return (
-    <div className="py-12 px-4">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="section-title text-center">Historical Gallery</h1>
-        <p className="mt-4 text-center text-gray-600 dark:text-gray-300">
-          A visual journey through key moments and places
-        </p>
+    <div className="pt-24 pb-section">
+      <section className="px-4">
+        <ScrollReveal className="mx-auto max-w-4xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-heritage-gold">Digital Museum</p>
+          <h1 className="section-title mt-2">Historical Gallery</h1>
+          <p className="mt-4 text-muted-foreground">
+            An immersive collection of artifacts and moments from the journey
+          </p>
+        </ScrollReveal>
 
-        <div className="masonry-grid mt-12">
+        <div className="mx-auto mt-12 max-w-6xl overflow-hidden rounded-glass glass-card">
+          <MuseumGallery3D count={images.length} />
+        </div>
+
+        <div className="masonry-grid mx-auto mt-16 max-w-6xl">
           {images.map((img, i) => (
             <motion.div
               key={img.id}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.92 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="masonry-item group cursor-pointer overflow-hidden rounded-lg"
+              transition={{ delay: i * 0.05, duration: 0.5 }}
+              className="masonry-item group cursor-pointer"
               onClick={() => setSelected(img)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => e.key === 'Enter' && setSelected(img)}
             >
-              <div className="relative overflow-hidden rounded-lg">
-                <Image
-                  src={img.image_url}
-                  alt={img.title}
-                  width={600}
-                  height={400}
-                  className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-heritage-charcoal/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100 flex items-end p-4">
-                  <div className="text-white">
-                    <h3 className="font-semibold">{img.title}</h3>
-                    {img.year && <p className="text-sm text-heritage-gold">{img.year}</p>}
+              <div className="museum-card overflow-hidden p-0">
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={img.image_url}
+                    alt={img.title}
+                    width={600}
+                    height={400}
+                    className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-heritage-charcoal/90 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute bottom-0 left-0 right-0 translate-y-full p-4 transition-transform duration-500 group-hover:translate-y-0">
+                    <span className="text-xs font-bold text-heritage-gold">{img.year}</span>
+                    <h3 className="font-display text-lg font-semibold text-white">{img.title}</h3>
                   </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </div>
+      </section>
 
       <Modal isOpen={!!selected} onClose={() => setSelected(null)} title={selected?.title}>
         {selected && (
           <div>
-            <div className="relative h-64 w-full rounded-lg overflow-hidden">
+            <span className="font-bold text-heritage-gold">{selected.year}</span>
+            <div className="relative mt-4 h-64 w-full overflow-hidden rounded-glass">
               <Image src={selected.image_url} alt={selected.title} fill className="object-cover" />
             </div>
-            {selected.year && <p className="mt-2 text-heritage-gold font-medium">{selected.year}</p>}
-            {selected.description && (
-              <p className="mt-4 text-gray-700 dark:text-gray-300">{selected.description}</p>
-            )}
+            <p className="mt-4 text-muted-foreground">{selected.description}</p>
           </div>
         )}
       </Modal>

@@ -3,12 +3,17 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { Map, Globe } from 'lucide-react';
 import { api } from '@/lib/api';
 import type { JourneyLocation } from '@/lib/types';
 import Modal from '@/components/ui/Modal';
-import Loading from '@/components/ui/Loading';
+import { PageSkeleton } from '@/components/ui/Skeleton';
+import { ScrollReveal } from '@/components/animation/ScrollReveal';
+import { GlassCard } from '@/components/ui/glass-card';
+import { cn } from '@/lib/utils';
 
-const WorldMap = dynamic(() => import('@/components/journey/WorldMap'), { ssr: false, loading: () => <Loading /> });
+const WorldMap = dynamic(() => import('@/components/journey/WorldMap'), { ssr: false });
+const JourneyMap3D = dynamic(() => import('@/components/three/JourneyMap3D'), { ssr: false });
 
 const fallbackLocations: JourneyLocation[] = [
   { id: 1, country: 'Vietnam', latitude: 16.0544, longitude: 108.2022, description: 'Birthplace and early life.', period: '1890–1911' },
@@ -23,6 +28,7 @@ export default function JourneyPage() {
   const [locations, setLocations] = useState<JourneyLocation[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<JourneyLocation | null>(null);
+  const [viewMode, setViewMode] = useState<'3d' | '2d'>('3d');
 
   useEffect(() => {
     api.journey.list()
@@ -31,45 +37,75 @@ export default function JourneyPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <PageSkeleton />;
 
   return (
-    <div className="py-12 px-4">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="section-title text-center">World Journey Map</h1>
-        <p className="mt-4 text-center text-gray-600 dark:text-gray-300">
-          Countries Ho Chi Minh traveled to in search of national salvation
-        </p>
+    <div className="pt-24 pb-section">
+      <section className="px-4">
+        <ScrollReveal className="mx-auto max-w-4xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-heritage-gold">World Journey</p>
+          <h1 className="section-title mt-2">Interactive Journey Map</h1>
+          <p className="mt-4 text-muted-foreground">
+            Trace the path across nations with animated routes and 3D globe exploration
+          </p>
+        </ScrollReveal>
 
-        <div className="mt-10 museum-card overflow-hidden p-2">
-          <WorldMap locations={locations} onSelect={setSelected} />
+        <div className="mx-auto mt-8 flex max-w-6xl justify-center gap-2">
+          <button
+            onClick={() => setViewMode('3d')}
+            className={cn(
+              'flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all',
+              viewMode === '3d' ? 'bg-heritage-red text-white' : 'glass-card text-muted-foreground'
+            )}
+          >
+            <Globe className="h-4 w-4" /> 3D Globe
+          </button>
+          <button
+            onClick={() => setViewMode('2d')}
+            className={cn(
+              'flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all',
+              viewMode === '2d' ? 'bg-heritage-red text-white' : 'glass-card text-muted-foreground'
+            )}
+          >
+            <Map className="h-4 w-4" /> 2D Map
+          </button>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-8 max-w-6xl overflow-hidden rounded-glass glass-card p-2">
+          {viewMode === '3d' ? (
+            <JourneyMap3D locations={locations} onSelect={setSelected} className="h-[520px] w-full" />
+          ) : (
+            <WorldMap locations={locations} onSelect={setSelected} />
+          )}
+        </div>
+
+        <div className="mx-auto mt-10 grid max-w-6xl gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3">
           {locations.map((loc) => (
-            <button
+            <GlassCard
               key={loc.id}
+              className="cursor-pointer"
               onClick={() => setSelected(loc)}
-              className="museum-card p-4 text-left transition-transform hover:-translate-y-1"
+              hover
+              glow
             >
-              <h3 className="font-display font-semibold text-heritage-red dark:text-heritage-gold">{loc.country}</h3>
+              <h3 className="font-display text-lg font-semibold">{loc.country}</h3>
               <p className="text-sm text-heritage-gold">{loc.period}</p>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{loc.description}</p>
-            </button>
+              <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{loc.description}</p>
+            </GlassCard>
           ))}
         </div>
-      </div>
+      </section>
 
       <Modal isOpen={!!selected} onClose={() => setSelected(null)} title={selected?.country}>
         {selected && (
           <div>
-            <p className="text-heritage-gold font-medium">{selected.period}</p>
+            <p className="font-medium text-heritage-gold">{selected.period}</p>
             {selected.image_url && (
-              <div className="relative mt-4 h-40 w-full rounded-lg overflow-hidden">
+              <div className="relative mt-4 h-48 w-full overflow-hidden rounded-glass">
                 <Image src={selected.image_url} alt={selected.country} fill className="object-cover" />
               </div>
             )}
-            <p className="mt-4 text-gray-700 dark:text-gray-300">{selected.description}</p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">{selected.description}</p>
           </div>
         )}
       </Modal>

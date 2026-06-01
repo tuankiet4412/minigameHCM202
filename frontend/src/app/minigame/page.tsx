@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Shield, Sword, Heart, Sparkles, Volume2, VolumeX } from 'lucide-react';
+import { playAttackSequence } from '@/lib/battle-sounds';
 
 type BattleQuestion = {
   question: string;
@@ -146,27 +147,9 @@ export default function MiniGamePage() {
     [currentQuestionIndex]
   );
 
-  const playSound = (type: 'attack' | 'hit' | 'win' | 'lose') => {
-    if (!soundOn || typeof window === 'undefined') return;
-    const AudioCtx = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-    if (!AudioCtx) return;
-    const ctx = new AudioCtx();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    if (type === 'attack') osc.frequency.value = 320;
-    if (type === 'hit') osc.frequency.value = 220;
-    if (type === 'win') osc.frequency.value = 520;
-    if (type === 'lose') osc.frequency.value = 160;
-
-    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.08, ctx.currentTime + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.15);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.16);
-    setTimeout(() => ctx.close(), 220);
+  const playBattleAudio = (attacker: 'hero' | 'tiger', isKo = false) => {
+    if (!soundOn) return;
+    playAttackSequence(attacker, isKo);
   };
 
   const pickNextQuestion = (nextUsedIndexes: number[]) => {
@@ -189,28 +172,26 @@ export default function MiniGamePage() {
 
     if (isCorrect) {
       setAttackPhase('playerAttack');
-      playSound('attack');
       const newTigerHp = Math.max(0, tigerHp - 1);
       setTigerHp(newTigerHp);
       setResult(newTigerHp === 0 ? 'win' : 'correct');
+      playBattleAudio('hero', newTigerHp === 0);
       setMessage(
         newTigerHp === 0
           ? 'Victory! You defeated the tiger with historical knowledge.'
           : `Great hit! ${currentQuestion.explanation}`
       );
-      playSound(newTigerHp === 0 ? 'win' : 'hit');
     } else {
       setAttackPhase('tigerAttack');
-      playSound('attack');
       const newPlayerHp = Math.max(0, playerHp - 1);
       setPlayerHp(newPlayerHp);
       setResult(newPlayerHp === 0 ? 'lose' : 'wrong');
+      playBattleAudio('tiger', newPlayerHp === 0);
       setMessage(
         newPlayerHp === 0
           ? 'You were defeated. Study and challenge the tiger again!'
           : `Tiger strikes back! ${currentQuestion.explanation}`
       );
-      playSound(newPlayerHp === 0 ? 'lose' : 'hit');
     }
 
     if (isCorrect ? tigerHp - 1 > 0 : playerHp - 1 > 0) {
@@ -253,7 +234,7 @@ export default function MiniGamePage() {
             className="mt-4 inline-flex items-center gap-2 rounded-full border border-heritage-gold/40 px-3 py-1 text-xs font-semibold hover:bg-heritage-gold/10"
           >
             {soundOn ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-            {soundOn ? 'Sound On' : 'Sound Off'}
+            {soundOn ? 'Âm thanh: Bật (kiếm & chiến đấu)' : 'Âm thanh: Tắt'}
           </button>
         </div>
 
