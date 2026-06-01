@@ -17,7 +17,6 @@ const navLinks = [
   { href: '/minigame', label: 'Mini Game' },
   { href: '/tank-game', label: '🪖 30/4' },
   { href: '/caro', label: 'Caro' },
-  { href: '/gallery', label: 'Gallery' },
 ];
 
 export default function Navbar() {
