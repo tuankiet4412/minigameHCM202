@@ -15,6 +15,18 @@ import {
 
 export type TimelineCategory = 'all' | 'vietnam' | 'world' | 'politics' | 'organizations';
 
+export type TimelineIconKey =
+  | 'baby'
+  | 'ship'
+  | 'landmark'
+  | 'book'
+  | 'scroll'
+  | 'flag'
+  | 'graduation'
+  | 'users'
+  | 'building'
+  | 'star';
+
 export type EnrichedTimelineEvent = TimelineEvent & {
   location: string;
   category: Exclude<TimelineCategory, 'all'>;
