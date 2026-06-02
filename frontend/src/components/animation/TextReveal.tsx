@@ -16,7 +16,7 @@ export function TextReveal({ text, className, delay = 0, as: Tag = 'h1' }: TextR
   return (
     <Tag className={cn('overflow-hidden', className)}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
+        <span key={i} className="word inline-block overflow-hidden mr-[0.25em]">
           <motion.span
             className="inline-block"
             initial={{ y: '100%', opacity: 0 }}
