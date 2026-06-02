@@ -15,6 +15,7 @@ const config: Config = {
           "red-dark": "#8B0000",
           gold: "#D4AF37",
           "gold-light": "#F4E4BC",
+          "gold-dark": "#C89B3C",
           cream: "#FAF7F2",
           charcoal: "#0A0A0B",
         },
@@ -55,6 +56,7 @@ const config: Config = {
         elevated: "0 24px 48px -12px rgba(196,30,58,0.15)",
         glow: "0 0 60px rgba(212,175,55,0.25)",
         "glow-red": "0 0 40px rgba(196,30,58,0.3)",
+        "glow-gold": "0 0 80px rgba(212,175,55,0.3), 0 0 200px rgba(212,175,55,0.1)",
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",
@@ -63,6 +65,7 @@ const config: Config = {
         "shimmer": "shimmer 2.5s linear infinite",
         "pulse-glow": "pulseGlow 3s ease-in-out infinite",
         "spin-slow": "spin 20s linear infinite",
+        "drift": "drift 8s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
@@ -73,6 +76,11 @@ const config: Config = {
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-12px)" },
+        },
+        drift: {
+          "0%, 100%": { transform: "translateY(0) translateX(0)" },
+          "33%": { transform: "translateY(-8px) translateX(6px)" },
+          "66%": { transform: "translateY(4px) translateX(-4px)" },
         },
         shimmer: {
           "0%": { backgroundPosition: "-200% 0" },

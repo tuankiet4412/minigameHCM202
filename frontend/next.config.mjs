@@ -5,8 +5,11 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'unpkg.com' },
       { protocol: 'https', hostname: 'flagcdn.com' },
+      { protocol: 'https', hostname: 'upload.wikimedia.org' },
+      { protocol: 'https', hostname: 'commons.wikimedia.org' },
     ],
   },
 };
 
 export default nextConfig;
+
