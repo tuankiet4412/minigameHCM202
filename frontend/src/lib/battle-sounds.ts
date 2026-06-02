@@ -9,6 +9,8 @@ export type BattleSoundType =
   | 'defeat';
 
 let sharedCtx: AudioContext | null = null;
+let masterOut: GainNode | null = null;
+const fileAudioCache = new Map<string, HTMLAudioElement>();
 
 function getContext(): AudioContext | null {
   if (typeof window === 'undefined') return null;
@@ -18,7 +20,17 @@ function getContext(): AudioContext | null {
   if (!Ctx) return null;
   if (!sharedCtx) sharedCtx = new Ctx();
   if (sharedCtx.state === 'suspended') void sharedCtx.resume();
+  if (!masterOut) {
+    masterOut = sharedCtx.createGain();
+    masterOut.gain.value = 0.9;
+    masterOut.connect(sharedCtx.destination);
+  }
   return sharedCtx;
+}
+
+function output(ctx: AudioContext) {
+  // If masterOut wasn't created for some reason, fall back safely.
+  return masterOut ?? ctx.destination;
 }
 
 function noiseBurst(
@@ -54,7 +66,7 @@ function noiseBurst(
 
   source.connect(filter);
   filter.connect(gain);
-  gain.connect(ctx.destination);
+  gain.connect(output(ctx));
   source.start(start);
   source.stop(start + duration + 0.02);
 }
@@ -81,7 +93,7 @@ function toneSweep(
   gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
 
   osc.connect(gain);
-  gain.connect(ctx.destination);
+  gain.connect(output(ctx));
   osc.start(start);
   osc.stop(start + duration + 0.02);
 }
@@ -112,14 +124,21 @@ function playImpact(ctx: AudioContext, t: number) {
 function playVictory(ctx: AudioContext, t: number) {
   const notes = [523.25, 659.25, 783.99, 1046.5];
   notes.forEach((freq, i) => {
-    toneSweep(ctx, t + i * 0.1, 0.22, { type: 'triangle', freqStart: freq, freqEnd: freq * 0.98, gain: 0.1 });
+    toneSweep(ctx, t + i * 0.1, 0.22, { type: 'triangle', freqStart: freq, freqEnd: freq * 0.98, gain: 0.16 });
   });
-  noiseBurst(ctx, t + 0.35, 0.2, { gain: 0.08, freqStart: 2000, freqEnd: 600, q: 1 });
+  noiseBurst(ctx, t + 0.35, 0.2, { gain: 0.12, freqStart: 2000, freqEnd: 600, q: 1 });
 }
 
 function playDefeat(ctx: AudioContext, t: number) {
-  toneSweep(ctx, t, 0.35, { type: 'sawtooth', freqStart: 220, freqEnd: 55, gain: 0.12 });
-  toneSweep(ctx, t + 0.15, 0.4, { type: 'sine', freqStart: 130, freqEnd: 40, gain: 0.15 });
+  toneSweep(ctx, t, 0.35, { type: 'sawtooth', freqStart: 220, freqEnd: 55, gain: 0.16 });
+  toneSweep(ctx, t + 0.15, 0.4, { type: 'sine', freqStart: 130, freqEnd: 40, gain: 0.18 });
+}
+
+/** Call from a user gesture to ensure audio is unlocked. */
+export function primeBattleAudio() {
+  const ctx = getContext();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') void ctx.resume();
 }
 
 export function playBattleSound(type: BattleSoundType) {
@@ -149,6 +168,36 @@ export function playBattleSound(type: BattleSoundType) {
   }
 }
 
+function getFileAudio(src: string) {
+  if (typeof window === 'undefined') return null;
+  const cached = fileAudioCache.get(src);
+  if (cached) return cached;
+  const audio = new Audio(src);
+  audio.preload = 'auto';
+  fileAudioCache.set(src, audio);
+  return audio;
+}
+
+/**
+ * Preferred SFX file playback for KO outcomes.
+ * Falls back to procedural sounds if files are missing or blocked.
+ */
+export function playOutcomeSound(kind: 'victory' | 'defeat') {
+  const src = kind === 'victory' ? '/sounds/victory.wav' : '/sounds/defeat.wav';
+  const audio = getFileAudio(src);
+  if (!audio) {
+    playBattleSound(kind);
+    return;
+  }
+
+  audio.currentTime = 0;
+  audio.volume = 1;
+  void audio.play().catch(() => {
+    // Fallback keeps KO sound working even if file or autoplay fails.
+    playBattleSound(kind);
+  });
+}
+
 /** Chuỗi âm thanh khi tấn công — slash → clash → impact */
 export function playAttackSequence(attacker: 'hero' | 'tiger', isKo = false) {
   const ctx = getContext();
@@ -164,5 +213,51 @@ export function playAttackSequence(attacker: 'hero' | 'tiger', isKo = false) {
     playTigerSlash(ctx, t);
     playImpact(ctx, t + 0.12);
     if (isKo) playDefeat(ctx, t + 0.25);
+  }
+}
+
+/**
+ * Tiếng hô chiến thắng bằng Web Speech API:
+ * - Ronaldo thắng → "Suuuuuuuuu" (chậm, trầm, kéo dài)
+ * - Messi thắng   → "Viva Barca! Viva Catalonia!" (nhanh, phấn khích)
+ */
+export function playVictoryChant(winner: 'ronaldo' | 'messi') {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return;
+
+  // Cancel any ongoing speech
+  window.speechSynthesis.cancel();
+
+  const utter = new SpeechSynthesisUtterance();
+
+  if (winner === 'ronaldo') {
+    utter.text = 'Suuuuuuuuuuuuuuuuuu';
+    utter.lang = 'pt-PT';   // Portuguese — closer to Ronaldo's crowd
+    utter.rate = 0.45;       // very slow drag
+    utter.pitch = 0.6;       // deep, stadium rumble
+    utter.volume = 1;
+  } else {
+    utter.text = 'Viva Barca! Viva Catalonia!';
+    utter.lang = 'es-ES';   // Spanish / Catalan crowd feel
+    utter.rate = 1.1;        // energetic
+    utter.pitch = 1.3;       // high excitement
+    utter.volume = 1;
+  }
+
+  // Pick a matching voice if available (non-blocking)
+  const trySpeak = () => {
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length > 0) {
+      const langPrefix = winner === 'ronaldo' ? 'pt' : 'es';
+      const match = voices.find((v) => v.lang.startsWith(langPrefix));
+      if (match) utter.voice = match;
+    }
+    window.speechSynthesis.speak(utter);
+  };
+
+  if (window.speechSynthesis.getVoices().length === 0) {
+    // Voices may load async on first call
+    window.speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
+  } else {
+    trySpeak();
   }
 }
