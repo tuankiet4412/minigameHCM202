@@ -185,6 +185,7 @@ export default function WorldMap({ locations, selectedCountry, focusKey = 0, act
       mapInstance.current = null;
       markersRef.current = [];
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locations]);
 
   useEffect(() => {

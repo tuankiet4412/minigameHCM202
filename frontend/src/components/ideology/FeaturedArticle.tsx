@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BookOpen, Calendar, Clock, ArrowRight, Bookmark } from 'lucide-react';
+import { BookOpen, Clock, ArrowRight, Bookmark } from 'lucide-react';
 import type { Article } from '@/lib/types';
 
 interface FeaturedArticleProps {
