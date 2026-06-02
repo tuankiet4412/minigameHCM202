@@ -107,13 +107,20 @@ export function enrichLocations(locations: JourneyLocation[]): EnrichedJourneyLo
   const byCountry = new Map(locations.map((l) => [l.country, l]));
 
   return JOURNEY_ORDER.map((country, order) => {
-    const base = byCountry.get(country) ?? {
+    const raw = byCountry.get(country) ?? {
       id: order + 1,
       country,
       latitude: 0,
       longitude: 0,
       description: '',
       period: ENRICHMENT[country]?.yearLabel,
+    };
+    // PostgreSQL DECIMAL columns are returned as strings by the pg driver.
+    // Coerce to numbers here so all downstream code (Three.js math, .toFixed, etc.) is safe.
+    const base = {
+      ...raw,
+      latitude: typeof raw.latitude === 'string' ? parseFloat(raw.latitude) : Number(raw.latitude),
+      longitude: typeof raw.longitude === 'string' ? parseFloat(raw.longitude) : Number(raw.longitude),
     };
     const meta = ENRICHMENT[country];
     return {

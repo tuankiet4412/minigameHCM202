@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useMemo, useState, Suspense, useEffect } from 'react';
+import { useRef, useMemo, useState, Suspense, useEffect, useCallback } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useTexture, Stars, Float } from '@react-three/drei';
 import * as THREE from 'three';
@@ -304,6 +304,20 @@ export default function PremiumGlobe({
   onSelect: (l: EnrichedJourneyLocation) => void;
   className?: string;
 }) {
+  const [canvasKey, setCanvasKey] = useState(0);
+
+  const handleCreated = useCallback(({ gl }: { gl: THREE.WebGLRenderer }) => {
+    gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    gl.toneMapping = THREE.ACESFilmicToneMapping;
+    gl.toneMappingExposure = 1.1;
+
+    // Recover from WebGL context loss by remounting the Canvas
+    gl.domElement.addEventListener('webglcontextlost', (e) => {
+      e.preventDefault();
+      setTimeout(() => setCanvasKey((k) => k + 1), 500);
+    });
+  }, []);
+
   return (
     <div className={className ?? 'relative h-full w-full min-h-[420px]'}>
       <div className="pointer-events-none absolute inset-0 rounded-glass bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08)_0%,transparent_65%)]" />
@@ -315,15 +329,12 @@ export default function PremiumGlobe({
         }
       >
         <Canvas
+          key={canvasKey}
           camera={{ position: [0, 0.15, 2.85], fov: 42 }}
           gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
           dpr={[1, 2]}
           className="rounded-glass"
-          onCreated={({ gl }) => {
-            gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            gl.toneMapping = THREE.ACESFilmicToneMapping;
-            gl.toneMappingExposure = 1.1;
-          }}
+          onCreated={handleCreated}
         >
           <GlobeScene locations={locations} selected={selected} focusKey={focusKey} onSelect={onSelect} />
         </Canvas>

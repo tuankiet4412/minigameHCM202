@@ -68,7 +68,7 @@ export default function CountryInfoPanel({
                   <div className="absolute bottom-4 left-4 right-4">
                     <p className="flex items-center gap-1.5 text-xs text-[#D4AF37]/80">
                       <MapPin className="h-3.5 w-3.5" />
-                      {active.latitude.toFixed(2)}°N, {Math.abs(active.longitude).toFixed(2)}°{active.longitude >= 0 ? 'E' : 'W'}
+                      {Number(active.latitude).toFixed(2)}°N, {Math.abs(Number(active.longitude)).toFixed(2)}°{Number(active.longitude) >= 0 ? 'E' : 'W'}
                     </p>
                   </div>
                 </div>
