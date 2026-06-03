@@ -10,12 +10,6 @@ interface ArtifactModalProps {
   onClose: () => void;
 }
 
-const RELATED: { title: string; year: string; thumb: string }[] = [
-  { title: 'Nha Rong Port, 1911',     year: '1911', thumb: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=120&q=60' },
-  { title: 'Paris Congress, 1919',    year: '1919', thumb: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=120&q=60' },
-  { title: 'Guangzhou Training 1925', year: '1925', thumb: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=120&q=60' },
-];
-
 const TIMELINE_EVENTS = [
   { year: '1890', label: 'Born in Kim Lien, Nghe An' },
   { year: '1911', label: 'Departed from Saigon' },
@@ -245,29 +239,6 @@ export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
                         </div>
                       );
                     })}
-                  </div>
-                </div>
-
-                {/* Related artifacts */}
-                <div>
-                  <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '10px' }}>
-                    Related Artifacts
-                  </div>
-                  <div className="flex gap-3">
-                    {RELATED.map((r) => (
-                      <div
-                        key={r.title}
-                        className="group relative rounded-xl overflow-hidden cursor-pointer flex-1"
-                        style={{ aspectRatio: '1', border: '1px solid rgba(255,255,255,0.06)', background: '#0a0800' }}
-                      >
-                        <Image src={r.thumb} alt={r.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" style={{ filter: 'sepia(0.3) brightness(0.7)' }} />
-                        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.8) 100%)' }} />
-                        <div className="absolute bottom-2 left-2 right-2">
-                          <div style={{ fontFamily: 'var(--font-source)', color: '#D4AF37', fontSize: '0.6rem' }}>{r.year}</div>
-                          <div style={{ fontFamily: 'var(--font-playfair)', color: '#F4E4BC', fontSize: '0.72rem', lineHeight: 1.2 }} className="line-clamp-2">{r.title}</div>
-                        </div>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </div>

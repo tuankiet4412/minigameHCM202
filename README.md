@@ -68,7 +68,7 @@ npm run install:all
 
 ```env
 PORT=5000
-DATABASE_URL=postgresql://postgres:password@localhost:5432/hcm_journey
+DATABASE_URL=postgresql://postgres:postgres@localhost:5433/hcm_journey
 JWT_SECRET=your_super_secret_jwt_key
 JWT_EXPIRES_IN=7d
 FRONTEND_URL=http://localhost:3000
