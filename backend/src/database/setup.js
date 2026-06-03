@@ -223,16 +223,22 @@ async function seedData() {
     );
   }
 
-  // Gallery
+  // Gallery (đồng bộ với frontend/src/lib/gallery-data.ts)
   const gallery = [
-    { title: 'Làng Kim Liên', desc: 'Nơi sinh của Hồ Chí Minh tại Nghệ An', url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600', year: 1890 },
-    { title: 'Bến cảng Sài Gòn 1911', desc: 'Điểm khởi hành cho chuyến đi ra nước ngoài', url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600', year: 1911 },
-    { title: 'Hội nghị Hòa bình Paris', desc: 'Versailles 1919 - Đệ trình bản yêu sách', url: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600', year: 1919 },
-    { title: 'Ấn phẩm Cách mạng', desc: 'Báo Thanh Niên và các tài liệu cách mạng', url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600', year: 1925 },
-    { title: 'Đào tạo tại Quảng Châu', desc: 'Trụ sở Hội Việt Nam Cách mạng Thanh niên', url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600', year: 1925 },
-    { title: 'Hội nghị Hồng Kông 1930', desc: 'Thành lập Đảng Cộng sản Việt Nam', url: 'https://images.unsplash.com/photo-1518005020951-eccb994ad75d?w=600', year: 1930 },
-    { title: 'Việt Nam thời thuộc địa', desc: 'Cuộc sống dưới ách cai trị của thực dân Pháp', url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600', year: 1900 },
-    { title: 'Cán bộ Cách mạng', desc: 'Đào tạo thế hệ lãnh đạo tiếp theo', url: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600', year: 1928 },
+    { title: 'Bến cảng Nhà Rồng đầu thế kỷ 20 (nay là số 1 đường Nguyễn Tất Thành, TP HCM)', desc: 'Nơi Nguyễn Tất Thành (tên gọi Văn Ba) ra đi tìm đường cứu nước', url: '/images/ideology/role-of-patriotism.jpg', year: 1911 },
+    { title: 'Tàu Đô đốc Latouche-Tréville', desc: 'Con tàu đã đưa thanh niên Nguyễn Tất Thành rời Tổ quốc', url: '/images/ideology/hero-portrait.jpg', year: 1911 },
+    { title: 'Cảng Vieux-Port, Marseille đầu thế kỷ 20', desc: 'Nơi thanh niên Nguyễn Tất Thành lần đầu đặt chân đến nước Pháp', url: '/images/ideology/culture.jpg', year: 1911 },
+    { title: 'Mưu sinh tại London (khách sạn Carlton)', desc: 'Nguyễn Tất Thành vừa mưu sinh vừa học tập, chuẩn bị hành trang tư tưởng', url: '/images/ideology/why-socialism.jpg', year: 1914 },
+    { title: 'Bản yêu sách gửi Hội nghị Versailles 1919', desc: 'Ký tên Nguyễn Ái Quốc — mở đầu tiếng nói chính trị của người Việt tại diễn đàn quốc tế', url: '/images/ideology/national-independence-socialism.jpg', year: 1919 },
+    { title: 'Hồ sơ mật vụ Anh — Nguyễn Ái Quốc tại Hong Kong', desc: 'Bị bắt năm 1931 theo yêu cầu mật thám Pháp', url: '/images/ideology/preparation-cpv.jpg', year: 1931 },
+    { title: 'Máy chữ của Chủ tịch Hồ Chí Minh', desc: 'Máy chữ sử dụng tại Phủ Chủ tịch', url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_55383101-800c-426f-92c9-56c464097661.jpg', year: 0 },
+    { title: 'Bộ quần áo kaki của Chủ tịch Hồ Chí Minh', desc: 'Thường mặc khi đi thăm địa phương và dự hội nghị', url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_24c72dfb-9277-4be2-82c4-a5be56a401fd.jpg', year: 0 },
+    { title: 'Đôi dép cao su của Chủ tịch Hồ Chí Minh', desc: 'Sử dụng khi đi thăm trong nước và quốc tế', url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_b8808a76-dea9-4c3d-bc5d-04eb98d71450.jpg', year: 0 },
+    { title: 'Bộ dụng cụ tập thể dục của Chủ tịch Hồ Chí Minh', desc: 'Bác sử dụng từ năm 1967 đến năm 1969', url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg', year: 1967 },
+    { title: 'Chiếc quạt lá cọ của Chủ tịch Hồ Chí Minh', desc: 'Sử dụng từ năm 1960 trong sinh hoạt hằng ngày', url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_d47b036e-d242-4568-ad33-05d863f84750.jpg', year: 1960 },
+    { title: 'Chiếc đèn điện để bàn tại Phủ Chủ tịch', desc: 'Đèn Bác sử dụng khi làm việc tại Phủ Chủ tịch', url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_0ec8baee-162f-46d2-85f0-47283ff5037b.jpg', year: 0 },
+    { title: 'Chiến thuật chiến lược quân sự Hồ Chí Minh', desc: 'Tập hợp các bài viết của Chủ tịch Hồ Chí Minh về quân sự', url: '/images/ideology/national-independence-socialism.jpg', year: 2020 },
+    { title: 'Bác Hồ gọi ấy là mùa xuân đến', desc: 'Tư tưởng và hoạt động của Bác trong mỗi dịp đón xuân', url: '/images/ideology/culture.jpg', year: 2018 },
   ];
 
   await pool.query('DELETE FROM gallery_images');

@@ -3,8 +3,8 @@
 import { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
-import { api, isApiEnabled } from '@/lib/api';
 import type { GalleryImage } from '@/lib/types';
+import { GALLERY_IMAGES } from '@/lib/gallery-data';
 
 // ── Museum Components ──────────────────────────────────────────
 import { MuseumHero } from '@/components/museum/MuseumHero';
@@ -20,124 +20,6 @@ const MuseumParticles = dynamic(
   () => import('@/components/museum/MuseumParticles').then(m => m.MuseumParticles),
   { ssr: false }
 );
-
-// ── Rich fallback dataset ──────────────────────────────────────
-const FALLBACK_GALLERY: GalleryImage[] = [
-  {
-    id: 1,
-    title: 'Bến cảng Nhà Rồng đầu thế kỷ 20 (nay là số 1 đường Nguyễn Tất Thành, TP HCM)',
-    description: 'Nơi Nguyễn Tất Thành (tên gọi Văn Ba) ra đi tìm đường cứu nước',
-    image_url: '/images/ideology/role-of-patriotism.jpg',
-    year: 1911,
-    category: 'photograph',
-  },
-  {
-    id: 2,
-    title: 'Tàu Đô đốc Latouche-Tréville',
-    description: 'Con tàu đã đưa thanh niên Nguyễn Tất Thành rời Tổ quốc, bắt đầu hành trình tìm đường cứu nước.',
-    image_url: '/images/ideology/hero-portrait.jpg',
-    year: 1911,
-    category: 'photograph',
-  },
-  {
-    id: 3,
-    title: 'Cảng Vieux-Port, Marseille đầu thế kỷ 20',
-    description: 'Nơi thanh niên Nguyễn Tất Thành lần đầu đặt chân đến nước Pháp',
-    image_url: '/images/ideology/culture.jpg',
-    year: 1911,
-    category: 'photograph',
-  },
-  {
-    id: 4,
-    title: 'Trong những năm bôn ba, người thanh niên yêu nước trải qua nhiều công việc như phụ bếp tại khách sạn Carlton ở London, Anh trong bốn năm',
-    description: 'Nguyễn Tất Thành vừa mưu sinh vừa học tập, chuẩn bị hành trang tư tưởng tìm đường đến độc lập, tự do cho dân tộc.',
-    image_url: '/images/ideology/why-socialism.jpg',
-    year: 1914,
-    category: 'photograph',
-  },
-  {
-    id: 5,
-    title: 'Bản yêu sách 8 điểm đòi tự do dân chủ và quyền tự quyết cho người dân An Nam, ký tên Nguyễn Ái Quốc được gửi đến Hội nghị Versailles (Pháp) - mở đầu cho tiếng nói chính trị của người Việt tại diễn đàn quốc tế thời đó.',
-    description: '"Cải cách nền pháp lý ở Đông Dương bằng cách ban bố cho người bản xứ cũng được những đảm bảo về pháp lý như người Âu châu, xóa bỏ hoàn toàn và triệt để các tòa án đặc biệt dùng làm công cụ khủng bố và áp bức đối với bộ phận trung thực nhất trong nhân dân An Nam", điều 2 trong 8 điểm yêu sách nêu. Nhưng tất cả đều không được chấp thuận. Ảnh chụp đầu thập niên 1920 bên tờ báo L’Humannité - cơ quan ngôn luận của Đảng Cộng sản Pháp, nơi người thanh niên 30 tuổi đấu tranh cho quyền lợi các dân tộc thuộc địa. Những năm này, Người tích cực viết báo, tham gia phong trào cộng sản quốc tế.',
-    image_url: '/images/ideology/national-independence-socialism.jpg',
-    year: 1919,
-    category: 'photograph',
-  },
-  {
-    id: 6,
-    title: 'Hồ sơ mật vụ Anh và ảnh Nguyễn Ái Quốc với bí danh Tống Văn Sơ bị bắt tại Hong Kong',
-    description: 'Hồ sơ mật vụ Anh và ảnh Nguyễn Ái Quốc với bí danh Tống Văn Sơ bị bắt tại Hong Kong năm 1931 theo yêu cầu mật thám Pháp. Dù được luật sư Loseby bào chữa và Tòa án Tối cao tuyên trả tự do, ông vẫn bị giam cầm tới cuối năm 1932 tại nhà tù Victoria (Hong Kong)',
-    image_url: '/images/ideology/preparation-cpv.jpg',
-    year: 1931,
-    category: 'photograph',
-  },
-  {
-  id: 7,
-  title: 'Máy chữ của Chủ tịch Hồ Chí Minh',
-  description: 'Máy chữ Chủ tịch Hồ Chí Minh sử dụng trong thời gian Người ở và làm việc tại Phủ Chủ tịch.',
-  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_55383101-800c-426f-92c9-56c464097661.jpg',
-  year: 0,
-  category: 'artifact',
-},
-{
-  id: 8,
-  title: 'Bộ quần áo kaki của Chủ tịch Hồ Chí Minh',
-  description: 'Bộ quần áo kaki Chủ tịch Hồ Chí Minh thường mặc khi đi thăm các địa phương trong nước, dự hội nghị và các cuộc họp Chính phủ.',
-  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_24c72dfb-9277-4be2-82c4-a5be56a401fd.jpg',
-  year: 0,
-  category: 'artifact',
-},
-{
-  id: 9,
-  title: 'Đôi dép cao su của Chủ tịch Hồ Chí Minh',
-  description: 'Đôi dép cao su Chủ tịch Hồ Chí Minh sử dụng khi đi thăm các địa phương trong nước và các quốc gia trên thế giới.',
-  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_b8808a76-dea9-4c3d-bc5d-04eb98d71450.jpg',
-  year: 0,
-  category: 'artifact',
-},
-{
-  id: 10,
-  title: 'Bộ dụng cụ tập thể dục của Chủ tịch Hồ Chí Minh',
-  description: 'Bộ dụng cụ tập thể dục gồm lò xo kéo tay, quả chùy, dụng cụ tập tay, quả bóng tennis... Bác sử dụng từ năm 1967 đến năm 1969.',
-  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg',
-  year: 1967,
-  category: 'artifact',
-},
-{
-  id: 11,
-  title: 'Chiếc quạt lá cọ của Chủ tịch Hồ Chí Minh',
-  description: 'Chiếc quạt lá cọ Bác Hồ sử dụng từ năm 1960 trong sinh hoạt hằng ngày.',
-  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_d47b036e-d242-4568-ad33-05d863f84750.jpg',
-  year: 1960,
-  category: 'artifact',
-},
-{
-  id: 12,
-  title: 'Chiếc đèn điện để bàn Bác sử dụng trong thời gian ở và làm việc tại Phủ Chủ tịch.',
-  description: 'Chiếc đèn điện để bàn Bác sử dụng trong thời gian ở và làm việc tại Phủ Chủ tịch.',
-  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_0ec8baee-162f-46d2-85f0-47283ff5037b.jpg',
-  year: 0,
-  category: 'artifact',
-},
-{
-  id: 14,
-  title: 'Chiến thuật chiến lược quân sự Hồ Chí Minh',
-  description:
-    'Tác phẩm do Đỗ Hoàng Linh và Nguyễn Văn Dương sưu tầm, biên soạn, tập hợp các bài viết của Chủ tịch Hồ Chí Minh về quân sự. Cuốn sách làm rõ tư duy quân sự Hồ Chí Minh với nghệ thuật chiến tranh nhân dân, toàn dân đánh giặc, lấy nhỏ thắng lớn và phát huy sức mạnh tổng hợp của dân tộc.',
-  image_url: 'https://www.nxbctqg.org.vn/img_data/images/images/stories/Sachmoi/chienthuatchienluoc.jpg',
-  year: 2020,
-  category: 'document',
-},
-{
-  id: 15,
-  title: 'Bác Hồ gọi ấy là mùa xuân đến',
-  description:
-    'Cuốn sách giới thiệu những câu chuyện, tư tưởng và hoạt động của Chủ tịch Hồ Chí Minh trong mỗi dịp đón xuân, chúc Tết. Tác phẩm làm nổi bật những giá trị văn hóa, tinh thần và lời kêu gọi trồng cây, xây dựng đất nước ngày càng phát triển.',
-  image_url: 'https://static.oreka.vn/800-800_06374acb-6582-43fa-8a3d-ee8dd12ff471',
-  year: 2018,
-  category: 'document',
-},
-];
 
 // ── Page skeleton while loading ────────────────────────────────
 function MuseumSkeleton() {
@@ -188,16 +70,8 @@ export default function GalleryPage() {
   const collectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isApiEnabled) {
-      setImages(FALLBACK_GALLERY);
-      setLoading(false);
-      return;
-    }
-    api.gallery
-      .list()
-      .then(data => setImages((data as GalleryImage[]).length > 0 ? data as GalleryImage[] : FALLBACK_GALLERY))
-      .catch(() => setImages(FALLBACK_GALLERY))
-      .finally(() => setLoading(false));
+    setImages(GALLERY_IMAGES);
+    setLoading(false);
   }, []);
 
   if (loading) return <MuseumSkeleton />;
