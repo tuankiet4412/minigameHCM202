@@ -14,12 +14,12 @@ interface FilterBarProps {
 }
 
 const FILTERS: { id: FilterCategory; label: string; icon: string }[] = [
-  { id: 'all',        label: 'All Collections', icon: '⊞' },
-  { id: 'artifact',   label: 'Artifacts',       icon: '🏛' },
-  { id: 'photograph', label: 'Photographs',     icon: '📷' },
-  { id: 'document',   label: 'Documents',       icon: '📄' },
-  { id: 'video',      label: 'Videos',          icon: '🎬' },
-  { id: '3d',         label: '3D Exhibits',     icon: '⬡' },
+  { id: 'all',        label: 'Tất cả', icon: '⊞' },
+  { id: 'artifact',   label: 'Hiện vật',       icon: '🏛' },
+  { id: 'photograph', label: 'Ảnh',     icon: '📷' },
+  { id: 'document',   label: 'Tài liệu',       icon: '📄' },
+  { id: 'video',      label: 'Video',          icon: '🎬' },
+  { id: '3d',         label: 'Triển lãm 3D',     icon: '⬡' },
 ];
 
 export function MuseumFilterBar({ active, onChange, sortNewest, onToggleSort, viewGrid, onToggleView }: FilterBarProps) {
@@ -93,7 +93,7 @@ export function MuseumFilterBar({ active, onChange, sortNewest, onToggleSort, vi
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M1 3h10M3 6h6M5 9h2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
             </svg>
-            {sortNewest ? 'Newest First' : 'Oldest First'}
+            {sortNewest ? 'Mới nhất' : 'Cũ nhất'}
           </button>
 
           {/* View toggle */}
@@ -102,7 +102,7 @@ export function MuseumFilterBar({ active, onChange, sortNewest, onToggleSort, vi
               onClick={() => !viewGrid && onToggleView()}
               className="px-3 py-2 transition-all duration-200"
               style={{ background: viewGrid ? 'rgba(212,175,55,0.15)' : 'transparent', color: viewGrid ? '#D4AF37' : 'rgba(255,255,255,0.35)' }}
-              aria-label="Grid view"
+              aria-label="Xem lưới"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <rect x="1" y="1" width="5" height="5" rx="1" fill="currentColor" />
@@ -115,7 +115,7 @@ export function MuseumFilterBar({ active, onChange, sortNewest, onToggleSort, vi
               onClick={() => viewGrid && onToggleView()}
               className="px-3 py-2 transition-all duration-200"
               style={{ background: !viewGrid ? 'rgba(212,175,55,0.15)' : 'transparent', color: !viewGrid ? '#D4AF37' : 'rgba(255,255,255,0.35)' }}
-              aria-label="List view"
+              aria-label="Xem danh sách"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <rect x="1" y="2" width="12" height="2" rx="1" fill="currentColor" />

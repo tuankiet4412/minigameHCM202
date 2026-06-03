@@ -31,15 +31,15 @@ export const tokens = {
 } as const;
 
 export const milestones = [
-  { year: 1911, label: 'Departure from Vietnam' },
-  { year: 1919, label: 'Versailles Petition' },
-  { year: 1920, label: 'Path to Marxism-Leninism' },
-  { year: 1930, label: 'Founding of CPV' },
+  { year: 1911, label: 'Rời Việt Nam' },
+  { year: 1919, label: 'Bản yêu sách Versailles' },
+  { year: 1920, label: 'Con đường Mác-Lênin' },
+  { year: 1930, label: 'Thành lập Đảng Cộng sản' },
 ];
 
 export const stats = [
-  { value: 6, suffix: '+', label: 'Countries Visited' },
-  { value: 19, suffix: '', label: 'Years of Journey' },
-  { value: 30, suffix: '+', label: 'Quiz Questions' },
-  { value: 8, suffix: '', label: 'Gallery Artifacts' },
+  { value: 6, suffix: '+', label: 'Quốc gia đã đến' },
+  { value: 19, suffix: '', label: 'Năm hành trình' },
+  { value: 30, suffix: '+', label: 'Câu hỏi câu đố' },
+  { value: 8, suffix: '', label: 'Hiện vật bảo tàng' },
 ];

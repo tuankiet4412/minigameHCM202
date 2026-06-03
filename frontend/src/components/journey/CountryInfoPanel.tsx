@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Calendar, Sparkles, Landmark, Flag } from 'lucide-react';
 import type { EnrichedJourneyLocation } from '@/lib/journey-enrichment';
+import { countryLabelVi } from '@/lib/journey-enrichment';
 import LuxuryPanel, { LuxuryDivider } from '@/components/journey/LuxuryPanel';
 
 const cardVariants = {
@@ -30,7 +31,7 @@ export default function CountryInfoPanel({
   const active = location ?? null;
 
   return (
-    <LuxuryPanel label="Chapter" title="Country Profile" className="group">
+    <LuxuryPanel label="Chương" title="Hồ sơ quốc gia" className="group">
       <div className="flex-1 overflow-y-auto p-5 md:p-6">
         <AnimatePresence mode="wait">
           {active ? (
@@ -62,7 +63,7 @@ export default function CountryInfoPanel({
                       height={16}
                       className="rounded-sm shadow-sm"
                     />
-                    <span className="text-xs font-medium text-[#FFD700]">{active.country}</span>
+                    <span className="text-xs font-medium text-[#FFD700]">{countryLabelVi(active.country)}</span>
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4">
@@ -77,14 +78,14 @@ export default function CountryInfoPanel({
               <motion.div variants={itemVariants}>
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="font-display text-2xl font-bold tracking-tight text-white">{active.country}</h3>
+                    <h3 className="font-display text-2xl font-bold tracking-tight text-white">{countryLabelVi(active.country)}</h3>
                     <p className="mt-1.5 flex items-center gap-2 text-sm text-[#FFD700]">
                       <Calendar className="h-4 w-4" />
                       {active.yearLabel}
                     </p>
                   </div>
                   <span className="rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#FFD700]">
-                    Stop {active.order + 1}
+                    Điểm dừng {active.order + 1}
                   </span>
                 </div>
               </motion.div>
@@ -94,7 +95,7 @@ export default function CountryInfoPanel({
               <motion.div variants={itemVariants} className="rounded-2xl border border-[#D4AF37]/15 bg-[#101010]/80 p-4">
                 <p className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
                   <Landmark className="h-3.5 w-3.5" />
-                  Historical Context
+                  Bối cảnh lịch sử
                 </p>
                 <p className="mt-2.5 text-sm leading-relaxed text-gray-300">{active.historicalContext}</p>
               </motion.div>
@@ -102,7 +103,7 @@ export default function CountryInfoPanel({
               <motion.div variants={itemVariants}>
                 <p className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
                   <Sparkles className="h-3.5 w-3.5" />
-                  Key Events
+                  Sự kiện chính
                 </p>
                 <ul className="space-y-2">
                   {active.keyEvents.map((event, i) => (
@@ -123,7 +124,7 @@ export default function CountryInfoPanel({
               <motion.div variants={itemVariants} className="rounded-2xl border border-[#FFD700]/20 bg-gradient-to-br from-[#D4AF37]/10 to-transparent p-4">
                 <p className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FFD700]">
                   <Flag className="h-3.5 w-3.5" />
-                  Impact on Journey
+                  Ý nghĩa với hành trình
                 </p>
                 <p className="mt-2.5 text-sm italic leading-relaxed text-gray-200">{active.impactOnJourney}</p>
               </motion.div>
@@ -140,9 +141,9 @@ export default function CountryInfoPanel({
                 <div className="h-20 w-20 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/5 shadow-[0_0_30px_rgba(212,175,55,0.2)]" />
                 <div className="absolute inset-0 animate-ping rounded-full border border-[#FFD700]/20" style={{ animationDuration: '2s' }} />
               </div>
-              <p className="mt-6 font-display text-lg text-white">Awaiting Selection</p>
+              <p className="mt-6 font-display text-lg text-white">Chưa chọn</p>
               <p className="mt-2 max-w-[220px] text-sm text-gray-500">
-                Select a golden waypoint on the map to unlock this nation&apos;s story
+                Chọn một điểm vàng trên bản đồ để mở câu chuyện quốc gia
               </p>
             </motion.div>
           )}

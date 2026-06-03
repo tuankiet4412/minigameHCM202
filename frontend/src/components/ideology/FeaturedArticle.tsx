@@ -1,10 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import AppImage from '@/components/ui/AppImage';
 import Link from 'next/link';
 import { BookOpen, Clock, ArrowRight, Bookmark } from 'lucide-react';
 import type { Article } from '@/lib/types';
+import { categoryDisplayVi } from '@/components/ideology/CategoryFilter';
+import { getIdeologyArticleImage } from '@/lib/ideology-images';
 
 interface FeaturedArticleProps {
   article: Article;
@@ -38,22 +40,14 @@ export default function FeaturedArticle({
 
   const tagColor = categoryColor[article.category || ''] || '#D4AF37';
 
-  // Customized Unsplash historical-thematic images
-  const localImageMap: Record<string, string> = {
-    'why-socialism': 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80',
-    'national-independence-socialism': 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-    'role-of-patriotism': 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80',
-    'preparation-cpv': 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80',
-  };
-
-  const imageSrc = localImageMap[article.slug] || article.image_url || 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80';
+  const imageSrc = getIdeologyArticleImage(article.slug, article.category, article.image_url);
 
   return (
     <div className="w-full max-w-[1400px] mx-auto px-6 lg:px-16 mb-16">
       {/* Featured Header */}
       <div className="flex items-center gap-3 mb-6">
         <span className="h-px w-6 bg-[#C1121F]" />
-        <span className="text-[0.65rem] uppercase tracking-widest text-[#C1121F] font-bold">Featured Masterpiece</span>
+        <span className="text-[0.65rem] uppercase tracking-widest text-[#C1121F] font-bold">Tác phẩm tiêu biểu</span>
       </div>
 
       <motion.div
@@ -71,11 +65,11 @@ export default function FeaturedArticle({
           
           {/* Image Block */}
           <div className="relative w-full lg:w-[45%] min-h-[280px] lg:min-h-full overflow-hidden">
-            <Image
+            <AppImage
               src={imageSrc}
               alt={article.title}
               fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-[0.75] contrast-[1.05]"
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-[0.75] contrast-[1.05] sepia-[0.12]"
               sizes="(max-w-lg) 100vw, 600px"
             />
             {/* Visual overlay gradients */}
@@ -90,7 +84,7 @@ export default function FeaturedArticle({
                 className="px-3.5 py-1.5 rounded-full text-[0.6rem] font-bold uppercase tracking-wider text-white shadow-lg"
                 style={{ background: tagColor }}
               >
-                {article.category || 'Socialism'}
+                {categoryDisplayVi(article.category || 'Socialism')}
               </span>
             </div>
           </div>
@@ -103,11 +97,11 @@ export default function FeaturedArticle({
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5 text-[#D4AF37]" />
-                    6 mins read
+                    6 phút đọc
                   </span>
                   <span className="flex items-center gap-1">
                     <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
-                    Intermediate
+                    Trung cấp
                   </span>
                 </div>
                 
@@ -122,7 +116,7 @@ export default function FeaturedArticle({
                       ? 'bg-[#D4AF37]/10 border-[#D4AF37]/30 text-[#D4AF37]'
                       : 'border-white/10 hover:border-white/20 text-gray-400 hover:text-white'
                   }`}
-                  aria-label="Bookmark article"
+                  aria-label="Lưu bài viết"
                 >
                   <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
                 </button>
@@ -150,7 +144,7 @@ export default function FeaturedArticle({
               {/* Takeaway points */}
               {keyPoints && keyPoints.length > 0 && (
                 <div className="mt-6 pt-6 border-t border-white/5">
-                  <h4 className="text-[0.7rem] uppercase tracking-widest text-[#D4AF37] font-semibold mb-3">Key Philosophical Directives</h4>
+                  <h4 className="text-[0.7rem] uppercase tracking-widest text-[#D4AF37] font-semibold mb-3">Luận điểm tư tưởng cốt lõi</h4>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-gray-300">
                     {keyPoints.slice(0, 4).map((pt, i) => (
                       <li key={i} className="flex items-start gap-2">
@@ -183,7 +177,7 @@ export default function FeaturedArticle({
                   e.currentTarget.style.transform = 'none';
                 }}
               >
-                Study Essay
+                Đọc bài luận
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>

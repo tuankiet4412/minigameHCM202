@@ -19,16 +19,16 @@ export default function LearningProgress({
   const progressPercent = totalCount > 0 ? Math.round((readCount / totalCount) * 100) : 0;
 
   // Rank name based on progress
-  let academyRank = 'Academy Initiate';
+  let academyRank = 'Tân binh học viện';
   let rankColor = '#A8A8A8';
   if (progressPercent > 75) {
-    academyRank = 'Academy Fellow';
+    academyRank = 'Học giả danh dự';
     rankColor = '#F5C542';
   } else if (progressPercent > 50) {
-    academyRank = 'Ideology Scholar';
+    academyRank = 'Học giả tư tưởng';
     rankColor = '#D4AF37';
   } else if (progressPercent > 20) {
-    academyRank = 'Research Associate';
+    academyRank = 'Nghiên cứu viên';
     rankColor = '#C1121F';
   }
 
@@ -95,12 +95,12 @@ export default function LearningProgress({
                 <span className="text-xl font-bold text-[#FFF9E6]" style={{ fontFamily: 'var(--font-playfair), serif' }}>
                   {progressPercent}%
                 </span>
-                <span className="text-[0.55rem] uppercase tracking-wider text-gray-500">Mastered</span>
+                <span className="text-[0.55rem] uppercase tracking-wider text-gray-500">Đã học</span>
               </div>
             </div>
 
             <div className="text-left">
-              <span className="text-[0.65rem] uppercase tracking-widest text-[#D4AF37] font-semibold">Your Academy Rank</span>
+              <span className="text-[0.65rem] uppercase tracking-widest text-[#D4AF37] font-semibold">Hạng học viện</span>
               <h3
                 className="text-2xl font-bold mt-0.5 flex items-center gap-2"
                 style={{ fontFamily: 'var(--font-playfair), serif', color: rankColor }}
@@ -109,7 +109,7 @@ export default function LearningProgress({
                 {academyRank}
               </h3>
               <p className="text-xs text-gray-400 mt-1 max-w-xs leading-relaxed">
-                Explore original essays and revolutionary guidelines to progress your academic standing.
+                Đọc các bài luận và chỉ dẫn cách mạng để nâng cao thành tích học tập.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function LearningProgress({
                   {readCount}
                   <span className="text-xs text-gray-500 font-normal">/{totalCount}</span>
                 </span>
-                <span className="block text-[0.65rem] uppercase tracking-wider text-gray-400">Articles Read</span>
+                <span className="block text-[0.65rem] uppercase tracking-wider text-gray-400">Bài đã đọc</span>
               </div>
             </div>
 
@@ -140,7 +140,7 @@ export default function LearningProgress({
                   {topicsCount}
                   <span className="text-xs text-gray-500 font-normal">/8</span>
                 </span>
-                <span className="block text-[0.65rem] uppercase tracking-wider text-gray-400">Topics Done</span>
+                <span className="block text-[0.65rem] uppercase tracking-wider text-gray-400">Chủ đề hoàn thành</span>
               </div>
             </div>
 
@@ -153,7 +153,7 @@ export default function LearningProgress({
                 <span className="block text-2xl font-bold text-[#FFF9E6]" style={{ fontFamily: 'var(--font-playfair), serif' }}>
                   {bookmarkCount}
                 </span>
-                <span className="block text-[0.65rem] uppercase tracking-wider text-gray-400">Saved Essays</span>
+                <span className="block text-[0.65rem] uppercase tracking-wider text-gray-400">Bài đã lưu</span>
               </div>
             </div>
           </div>

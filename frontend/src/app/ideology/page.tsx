@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search } from 'lucide-react';
-import { api } from '@/lib/api';
+import { api, isApiEnabled } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 import type { Article } from '@/lib/types';
 import Loading from '@/components/ui/Loading';
@@ -16,68 +16,69 @@ import CategoryFilter, { type CategoryType } from '@/components/ideology/Categor
 import LearningProgress from '@/components/ideology/LearningProgress';
 import FeaturedArticle from '@/components/ideology/FeaturedArticle';
 import ArticleCard from '@/components/ideology/ArticleCard';
+import { getIdeologyArticleImage } from '@/lib/ideology-images';
 
 const fallbackArticles: Article[] = [
   {
     id: 1,
     slug: 'why-socialism',
-    title: 'Why Ho Chi Minh Chose Socialism',
-    summary: 'Understanding the ideological journey that led Nguyen Ai Quoc to embrace Marxism-Leninism as the path to national liberation.',
+    title: 'Vì sao Hồ Chí Minh chọn con đường xã hội chủ nghĩa',
+    summary: 'Hành trình tư tưởng đưa Nguyễn Ái Quốc đến với chủ nghĩa Mác-Lênin như con đường giải phóng dân tộc.',
     category: 'Socialism',
     key_points: [
-      'Colonial exploitation required systemic change',
-      'Lenin\'s thesis linked national and social liberation',
-      'Socialism promised equality for all classes',
-      'Experience in France and USSR confirmed the theory'
+      'Bóc lột thực dân đòi hỏi thay đổi hệ thống',
+      'Luận cương Lênin gắn giải phóng dân tộc với giải phóng xã hội',
+      'Chủ nghĩa xã hội hứa hẹn bình đẳng cho mọi tầng lớp',
+      'Kinh nghiệm ở Pháp và Liên Xô khẳng định lý luận',
     ],
-    historical_context: 'After decades of seeking help from democratic powers without success, Ho Chi Minh concluded that only a revolutionary transformation of society could achieve true independence.',
-    image_url: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80'
+    historical_context: 'Sau nhiều năm tìm kiếm sự giúp đỡ từ các cường quốc dân chủ không thành, Hồ Chí Minh kết luận chỉ cách mạng xã hội mới đạt độc lập thực sự.',
+    image_url: getIdeologyArticleImage('why-socialism', 'Socialism'),
   },
   {
     id: 2,
     slug: 'national-independence-socialism',
-    title: 'National Independence and Socialism',
-    summary: 'How Ho Chi Minh unified the goals of national liberation with social revolution into a coherent revolutionary strategy.',
+    title: 'Độc lập dân tộc gắn với chủ nghĩa xã hội',
+    summary: 'Cách Hồ Chí Minh thống nhất mục tiêu giải phóng dân tộc với cách mạng xã hội thành chiến lược nhất quán.',
     category: 'National Independence',
     key_points: [
-      'Independence without social justice is incomplete',
-      'Colonialism and capitalism are interconnected systems',
-      'The working class leads the national liberation struggle',
-      'Land reform follows political independence'
+      'Độc lập không có công bằng xã hội là chưa trọn vẹn',
+      'Chủ nghĩa thực dân và tư bản là hai mặt của cùng hệ thống',
+      'Giai cấp công nhân lãnh đạo đấu tranh giải phóng dân tộc',
+      'Cải cách ruộng đất theo sau độc lập chính trị',
     ],
-    historical_context: 'Vietnam under French rule suffered both national subjugation and exploitation of workers and peasants, requiring a dual liberation struggle.',
-    image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80'
+    historical_context: 'Việt Nam dưới ách thực dân Pháp vừa bị áp bức dân tộc vừa bị bóc lột giai cấp, đòi hỏi đấu tranh giải phóng kép.',
+    image_url: getIdeologyArticleImage('national-independence-socialism', 'National Independence'),
   },
   {
     id: 3,
     slug: 'role-of-patriotism',
-    title: 'The Role of Patriotism',
-    summary: 'Patriotism as the emotional and moral foundation of Ho Chi Minh\'s revolutionary commitment.',
+    title: 'Vai trò của lòng yêu nước',
+    summary: 'Tình yêu Tổ quốc là nền tảng tinh thần và đạo đức của cam kết cách mạng Hồ Chí Minh.',
     category: 'Patriotism',
     key_points: [
-      'Love of country motivated the 1911 departure',
-      'Patriotism inspired sacrifice among revolutionaries',
-      'National culture must be preserved and developed',
-      'International solidarity complements patriotism'
+      'Yêu nước thúc đẩy cuộc ra đi năm 1911',
+      'Yêu nước truyền cảm hứng hy sinh cho người cách mạng',
+      'Văn hóa dân tộc cần được giữ gìn và phát triển',
+      'Đoàn kết quốc tế bổ sung cho yêu nước',
     ],
-    historical_context: 'Growing up in a patriotic scholar family during the height of French colonial rule, young Nguyen Sinh Cung absorbed deep love for Vietnam and hatred of oppression.',
-    image_url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80'
+    historical_context: 'Lớn lên trong gia đình nhà nho yêu nước thời thực dân Pháp, Nguyễn Sinh Cung thấm đẫm tình yêu Việt Nam và căm thù áp bức.',
+    image_url: getIdeologyArticleImage('role-of-patriotism', 'Patriotism'),
   },
   {
     id: 4,
     slug: 'preparation-cpv',
-    title: 'Preparation for the Communist Party of Vietnam',
-    summary: 'The organizational work from 1925 to 1930 that laid the foundation for Vietnam\'s revolutionary party.',
+    title: 'Chuẩn bị thành lập Đảng Cộng sản Việt Nam',
+    summary: 'Công tác tổ chức từ 1925 đến 1930 tạo nền tảng cho đảng cách mạng Việt Nam.',
     category: 'Party Building',
     key_points: [
-      'Revolutionary Youth League trained future leaders',
-      'Three communist groups unified in 1930',
-      'Hong Kong conference established the CPV',
-      'Political line combined patriotism with Marxism'
+      'Hội Việt Nam Cách mạng Thanh niên đào tạo cán bộ',
+      'Ba tổ chức cộng sản hợp nhất năm 1930',
+      'Hội nghị Hồng Kông thành lập Đảng',
+      'Đường lối kết hợp yêu nước với Mác-Lênin',
     ],
-    historical_context: 'Between founding the Revolutionary Youth League in 1925 and the CPV in 1930, Ho Chi Minh built the organizational infrastructure for revolution.',
-    image_url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
-  }
+    historical_context: 'Từ khi thành lập Hội Thanh niên (1925) đến Đảng (1930), Hồ Chí Minh xây dựng cơ sở tổ chức cho cách mạng.',
+    image_url: getIdeologyArticleImage('preparation-cpv', 'Party Building'),
+  },
 ];
 
 // Helper to assign categories and images consistently
@@ -89,11 +90,7 @@ const enrichArticle = (art: Article): Article => {
   if (slug === 'role-of-patriotism') category = 'Patriotism';
   if (slug === 'preparation-cpv') category = 'Party Building';
 
-  let image_url = art.image_url;
-  if (slug === 'why-socialism') image_url = 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80';
-  if (slug === 'national-independence-socialism') image_url = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80';
-  if (slug === 'role-of-patriotism') image_url = 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80';
-  if (slug === 'preparation-cpv') image_url = 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80';
+  const image_url = getIdeologyArticleImage(slug, category, art.image_url);
 
   return {
     ...art,
@@ -114,6 +111,11 @@ export default function IdeologyPage() {
 
   // Load articles
   useEffect(() => {
+    if (!isApiEnabled) {
+      setRawArticles(fallbackArticles.map(enrichArticle));
+      setLoading(false);
+      return;
+    }
     const params = search ? `search=${encodeURIComponent(search)}` : '';
     api.articles.list(params)
       .then((data) => {
@@ -128,7 +130,7 @@ export default function IdeologyPage() {
 
   // Load bookmark states
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isApiEnabled && isAuthenticated) {
       api.articles.bookmarkStatus()
         .then((ids) => setBookmarks(ids as number[]))
         .catch(() => {});
@@ -200,8 +202,12 @@ export default function IdeologyPage() {
 
   // Toggle bookmark handler
   const toggleBookmark = async (id: number) => {
+    if (!isApiEnabled) {
+      toast.error('Tính năng lưu bài cần bật API (NEXT_PUBLIC_USE_API=true)');
+      return;
+    }
     if (!isAuthenticated) {
-      toast.error('Please login to bookmark articles');
+      toast.error('Vui lòng đăng nhập để lưu bài viết');
       return;
     }
     try {
@@ -209,9 +215,9 @@ export default function IdeologyPage() {
       setBookmarks((prev) =>
         res.bookmarked ? [...prev, id] : prev.filter((b) => b !== id)
       );
-      toast.success(res.bookmarked ? 'Article bookmarked' : 'Bookmark removed');
+      toast.success(res.bookmarked ? 'Đã lưu bài viết' : 'Đã bỏ lưu');
     } catch {
-      toast.error('Failed to update bookmark');
+      toast.error('Cập nhật lưu bài thất bại');
     }
   };
 
@@ -249,10 +255,10 @@ export default function IdeologyPage() {
                 className="text-xl lg:text-2.5xl font-semibold text-[#FFF9E6] text-left"
                 style={{ fontFamily: 'var(--font-playfair), serif' }}
               >
-                Curriculum Courses
+                Khóa học chương trình
               </h2>
               <p className="text-xs text-gray-400 mt-1 text-left font-light">
-                Select a theoretical domain to narrow down your study material.
+                Chọn lĩnh vực lý luận để thu hẹp tài liệu học tập.
               </p>
             </div>
 
@@ -261,11 +267,11 @@ export default function IdeologyPage() {
               <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#D4AF37]/70" />
               <input
                 type="search"
-                placeholder="Search resources..."
+                placeholder="Tìm tài liệu..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full rounded-full border border-[#D4AF37]/25 bg-[#0C0C0C]/80 py-3 pl-11 pr-5 text-sm text-[#FFF9E6] placeholder-gray-500 focus:border-[#D4AF37]/65 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/35 transition-all duration-300"
-                aria-label="Search articles"
+                aria-label="Tìm bài viết"
               />
             </div>
           </div>
@@ -313,7 +319,7 @@ export default function IdeologyPage() {
                   animate={{ opacity: 1 }}
                   className="py-16 text-center border border-dashed border-white/10 rounded-2xl bg-white/5"
                 >
-                  <p className="text-gray-400">No courses match your active search/filter criteria.</p>
+                  <p className="text-gray-400">Không có khóa học phù hợp với tìm kiếm hoặc bộ lọc.</p>
                 </motion.div>
               )
             )}

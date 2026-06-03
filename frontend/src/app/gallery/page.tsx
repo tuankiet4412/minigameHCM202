@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
-import { api } from '@/lib/api';
+import { api, isApiEnabled } from '@/lib/api';
 import type { GalleryImage } from '@/lib/types';
 
 // ── Museum Components ──────────────────────────────────────────
@@ -27,7 +27,7 @@ const FALLBACK_GALLERY: GalleryImage[] = [
     id: 1,
     title: 'Bến cảng Nhà Rồng đầu thế kỷ 20 (nay là số 1 đường Nguyễn Tất Thành, TP HCM)',
     description: 'Nơi Nguyễn Tất Thành (tên gọi Văn Ba) ra đi tìm đường cứu nước',
-    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/L1044370-copy_1755248877-1755249045.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=2nCPqU4VxkhSFcDgWQ2_9Q',
+    image_url: '/images/ideology/role-of-patriotism.jpg',
     year: 1911,
     category: 'photograph',
   },
@@ -35,7 +35,7 @@ const FALLBACK_GALLERY: GalleryImage[] = [
     id: 2,
     title: 'Tàu Đô đốc Latouche-Tréville',
     description: 'Con tàu đã đưa thanh niên Nguyễn Tất Thành rời Tổ quốc, bắt đầu hành trình tìm đường cứu nước.',
-    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/L1044370_1755248877-1755249045.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=esCrrdXbROCcaVGSgbbFSg',
+    image_url: '/images/ideology/hero-portrait.jpg',
     year: 1911,
     category: 'photograph',
   },
@@ -43,7 +43,7 @@ const FALLBACK_GALLERY: GalleryImage[] = [
     id: 3,
     title: 'Cảng Vieux-Port, Marseille đầu thế kỷ 20',
     description: 'Nơi thanh niên Nguyễn Tất Thành lần đầu đặt chân đến nước Pháp',
-    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/DSC-3798-1755240269.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=jPn0fM4q3y8jG0FPNzOm-g',
+    image_url: '/images/ideology/culture.jpg',
     year: 1911,
     category: 'photograph',
   },
@@ -51,7 +51,7 @@ const FALLBACK_GALLERY: GalleryImage[] = [
     id: 4,
     title: 'Trong những năm bôn ba, người thanh niên yêu nước trải qua nhiều công việc như phụ bếp tại khách sạn Carlton ở London, Anh trong bốn năm',
     description: 'Nguyễn Tất Thành vừa mưu sinh vừa học tập, chuẩn bị hành trang tư tưởng tìm đường đến độc lập, tự do cho dân tộc.',
-    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/DSC-3792-1755240267.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=oaWQefdg5ky30S3-rtR5qQ',
+    image_url: '/images/ideology/why-socialism.jpg',
     year: 1914,
     category: 'photograph',
   },
@@ -59,7 +59,7 @@ const FALLBACK_GALLERY: GalleryImage[] = [
     id: 5,
     title: 'Bản yêu sách 8 điểm đòi tự do dân chủ và quyền tự quyết cho người dân An Nam, ký tên Nguyễn Ái Quốc được gửi đến Hội nghị Versailles (Pháp) - mở đầu cho tiếng nói chính trị của người Việt tại diễn đàn quốc tế thời đó.',
     description: '"Cải cách nền pháp lý ở Đông Dương bằng cách ban bố cho người bản xứ cũng được những đảm bảo về pháp lý như người Âu châu, xóa bỏ hoàn toàn và triệt để các tòa án đặc biệt dùng làm công cụ khủng bố và áp bức đối với bộ phận trung thực nhất trong nhân dân An Nam", điều 2 trong 8 điểm yêu sách nêu. Nhưng tất cả đều không được chấp thuận. Ảnh chụp đầu thập niên 1920 bên tờ báo L’Humannité - cơ quan ngôn luận của Đảng Cộng sản Pháp, nơi người thanh niên 30 tuổi đấu tranh cho quyền lợi các dân tộc thuộc địa. Những năm này, Người tích cực viết báo, tham gia phong trào cộng sản quốc tế.',
-    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/IMG-8609-copy-1755243280.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=lO5vnNbr0jzdmlL8JQk5LA',
+    image_url: '/images/ideology/national-independence-socialism.jpg',
     year: 1919,
     category: 'photograph',
   },
@@ -67,7 +67,7 @@ const FALLBACK_GALLERY: GalleryImage[] = [
     id: 6,
     title: 'Hồ sơ mật vụ Anh và ảnh Nguyễn Ái Quốc với bí danh Tống Văn Sơ bị bắt tại Hong Kong',
     description: 'Hồ sơ mật vụ Anh và ảnh Nguyễn Ái Quốc với bí danh Tống Văn Sơ bị bắt tại Hong Kong năm 1931 theo yêu cầu mật thám Pháp. Dù được luật sư Loseby bào chữa và Tòa án Tối cao tuyên trả tự do, ông vẫn bị giam cầm tới cuối năm 1932 tại nhà tù Victoria (Hong Kong)',
-    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/DSC-3802-1755240275.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=fr0HO1YWGrtd-Draae9CCQ',
+    image_url: '/images/ideology/preparation-cpv.jpg',
     year: 1931,
     category: 'photograph',
   },
@@ -168,7 +168,7 @@ function MuseumSkeleton() {
             </div>
           </div>
           <div style={{ fontFamily: 'var(--font-source)', color: 'rgba(212,175,55,0.5)', fontSize: '0.7rem', letterSpacing: '0.3em', textTransform: 'uppercase' }}>
-            Loading Collection
+            Đang tải bộ sưu tập
           </div>
         </div>
       </div>
@@ -188,6 +188,11 @@ export default function GalleryPage() {
   const collectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!isApiEnabled) {
+      setImages(FALLBACK_GALLERY);
+      setLoading(false);
+      return;
+    }
     api.gallery
       .list()
       .then(data => setImages((data as GalleryImage[]).length > 0 ? data as GalleryImage[] : FALLBACK_GALLERY))
@@ -241,7 +246,7 @@ export default function GalleryPage() {
               >
                 <div className="h-px w-10" style={{ background: 'linear-gradient(90deg,transparent,rgba(212,175,55,0.5))' }} />
                 <span style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#D4AF37' }}>
-                  Permanent Collection
+                  Bộ sưu tập thường trực
                 </span>
               </motion.div>
               <motion.h2
@@ -259,7 +264,7 @@ export default function GalleryPage() {
                   backgroundClip: 'text',
                 }}
               >
-                Museum Collection
+                Bộ sưu tập bảo tàng
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -268,16 +273,16 @@ export default function GalleryPage() {
                 transition={{ delay: 0.2 }}
                 style={{ fontFamily: 'var(--font-source)', color: 'rgba(255,255,255,0.35)', fontSize: '0.85rem', marginTop: '8px' }}
               >
-                {images.length} items spanning 1890–1930
+                {images.length} hiện vật từ 1890–1930
               </motion.p>
             </div>
 
             {/* Legend */}
             <div className="flex flex-wrap gap-4">
               {[
-                { color: '#D4AF37', label: 'Photograph' },
-                { color: '#C89B3C', label: 'Artifact' },
-                { color: '#C1121F', label: 'Document' },
+                { color: '#D4AF37', label: 'Ảnh' },
+                { color: '#C89B3C', label: 'Hiện vật' },
+                { color: '#C1121F', label: 'Tài liệu' },
               ].map(l => (
                 <div key={l.label} className="flex items-center gap-1.5">
                   <div className="w-2 h-2 rounded-full" style={{ background: l.color }} />
@@ -335,7 +340,7 @@ export default function GalleryPage() {
                 <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,1 8.5,4.5 12,5 9.5,7.5 10,11 7,9.5 4,11 4.5,7.5 2,5 5.5,4.5" fill="#D4AF37"/></svg>
               </div>
               <p style={{ fontFamily: 'var(--font-source)', color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>
-                Explore the full collection and discover more about the journey
+                Khám phá toàn bộ bộ sưu tập và tìm hiểu thêm về hành trình
               </p>
             </div>
 
@@ -354,7 +359,7 @@ export default function GalleryPage() {
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 40px rgba(193,18,31,0.5)'}
               onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 0 30px rgba(193,18,31,0.3)'}
             >
-              View All Collections
+              Xem tất cả
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-1 transition-transform">
                 <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

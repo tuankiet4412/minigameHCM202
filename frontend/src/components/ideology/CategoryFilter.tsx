@@ -2,6 +2,21 @@
 
 import { motion } from 'framer-motion';
 
+/** Nhãn hiển thị tiếng Việt cho giá trị category (API vẫn dùng tiếng Anh) */
+export const CATEGORY_DISPLAY_VI: Record<string, string> = {
+  Socialism: 'Chủ nghĩa xã hội',
+  Patriotism: 'Yêu nước',
+  'National Independence': 'Độc lập dân tộc',
+  'Party Building': 'Xây dựng Đảng',
+  Ethics: 'Đạo đức',
+  Culture: 'Văn hóa',
+  Education: 'Giáo dục',
+};
+
+export function categoryDisplayVi(category: string): string {
+  return CATEGORY_DISPLAY_VI[category] ?? category;
+}
+
 export type CategoryType =
   | 'all'
   | 'Socialism'
@@ -18,14 +33,14 @@ interface CategoryFilterProps {
 }
 
 const CATEGORIES: { value: CategoryType; label: string }[] = [
-  { value: 'all', label: 'All Topics' },
-  { value: 'Socialism', label: 'Socialism' },
-  { value: 'Patriotism', label: 'Patriotism' },
-  { value: 'National Independence', label: 'National Independence' },
-  { value: 'Party Building', label: 'Party Building' },
-  { value: 'Ethics', label: 'Ethics & Morals' },
-  { value: 'Culture', label: 'Culture' },
-  { value: 'Education', label: 'Education' },
+  { value: 'all', label: 'Tất cả chủ đề' },
+  { value: 'Socialism', label: 'Chủ nghĩa xã hội' },
+  { value: 'Patriotism', label: 'Yêu nước' },
+  { value: 'National Independence', label: 'Độc lập dân tộc' },
+  { value: 'Party Building', label: 'Xây dựng Đảng' },
+  { value: 'Ethics', label: 'Đạo đức' },
+  { value: 'Culture', label: 'Văn hóa' },
+  { value: 'Education', label: 'Giáo dục' },
 ];
 
 export default function CategoryFilter({ active, onChange }: CategoryFilterProps) {

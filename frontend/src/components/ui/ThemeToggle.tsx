@@ -15,7 +15,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       className="rounded-full p-2.5 text-gray-300 transition-colors hover:bg-white/10 hover:text-heritage-gold"
-      aria-label="Toggle theme"
+      aria-label="Chuyển giao diện sáng/tối"
       suppressHydrationWarning
     >
       {!mounted ? (

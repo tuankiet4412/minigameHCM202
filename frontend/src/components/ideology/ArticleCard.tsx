@@ -1,10 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import AppImage from '@/components/ui/AppImage';
 import Link from 'next/link';
 import { Bookmark, Clock, BookOpen, ArrowRight } from 'lucide-react';
 import type { Article } from '@/lib/types';
+import { categoryDisplayVi } from '@/components/ideology/CategoryFilter';
+import { getIdeologyArticleImage } from '@/lib/ideology-images';
 
 interface ArticleCardProps {
   article: Article;
@@ -16,24 +18,24 @@ interface ArticleCardProps {
 // Mini timelines for each article
 const SLUG_TIMELINES: Record<string, { year: number; event: string }[]> = {
   'why-socialism': [
-    { year: 1911, event: 'Departed Vietnam to find a revolutionary path' },
-    { year: 1920, event: 'Discovered Lenin’s Thesis at Tours Congress' },
-    { year: 1923, event: 'Arrived in Moscow to study Marxist-Leninist theories' },
+    { year: 1911, event: 'Rời Việt Nam tìm con đường cách mạng' },
+    { year: 1920, event: 'Tiếp cận luận cương Lênin tại Đại hội Tours' },
+    { year: 1923, event: 'Đến Moscow học lý luận Mác-Lênin' },
   ],
   'national-independence-socialism': [
-    { year: 1919, event: 'Versailles Conference petition presentation' },
-    { year: 1930, event: 'Unified national liberation with socialist ideals' },
-    { year: 1945, event: 'Declared Independence of Vietnam (DRV)' },
+    { year: 1919, event: 'Trình bản yêu sách tại Versailles' },
+    { year: 1930, event: 'Thống nhất độc lập dân tộc với xã hội chủ nghĩa' },
+    { year: 1945, event: 'Tuyên ngôn Độc lập (CHXHCN Việt Nam)' },
   ],
   'role-of-patriotism': [
-    { year: 1890, event: 'Born in Nghe An, raised in a patriotic scholar family' },
-    { year: 1911, event: 'Patriotism drove his departure from Saigon port' },
-    { year: 1941, event: 'Returned to homeland after 30 years to guide revolution' },
+    { year: 1890, event: 'Sinh tại Nghệ An, gia đình nhà nho yêu nước' },
+    { year: 1911, event: 'Lòng yêu nước thúc đẩy rời cảng Sài Gòn' },
+    { year: 1941, event: 'Trở về Tổ quốc sau 30 năm hoạt động' },
   ],
   'preparation-cpv': [
-    { year: 1924, event: 'Arrived in Guangzhou to train young cadres' },
-    { year: 1925, event: 'Founded Vietnam Revolutionary Youth League' },
-    { year: 1930, event: 'Presided over Hong Kong Conference, founding CPV' },
+    { year: 1924, event: 'Đến Quảng Châu đào tạo thanh niên' },
+    { year: 1925, event: 'Thành lập Hội Việt Nam Cách mạng Thanh niên' },
+    { year: 1930, event: 'Hội nghị Hồng Kông — thành lập Đảng' },
   ],
 };
 
@@ -44,13 +46,6 @@ const CATEGORY_COLORS: Record<string, string> = {
   'Party Building': '#8B0000',
 };
 
-const LOCAL_IMAGES: Record<string, string> = {
-  'why-socialism': 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80',
-  'national-independence-socialism': 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80',
-  'role-of-patriotism': 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80',
-  'preparation-cpv': 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
-};
-
 export default function ArticleCard({
   article,
   isBookmarked,
@@ -58,12 +53,12 @@ export default function ArticleCard({
   onVisit,
 }: ArticleCardProps) {
   const timeline = SLUG_TIMELINES[article.slug] || [
-    { year: 1911, event: 'Began historic voyage aboard French steamship' },
-    { year: 1930, event: 'Laid foundation for revolutionary thought' },
+    { year: 1911, event: 'Bắt đầu hành trình trên tàu Pháp' },
+    { year: 1930, event: 'Nền tảng tư tưởng cách mạng' },
   ];
 
   const tagColor = CATEGORY_COLORS[article.category || ''] || '#D4AF37';
-  const imageSrc = LOCAL_IMAGES[article.slug] || article.image_url || 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80';
+  const imageSrc = getIdeologyArticleImage(article.slug, article.category, article.image_url);
 
   return (
     <motion.article
@@ -77,11 +72,11 @@ export default function ArticleCard({
       <div>
         {/* Card Image Container */}
         <div className="relative h-52 w-full overflow-hidden">
-          <Image
+          <AppImage
             src={imageSrc}
             alt={article.title}
             fill
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out filter brightness-[0.7] contrast-[1.05]"
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out brightness-[0.75] contrast-[1.05] sepia-[0.12]"
             sizes="(max-w-md) 100vw, 400px"
           />
           {/* Vignette overlay */}
@@ -96,7 +91,7 @@ export default function ArticleCard({
               className="px-3 py-1 rounded-full text-[0.55rem] font-bold uppercase tracking-wider text-white shadow-md"
               style={{ background: tagColor }}
             >
-              {article.category || 'Socialism'}
+              {categoryDisplayVi(article.category || 'Socialism')}
             </span>
           </div>
 
@@ -112,7 +107,7 @@ export default function ArticleCard({
                   ? 'bg-[#D4AF37]/20 border-[#D4AF37]/45 text-[#D4AF37]'
                   : 'bg-black/40 border-white/10 hover:border-white/20 text-gray-300 hover:text-white'
               }`}
-              aria-label="Bookmark article"
+              aria-label="Lưu bài viết"
             >
               <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current' : ''}`} />
             </button>
@@ -125,11 +120,11 @@ export default function ArticleCard({
           <div className="flex items-center gap-4 text-[0.65rem] uppercase tracking-wider text-gray-500 mb-3">
             <span className="flex items-center gap-1">
               <Clock className="w-3 h-3 text-[#D4AF37]" />
-              5 mins read
+              5 phút đọc
             </span>
             <span className="flex items-center gap-1">
               <BookOpen className="w-3 h-3 text-[#D4AF37]" />
-              Intermediate
+              Trung cấp
             </span>
           </div>
 
@@ -155,7 +150,7 @@ export default function ArticleCard({
           {/* Mini Knowledge Timeline Integration */}
           <div className="mt-5 pt-4 border-t border-white/5">
             <span className="block text-[0.6rem] uppercase tracking-widest text-[#D4AF37]/75 font-semibold mb-3">
-              Historical Context
+              Bối cảnh lịch sử
             </span>
             <div className="relative border-l border-[#D4AF37]/20 pl-4 ml-1.5 space-y-3 text-left">
               {timeline.map((item, idx) => (
@@ -179,7 +174,7 @@ export default function ArticleCard({
           onClick={() => onVisit && onVisit(article.slug)}
           className="inline-flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-[#D4AF37] hover:text-[#FFF9E6] group/link transition-colors"
         >
-          Study Essay
+          Đọc bài luận
           <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
         </Link>
       </div>

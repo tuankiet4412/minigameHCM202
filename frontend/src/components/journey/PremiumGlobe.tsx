@@ -324,7 +324,7 @@ export default function PremiumGlobe({
       <Suspense
         fallback={
           <div className="flex h-full items-center justify-center text-sm text-heritage-gold/70">
-            Loading globe…
+            Đang tải quả địa cầu…
           </div>
         }
       >

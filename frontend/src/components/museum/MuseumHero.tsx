@@ -110,7 +110,7 @@ export function MuseumHero() {
                 className="text-xs font-bold tracking-[0.35em] uppercase"
                 style={{ color: '#D4AF37', fontFamily: 'var(--font-source)' }}
               >
-                Digital Museum
+                Bảo tàng số
               </span>
               <div className="h-px w-12" style={{ background: 'linear-gradient(90deg,#D4AF37,transparent)' }} />
             </motion.div>
@@ -132,7 +132,7 @@ export function MuseumHero() {
                 letterSpacing: '-0.01em',
               }}
             >
-              Historical<br />Gallery
+              Phòng trưng bày<br />lịch sử
             </motion.h1>
 
             {/* Gold ornament divider */}
@@ -162,8 +162,8 @@ export function MuseumHero() {
                 maxWidth: '440px',
               }}
             >
-              An immersive collection of artifacts and moments from the journey
-              of Nguyen Tat Thanh — his path to national salvation from 1911 to 1930.
+              Bộ sưu tập hiện vật và khoảnh khắc trên hành trình của Nguyễn Tất Thành —
+              con đường cứu nước từ 1911 đến 1930.
             </motion.p>
 
             {/* CTA */}
@@ -183,7 +183,7 @@ export function MuseumHero() {
                 }}
               >
                 <span style={{ fontFamily: 'var(--font-source)', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.75rem' }}>
-                  Explore Collection
+                  Khám phá bộ sưu tập
                 </span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -211,7 +211,7 @@ export function MuseumHero() {
                   (e.currentTarget as HTMLElement).style.background = 'transparent';
                 }}
               >
-                View Statistics
+                Xem thống kê
               </a>
             </motion.div>
 
@@ -223,9 +223,9 @@ export function MuseumHero() {
               className="mt-14 flex gap-8"
             >
               {[
-                { num: '250+', label: 'Artifacts' },
-                { num: '120+', label: 'Photographs' },
-                { num: '80+',  label: 'Documents'  },
+                { num: '250+', label: 'Hiện vật' },
+                { num: '120+', label: 'Ảnh' },
+                { num: '80+',  label: 'Tài liệu'  },
               ].map(s => (
                 <div key={s.label}>
                   <div style={{ fontFamily: 'var(--font-playfair)', color: '#D4AF37', fontSize: '1.5rem', fontWeight: 700 }}>{s.num}</div>
@@ -269,8 +269,8 @@ export function MuseumHero() {
             {/* Portrait image with cinematic overlay */}
             <div className="relative w-full h-full overflow-hidden rounded-[2rem]" style={{ background: '#0a0800' }}>
               <Image
-                src="https://i1-vnexpress.vnecdn.net/2025/08/15/DSC-3785-1755240257.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=MpUt7QJyRwIN2fTVm-EnTA"
-                alt="Ho Chi Minh portrait"
+                src="/images/ideology/why-socialism.jpg"
+                alt="Nguyễn Ái Quốc tại Pháp — giai đoạn tìm đường cứu nước"
                 fill
                 className="object-cover object-top"
                 style={{ filter: 'sepia(0.4) contrast(1.1) brightness(0.85)', mixBlendMode: 'luminosity' }}
@@ -313,7 +313,7 @@ export function MuseumHero() {
                 boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
               }}
             >
-              <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#D4AF37' }}>Journey Began</div>
+              <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#D4AF37' }}>Khởi hành</div>
               <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.3rem', color: '#FFD700', fontWeight: 700 }}>1911</div>
               <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>Nha Rong Port</div>
             </motion.div>

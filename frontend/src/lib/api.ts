@@ -1,9 +1,16 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
+/** Set NEXT_PUBLIC_USE_API=true when the backend at NEXT_PUBLIC_API_URL is running. */
+export const isApiEnabled = process.env.NEXT_PUBLIC_USE_API === 'true';
+
 export async function apiFetch<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
+  if (!isApiEnabled) {
+    throw new Error('API disabled');
+  }
+
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
   const res = await fetch(`${API_URL}${endpoint}`, {

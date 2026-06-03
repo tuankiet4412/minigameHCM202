@@ -20,8 +20,8 @@ export default function TimelineSearchFilter({
           type="search"
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
-          placeholder="Search events..."
-          aria-label="Search timeline events"
+          placeholder="Tìm sự kiện..."
+          aria-label="Tìm kiếm sự kiện"
           className={cn(
             'w-full rounded-full border border-[#D4A74E]/25 bg-[#0A0A0A]/80 py-3 pl-11 pr-4',
             'text-sm text-[#D9D9D9] placeholder:text-[#A8A8A8]/60 backdrop-blur-xl',
@@ -35,7 +35,7 @@ export default function TimelineSearchFilter({
         className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D4A74E]/30 bg-[#0A0A0A]/80 px-5 py-3 text-sm font-medium text-[#E6B85C] backdrop-blur-xl transition-all hover:border-[#F5C76B]/50 hover:bg-[#D4A74E]/10"
       >
         <SlidersHorizontal className="h-4 w-4" />
-        Filter
+        Lọc
       </button>
     </div>
   );

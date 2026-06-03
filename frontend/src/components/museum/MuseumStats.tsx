@@ -14,8 +14,8 @@ const STATS = [
     ),
     value: 250,
     suffix: '+',
-    label: 'Artifacts',
-    description: 'Physical & digital',
+    label: 'Hiện vật',
+    description: 'Vật lý & số hóa',
     color: '#D4AF37',
   },
   {
@@ -29,8 +29,8 @@ const STATS = [
     ),
     value: 120,
     suffix: '+',
-    label: 'Photographs',
-    description: 'Historical images',
+    label: 'Ảnh',
+    description: 'Hình ảnh lịch sử',
     color: '#F4E4BC',
   },
   {
@@ -42,8 +42,8 @@ const STATS = [
     ),
     value: 80,
     suffix: '+',
-    label: 'Documents',
-    description: 'Original manuscripts',
+    label: 'Tài liệu',
+    description: 'Bản thảo gốc',
     color: '#C89B3C',
   },
   {
@@ -57,8 +57,8 @@ const STATS = [
     ),
     value: 30,
     suffix: '+',
-    label: 'Videos',
-    description: 'Archival footage',
+    label: 'Video',
+    description: 'Thước phim lưu trữ',
     color: '#7B2FBE',
   },
   {
@@ -70,8 +70,8 @@ const STATS = [
     ),
     value: 15,
     suffix: '+',
-    label: '3D Exhibits',
-    description: 'Interactive models',
+    label: 'Triển lãm 3D',
+    description: 'Mô hình tương tác',
     color: '#00B4D8',
   },
 ];
@@ -107,12 +107,12 @@ export function MuseumStats() {
           <div className="flex items-center justify-center gap-3 mb-3">
             <div className="h-px w-16" style={{ background: 'linear-gradient(90deg,transparent,rgba(212,175,55,0.5))' }} />
             <span style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#D4AF37' }}>
-              Collection Overview
+              Tổng quan bộ sưu tập
             </span>
             <div className="h-px w-16" style={{ background: 'linear-gradient(90deg,rgba(212,175,55,0.5),transparent)' }} />
           </div>
           <h2 style={{ fontFamily: 'var(--font-playfair)', color: '#F4E4BC', fontSize: 'clamp(1.6rem,3vw,2.2rem)', fontWeight: 700 }}>
-            The Collection in Numbers
+            Bộ sưu tập qua con số
           </h2>
         </motion.div>
 

@@ -33,9 +33,9 @@ export default function MilestonesSection() {
     <section className="relative overflow-hidden bg-gradient-to-b from-background to-heritage-cream/30 py-section dark:to-heritage-charcoal/50">
       <div className="mx-auto max-w-6xl px-4">
         <ScrollReveal>
-          <h2 className="section-title text-center">Key Milestones</h2>
+          <h2 className="section-title text-center">Cột mốc quan trọng</h2>
           <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-            Scroll to journey through pivotal moments of national salvation
+            Cuộn để đi qua những khoảnh khắc then chốt trên con đường cứu nước
           </p>
         </ScrollReveal>
       </div>

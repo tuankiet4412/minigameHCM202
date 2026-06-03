@@ -40,7 +40,7 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
           >
             <div className="mb-4 flex items-center justify-between">
               {title && <h2 id="modal-title" className="font-display text-2xl font-bold text-heritage-red dark:text-heritage-gold">{title}</h2>}
-              <button onClick={onClose} className="rounded-full p-1 hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Close">
+              <button onClick={onClose} className="rounded-full p-1 hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Đóng">
                 <X className="h-6 w-6" />
               </button>
             </div>

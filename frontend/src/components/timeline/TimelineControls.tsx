@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const MODES = [
-  { id: 'vertical', label: 'Vertical View' },
-  { id: 'horizontal', label: 'Horizontal View' },
-  { id: '3d', label: '3D View' },
+  { id: 'vertical', label: 'Xem dọc' },
+  { id: 'horizontal', label: 'Xem ngang' },
+  { id: '3d', label: 'Xem 3D' },
 ] as const;
 
 export type TimelineViewMode = (typeof MODES)[number]['id'];
@@ -28,7 +28,7 @@ export default function TimelineControls({
       <div
         className="inline-flex rounded-full border border-[#D4A74E]/20 bg-[#0A0A0A]/80 p-1.5 backdrop-blur-xl"
         role="tablist"
-        aria-label="Timeline view mode"
+        aria-label="Chế độ xem dòng thời gian"
       >
         {MODES.map((item) => {
           const active = mode === item.id;

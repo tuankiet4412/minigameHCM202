@@ -9,6 +9,20 @@ export const JOURNEY_ORDER = [
   'China',
 ] as const;
 
+/** Tên hiển thị tiếng Việt (khóa API vẫn dùng tiếng Anh) */
+export const COUNTRY_LABELS_VI: Record<string, string> = {
+  Vietnam: 'Việt Nam',
+  USA: 'Hoa Kỳ',
+  England: 'Anh',
+  France: 'Pháp',
+  'Soviet Union': 'Liên Xô',
+  China: 'Trung Quốc',
+};
+
+export function countryLabelVi(country: string): string {
+  return COUNTRY_LABELS_VI[country] ?? country;
+}
+
 export type EnrichedJourneyLocation = JourneyLocation & {
   order: number;
   yearLabel: string;
@@ -27,78 +41,78 @@ const ENRICHMENT: Record<
     yearLabel: '1890 – 1911',
     flagCode: 'vn',
     keyEvents: [
-      'Born in Nghe An province',
-      'Early patriotic education',
-      'Departed Saigon — June 1911',
+      'Sinh tại tỉnh Nghệ An',
+      'Giáo dục yêu nước từ nhỏ',
+      'Rời Sài Gòn — tháng 6/1911',
     ],
     historicalContext:
-      'Nguyen Tat Thanh left Vietnam aboard the Amiral Latouche-Tréville, beginning a thirty-year quest to find a path for national salvation.',
-    impactOnJourney: 'The point of departure — where love of country became a lifelong mission across continents.',
+      'Nguyễn Tất Thành rời Việt Nam trên tàu Amiral Latouche-Tréville, bắt đầu hành trình ba mươi năm tìm con đường cứu nước.',
+    impactOnJourney: 'Điểm khởi hành — nơi tình yêu Tổ quốc trở thành sứ mệnh suốt đời qua nhiều châu lục.',
     defaultImage: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80',
   },
   USA: {
     yearLabel: '1912 – 1913',
     flagCode: 'us',
     keyEvents: [
-      'Worked in Harlem, New York',
-      'Observed African-American struggle',
-      'Strengthened anti-colonial resolve',
+      'Làm việc tại Harlem, New York',
+      'Quan sát cuộc đấu tranh của người Mỹ gốc Phi',
+      'Củng cố quyết tâm chống thực dân',
     ],
     historicalContext:
-      'In the United States he witnessed inequality and oppression, deepening his commitment to liberation for all peoples.',
-    impactOnJourney: 'Broadened his understanding of racial injustice and the global dimensions of liberation.',
+      'Tại Hoa Kỳ, Người chứng kiến bất công và áp bức, làm sâu sắc thêm cam kết giải phóng dân tộc.',
+    impactOnJourney: 'Mở rộng hiểu biết về đấu tranh chống phân biệt chủng tộc và phạm vi toàn cầu của giải phóng.',
     defaultImage: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80',
   },
   England: {
     yearLabel: '1913 – 1917',
     flagCode: 'gb',
     keyEvents: [
-      'Worked as a baker in London',
-      'Studied Western politics',
-      'Joined political organizations',
+      'Làm thợ bánh tại Luân Đôn',
+      'Nghiên cứu chính trị phương Tây',
+      'Tham gia các tổ chức chính trị',
     ],
     historicalContext:
-      'London exposed him to labour movements and colonial politics, shaping his understanding of imperial power structures.',
-    impactOnJourney: 'Revealed the mechanics of empire and the power of organized labour movements.',
+      'Luân Đôn giúp Người tiếp cận phong trào công nhân và chính trị thuộc địa, hình thành nhận thức về cơ chế đế quốc.',
+    impactOnJourney: 'Làm rõ bộ máy đế quốc và sức mạnh của phong trào công nhân có tổ chức.',
     defaultImage: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80',
   },
   France: {
     yearLabel: '1917 – 1923',
     flagCode: 'fr',
     keyEvents: [
-      'Versailles petition — 1919',
-      'Joined French Communist Party — 1920',
-      'Organized overseas Vietnamese',
+      'Bản yêu sách Versailles — 1919',
+      'Gia nhập Đảng Cộng sản Pháp — 1920',
+      'Tổ chức người Việt ở nước ngoài',
     ],
     historicalContext:
-      'As Nguyen Ai Quoc in Paris, he demanded independence for Vietnam and discovered Marxism-Leninism as the path to liberation.',
-    impactOnJourney: 'The ideological turning point — from patriot to revolutionary leader.',
+      'Với tên gọi Nguyễn Ái Quốc tại Paris, Người đòi độc lập cho Việt Nam và tìm thấy con đường Mác-Lênin.',
+    impactOnJourney: 'Bước ngoặt tư tưởng — từ người yêu nước thành nhà lãnh đạo cách mạng.',
     defaultImage: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80',
   },
   'Soviet Union': {
     yearLabel: '1923 – 1924',
     flagCode: 'ru',
     keyEvents: [
-      'Studied at Communist University',
-      'Deepened Marxist-Leninist theory',
-      'Prepared revolutionary cadres',
+      'Học tại Đại học Cộng sản',
+      'Củng cố lý luận Mác-Lênin',
+      'Chuẩn bị cán bộ cách mạng',
     ],
     historicalContext:
-      'Moscow provided rigorous political training and connected him to the international communist movement.',
-    impactOnJourney: 'Forged the theoretical foundation for Vietnam\'s revolutionary strategy.',
+      'Moscow cung cấp đào tạo chính trị nghiêm túc và kết nối với phong trào cộng sản quốc tế.',
+    impactOnJourney: 'Rèn nền tảng lý luận cho chiến lược cách mạng Việt Nam.',
     defaultImage: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80',
   },
   China: {
     yearLabel: '1924 – 1930',
     flagCode: 'cn',
     keyEvents: [
-      'Founded Revolutionary Youth League — 1925',
-      'Trained future leaders in Guangzhou',
-      'Founded Communist Party of Vietnam — 1930',
+      'Thành lập Hội Việt Nam Cách mạng Thanh niên — 1925',
+      'Đào tạo cán bộ tại Quảng Châu',
+      'Thành lập Đảng Cộng sản Việt Nam — 1930',
     ],
     historicalContext:
-      'China became the strategic base for organizing revolution — culminating in the founding of the Communist Party of Vietnam.',
-    impactOnJourney: 'The culmination — transforming vision into an organized revolutionary force.',
+      'Trung Quốc trở thành căn cứ chiến lược tổ chức cách mạng — đỉnh cao là thành lập Đảng Cộng sản Việt Nam.',
+    impactOnJourney: 'Điểm đến — biến tầm nhìn thành lực lượng cách mạng có tổ chức.',
     defaultImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
   },
 };
@@ -115,8 +129,6 @@ export function enrichLocations(locations: JourneyLocation[]): EnrichedJourneyLo
       description: '',
       period: ENRICHMENT[country]?.yearLabel,
     };
-    // PostgreSQL DECIMAL columns are returned as strings by the pg driver.
-    // Coerce to numbers here so all downstream code (Three.js math, .toFixed, etc.) is safe.
     const base = {
       ...raw,
       latitude: typeof raw.latitude === 'string' ? parseFloat(raw.latitude) : Number(raw.latitude),

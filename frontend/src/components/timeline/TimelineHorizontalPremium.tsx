@@ -55,7 +55,7 @@ export default function TimelineHorizontalPremium({
                 </p>
                 <p className="mt-2 line-clamp-2 text-sm text-[#A8A8A8]">{event.description}</p>
                 <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#D4A74E]">
-                  Explore Details <ArrowRight className="h-3.5 w-3.5" />
+                  Xem chi tiết <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </div>
             </div>

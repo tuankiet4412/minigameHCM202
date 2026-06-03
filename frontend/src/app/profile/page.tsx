@@ -49,17 +49,17 @@ export default function ProfilePage() {
               <p className="text-gray-600 dark:text-gray-400">{user.email}</p>
             </div>
             <button onClick={logout} className="flex items-center gap-2 text-sm text-gray-500 hover:text-heritage-red">
-              <LogOut className="h-4 w-4" /> Logout
+              <LogOut className="h-4 w-4" /> Đăng xuất
             </button>
           </div>
         </div>
 
         <section className="mt-10">
           <h2 className="flex items-center gap-2 font-display text-2xl font-semibold">
-            <Trophy className="h-6 w-6 text-heritage-gold" /> Quiz History
+            <Trophy className="h-6 w-6 text-heritage-gold" /> Lịch sử câu đố
           </h2>
           {quizHistory.length === 0 ? (
-            <p className="mt-4 text-gray-500">No quiz attempts yet. <Link href="/quiz" className="text-heritage-red underline">Take a quiz</Link></p>
+            <p className="mt-4 text-gray-500">Chưa có lần làm câu đố nào. <Link href="/quiz" className="text-heritage-red underline">Làm câu đố</Link></p>
           ) : (
             <ul className="mt-4 space-y-2">
               {quizHistory.map((r, i) => (
@@ -74,10 +74,10 @@ export default function ProfilePage() {
 
         <section className="mt-10">
           <h2 className="flex items-center gap-2 font-display text-2xl font-semibold">
-            <Bookmark className="h-6 w-6 text-heritage-gold" /> Bookmarked Articles
+            <Bookmark className="h-6 w-6 text-heritage-gold" /> Bài viết đã lưu
           </h2>
           {bookmarks.length === 0 ? (
-            <p className="mt-4 text-gray-500">No bookmarks yet. <Link href="/ideology" className="text-heritage-red underline">Browse articles</Link></p>
+            <p className="mt-4 text-gray-500">Chưa có bài lưu. <Link href="/ideology" className="text-heritage-red underline">Xem bài viết</Link></p>
           ) : (
             <ul className="mt-4 space-y-2">
               {bookmarks.map((a) => (

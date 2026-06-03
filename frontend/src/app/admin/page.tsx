@@ -16,20 +16,21 @@ import { GlassCard } from '@/components/ui/glass-card';
 import { ScrollReveal } from '@/components/animation/ScrollReveal';
 
 const stats = [
-  { label: 'Total Visitors', value: 12480, icon: Users, change: '+12%' },
-  { label: 'Articles Read', value: 8432, icon: BookOpen, change: '+8%' },
-  { label: 'Quiz Attempts', value: 3210, icon: Brain, change: '+24%' },
-  { label: 'Map Interactions', value: 5670, icon: Map, change: '+15%' },
+  { label: 'Tổng lượt truy cập', value: 12480, icon: Users, change: '+12%' },
+  { label: 'Bài đã đọc', value: 8432, icon: BookOpen, change: '+8%' },
+  { label: 'Lượt làm câu đố', value: 3210, icon: Brain, change: '+24%' },
+  { label: 'Tương tác bản đồ', value: 5670, icon: Map, change: '+15%' },
 ];
 
 const recentActivity = [
-  { action: 'New quiz submission', user: 'student_42', time: '2 min ago' },
-  { action: 'Timeline event viewed', user: 'guest_891', time: '5 min ago' },
-  { action: 'Gallery image opened', user: 'historian_vn', time: '12 min ago' },
-  { action: 'Journey map explored', user: 'teacher_07', time: '18 min ago' },
+  { action: 'Nộp bài câu đố mới', user: 'student_42', time: '2 phút trước' },
+  { action: 'Xem sự kiện dòng thời gian', user: 'guest_891', time: '5 phút trước' },
+  { action: 'Mở ảnh bảo tàng', user: 'historian_vn', time: '12 phút trước' },
+  { action: 'Khám phá bản đồ hành trình', user: 'teacher_07', time: '18 phút trước' },
 ];
 
 const chartBars = [65, 82, 45, 90, 72, 88, 56, 94, 78, 85, 62, 91];
+const months = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'];
 
 export default function AdminDashboardPage() {
   return (
@@ -38,13 +39,13 @@ export default function AdminDashboardPage() {
         <ScrollReveal>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-heritage-gold">Admin</p>
-              <h1 className="section-title mt-1 text-left">Analytics Dashboard</h1>
-              <p className="mt-2 text-muted-foreground">Monitor engagement across the digital museum</p>
+              <p className="text-sm font-semibold uppercase tracking-widest text-heritage-gold">Quản trị</p>
+              <h1 className="section-title mt-1 text-left">Bảng phân tích</h1>
+              <p className="mt-2 text-muted-foreground">Theo dõi tương tác trên bảo tàng số</p>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Activity className="h-4 w-4 text-green-500" />
-              Live • Updated just now
+              Trực tiếp • Vừa cập nhật
             </div>
           </div>
         </ScrollReveal>
@@ -69,7 +70,7 @@ export default function AdminDashboardPage() {
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           <GlassCard className="lg:col-span-2 !p-6">
             <div className="flex items-center justify-between">
-              <h2 className="font-display text-lg font-semibold">Engagement Overview</h2>
+              <h2 className="font-display text-lg font-semibold">Tổng quan tương tác</h2>
               <TrendingUp className="h-5 w-5 text-heritage-gold" />
             </div>
             <div className="mt-8 flex h-48 items-end justify-between gap-2">
@@ -85,14 +86,14 @@ export default function AdminDashboardPage() {
               ))}
             </div>
             <div className="mt-4 flex justify-between text-xs text-muted-foreground">
-              {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((m) => (
+              {months.map((m) => (
                 <span key={m}>{m}</span>
               ))}
             </div>
           </GlassCard>
 
           <GlassCard className="!p-6">
-            <h2 className="font-display text-lg font-semibold">Recent Activity</h2>
+            <h2 className="font-display text-lg font-semibold">Hoạt động gần đây</h2>
             <ul className="mt-6 space-y-4">
               {recentActivity.map((item, i) => (
                 <motion.li
@@ -118,16 +119,14 @@ export default function AdminDashboardPage() {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {[
-            { icon: BookOpen, label: 'Articles', count: 4 },
-            { icon: ImageIcon, label: 'Gallery Items', count: 8 },
-            { icon: Map, label: 'Journey Points', count: 6 },
+            { label: 'Bài viết', value: 24, icon: BookOpen },
+            { label: 'Hiện vật bảo tàng', value: 18, icon: ImageIcon },
+            { label: 'Điểm hành trình', value: 6, icon: Map },
           ].map((item) => (
-            <GlassCard key={item.label} className="flex items-center gap-4 !p-5" hover>
-              <div className="rounded-full bg-heritage-gold/10 p-3">
-                <item.icon className="h-6 w-6 text-heritage-gold" />
-              </div>
+            <GlassCard key={item.label} className="!p-5 flex items-center gap-4" hover>
+              <item.icon className="h-8 w-8 text-heritage-gold" />
               <div>
-                <p className="font-display text-2xl font-bold">{item.count}</p>
+                <p className="font-display text-2xl font-bold">{item.value}</p>
                 <p className="text-sm text-muted-foreground">{item.label}</p>
               </div>
             </GlassCard>

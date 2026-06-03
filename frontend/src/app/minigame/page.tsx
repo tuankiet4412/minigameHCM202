@@ -18,93 +18,93 @@ const TIGER_MAX_HP = 5;
 
 const questionBank: BattleQuestion[] = [
   {
-    question: 'In which year did Nguyen Tat Thanh leave Vietnam to find a path for national salvation?',
+    question: 'Nguyễn Tất Thành rời Việt Nam tìm đường cứu nước vào năm nào?',
     options: ['1905', '1911', '1919', '1930'],
     correctIndex: 1,
-    explanation: 'He departed from Saigon in 1911 to begin his long journey abroad.',
+    explanation: 'Người rời Sài Gòn năm 1911, bắt đầu hành trình dài ở nước ngoài.',
   },
   {
-    question: 'What pseudonym did he use at the Versailles Peace Conference in 1919?',
-    options: ['Van Ba', 'Nguyen Sinh Cung', 'Nguyen Ai Quoc', 'Ho Chi Minh'],
+    question: 'Tại Hội nghị Versailles 1919, Người dùng bút danh nào?',
+    options: ['Văn Ba', 'Nguyễn Sinh Cung', 'Nguyễn Ái Quốc', 'Hồ Chí Minh'],
     correctIndex: 2,
-    explanation: 'He used the name Nguyen Ai Quoc, meaning "Nguyen the Patriot."',
+    explanation: 'Nguyễn Ái Quốc — nghĩa là «người yêu nước».',
   },
   {
-    question: 'Which text strongly influenced his revolutionary path in 1920?',
+    question: 'Văn bản nào ảnh hưởng mạnh đến con đường cách mạng của Người năm 1920?',
     options: [
-      'The Communist Manifesto',
-      "Lenin's Thesis on National and Colonial Questions",
-      'Das Kapital',
-      'State and Revolution',
+      'Tuyên ngôn Đảng Cộng sản',
+      'Luận cương về vấn đề dân tộc và thuộc địa của Lênin',
+      'Tư bản luận',
+      'Nhà nước và cách mạng',
     ],
     correctIndex: 1,
-    explanation: 'Lenin’s thesis helped connect national liberation with social liberation.',
+    explanation: 'Luận cương Lênin gắn giải phóng dân tộc với giải phóng xã hội.',
   },
   {
-    question: 'Where was the Revolutionary Youth League founded in 1925?',
-    options: ['Paris', 'Moscow', 'Guangzhou', 'Saigon'],
+    question: 'Hội Việt Nam Cách mạng Thanh niên được thành lập năm 1925 tại đâu?',
+    options: ['Paris', 'Moscow', 'Quảng Châu', 'Sài Gòn'],
     correctIndex: 2,
-    explanation: 'It was founded in Guangzhou, where many cadres were trained.',
+    explanation: 'Thành lập tại Quảng Châu, nơi đào tạo nhiều cán bộ.',
   },
   {
-    question: 'In what year was the Communist Party of Vietnam founded?',
+    question: 'Đảng Cộng sản Việt Nam được thành lập năm nào?',
     options: ['1925', '1928', '1930', '1945'],
     correctIndex: 2,
-    explanation: 'The party was founded in 1930 after communist organizations were unified.',
+    explanation: 'Thành lập năm 1930 sau khi hợp nhất các tổ chức cộng sản.',
   },
   {
-    question: 'Which place marks the beginning of his departure in 1911?',
-    options: ['Hanoi', 'Hue', 'Saigon', 'Da Nang'],
+    question: 'Nơi nào là điểm xuất phát của cuộc ra đi năm 1911?',
+    options: ['Hà Nội', 'Huế', 'Sài Gòn', 'Đà Nẵng'],
     correctIndex: 2,
-    explanation: 'He left from Saigon aboard a French ship in June 1911.',
+    explanation: 'Rời Sài Gòn trên tàu Pháp tháng 6/1911.',
   },
   {
-    question: 'What was Ho Chi Minh’s birth name?',
-    options: ['Nguyen Ai Quoc', 'Nguyen Sinh Cung', 'Nguyen Tat Thanh', 'Le Hong Phong'],
+    question: 'Tên khai sinh của Hồ Chí Minh là gì?',
+    options: ['Nguyễn Ái Quốc', 'Nguyễn Sinh Cung', 'Nguyễn Tất Thành', 'Lê Hồng Phong'],
     correctIndex: 1,
-    explanation: 'He was born as Nguyen Sinh Cung in 1890.',
+    explanation: 'Sinh năm 1890 với tên Nguyễn Sinh Cung.',
   },
   {
-    question: 'Which country did he study revolutionary theory in during 1923-1924?',
-    options: ['France', 'England', 'Soviet Union', 'China'],
+    question: 'Giai đoạn 1923–1924, Người học lý luận cách mạng ở quốc gia nào?',
+    options: ['Pháp', 'Anh', 'Liên Xô', 'Trung Quốc'],
     correctIndex: 2,
-    explanation: 'He studied in the Soviet Union, deepening Marxist-Leninist understanding.',
+    explanation: 'Học tại Liên Xô, củng cố hiểu biết Mác-Lênin.',
   },
   {
-    question: 'At the 1919 conference, what did his petition mainly demand?',
-    options: ['Higher trade tariffs', 'Vietnamese civil rights and independence', 'Military alliance', 'Religious freedom only'],
+    question: 'Tại Versailles 1919, bản yêu sách chủ yếu đòi hỏi điều gì?',
+    options: ['Tăng thuế quan', 'Quyền dân sự và độc lập cho người Việt', 'Liên minh quân sự', 'Chỉ tự do tôn giáo'],
     correctIndex: 1,
-    explanation: 'The petition demanded rights and independence for Vietnamese people.',
+    explanation: 'Đòi quyền và độc lập cho nhân dân Việt Nam.',
   },
   {
-    question: 'In 1920, which party did he join after the Tours Congress split?',
-    options: ['French Communist Party', 'French Socialist Party', 'Vietnamese Nationalist Party', 'Labour Party'],
+    question: 'Sau Đại hội Tours 1920, Người gia nhập đảng nào?',
+    options: ['Đảng Cộng sản Pháp', 'Đảng Xã hội Pháp', 'Đảng Quốc dân Việt Nam', 'Đảng Lao động'],
     correctIndex: 0,
-    explanation: 'He joined the French Communist Party in 1920.',
+    explanation: 'Gia nhập Đảng Cộng sản Pháp năm 1920.',
   },
   {
-    question: 'Which city is linked to founding the Revolutionary Youth League?',
-    options: ['Moscow', 'Paris', 'Guangzhou', 'Bangkok'],
+    question: 'Thành phố nào gắn với việc thành lập Hội Thanh niên Cách mạng?',
+    options: ['Moscow', 'Paris', 'Quảng Châu', 'Bangkok'],
     correctIndex: 2,
-    explanation: 'Guangzhou was a key organizing center in 1925.',
+    explanation: 'Quảng Châu là trung tâm tổ chức quan trọng năm 1925.',
   },
   {
-    question: 'What period does this educational project primarily focus on?',
-    options: ['1880-1900', '1911-1930', '1930-1954', '1954-1975'],
+    question: 'Dự án giáo dục này chủ yếu tập trung giai đoạn nào?',
+    options: ['1880–1900', '1911–1930', '1930–1954', '1954–1975'],
     correctIndex: 1,
-    explanation: 'The site focuses on the 1911-1930 journey for national salvation.',
+    explanation: 'Tập trung hành trình cứu nước 1911–1930.',
   },
   {
-    question: 'Which of these was a key turning point in his ideological journey?',
-    options: ['Meeting Napoleon', "Reading Lenin's thesis", 'Becoming a governor', 'Opening a school in Hue'],
+    question: 'Bước ngoặt tư tưởng quan trọng nào trong hành trình của Người?',
+    options: ['Gặp Napoléon', 'Đọc luận cương của Lênin', 'Làm quan', 'Mở trường ở Huế'],
     correctIndex: 1,
-    explanation: 'Reading Lenin’s thesis in 1920 was a decisive turning point.',
+    explanation: 'Đọc luận cương Lênin năm 1920 là bước ngoặt quyết định.',
   },
   {
-    question: 'Where was the Communist Party of Vietnam founded in 1930?',
-    options: ['Hanoi', 'Hong Kong', 'Guangzhou', 'Paris'],
+    question: 'Đảng Cộng sản Việt Nam được thành lập năm 1930 tại đâu?',
+    options: ['Hà Nội', 'Hồng Kông', 'Quảng Châu', 'Paris'],
     correctIndex: 1,
-    explanation: 'The CPV was founded in Hong Kong through unification of communist groups.',
+    explanation: 'Thành lập tại Hồng Kông sau khi hợp nhất các nhóm cộng sản.',
   },
 ];
 
@@ -128,7 +128,7 @@ export default function MiniGamePage() {
   );
   const [result, setResult] = useState<BattleResult>('idle');
   const [attackPhase, setAttackPhase] = useState<AttackPhase>('idle');
-  const [message, setMessage] = useState('Answer correctly to strike Lionel Messi!');
+  const [message, setMessage] = useState('Trả lời đúng để tấn công hổ!');
   const [locked, setLocked] = useState(false);
   const [soundOn, setSoundOn] = useState(true);
   const [gameKey, setGameKey] = useState(0);
@@ -270,8 +270,8 @@ export default function MiniGamePage() {
       if (newTigerHp === 0 && soundOn) playOutcomeSound('victory');
       setMessage(
         newTigerHp === 0
-          ? 'Victory! You defeated Lionel Messi with your historical knowledge!'
-          : `Ronaldo strikes! ${currentQuestion.explanation}`
+          ? 'Chiến thắng! Bạn đã hạ Lionel Messi nhờ kiến thức lịch sử!'
+          : `Ronaldo tung đòn! ${currentQuestion.explanation}`
       );
     } else {
       setAttackPhase('tigerAttack');
@@ -282,8 +282,8 @@ export default function MiniGamePage() {
       if (newPlayerHp === 0 && soundOn) playOutcomeSound('defeat');
       setMessage(
         newPlayerHp === 0
-          ? 'You were knocked out. Study and challenge Messi again!'
-          : `Messi strikes back! ${currentQuestion.explanation}`
+          ? 'Bạn đã bị hạ. Ôn lại và thử lại với Messi!'
+          : `Messi phản công! ${currentQuestion.explanation}`
       );
     }
 
@@ -294,7 +294,7 @@ export default function MiniGamePage() {
         setResult('idle');
         setAttackPhase('idle');
         setLocked(false);
-        setMessage('Answer correctly to strike Lionel Messi!');
+        setMessage('Trả lời đúng để đánh Lionel Messi!');
       }, 900);
     } else {
       setTimeout(() => setAttackPhase('idle'), 700);
@@ -397,7 +397,7 @@ export default function MiniGamePage() {
       <div className="mx-auto max-w-3xl relative z-10">
         <div className="text-center">
           <h1 className="text-3xl md:text-4xl font-extrabold uppercase tracking-wider bg-gradient-to-r from-heritage-gold via-amber-300 to-heritage-gold bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(212,175,55,0.2)]">
-            Football Boxing Showdown
+            Đấu bóng đá quyền anh
           </h1>
           <p className="mt-2 text-[10px] md:text-xs tracking-widest text-zinc-400 uppercase">
             Ronaldo <span className="text-red-500 font-bold">CR7</span> vs Messi <span className="text-blue-500 font-bold">LM10</span>
@@ -407,7 +407,7 @@ export default function MiniGamePage() {
             className="mt-4 inline-flex items-center gap-2 rounded-full border border-heritage-gold/30 bg-black/60 px-4 py-1.5 text-xs font-semibold text-zinc-300 hover:bg-heritage-gold/10 hover:text-white transition-all shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
           >
             {soundOn ? <Volume2 className="h-4 w-4 text-heritage-gold" /> : <VolumeX className="h-4 w-4 text-zinc-500" />}
-            {soundOn ? 'Sound: ON (Boxing SFX)' : 'Sound: MUTED'}
+            {soundOn ? 'Âm thanh: BẬT' : 'Âm thanh: TẮT'}
           </button>
         </div>
 
@@ -415,7 +415,7 @@ export default function MiniGamePage() {
           {/* Round Header */}
           <div className="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6">
             <span className="text-xs font-black uppercase tracking-widest text-heritage-gold">
-              {isSimulating ? '🏟️ Auto-Fight Arena' : `Round ${usedIndexes.length + 1}`}
+              {isSimulating ? '🏟️ Đấu tự động' : `Vòng ${usedIndexes.length + 1}`}
             </span>
             <div className="flex gap-2">
               {!isSimulating && (
@@ -445,7 +445,7 @@ export default function MiniGamePage() {
                 <p className="font-semibold text-white tracking-wider flex items-center gap-2 text-sm md:text-base">
                   <span className="text-lg">🇵🇹</span> Cristiano Ronaldo
                 </p>
-                <span className="text-[9px] uppercase font-bold tracking-widest text-red-500 bg-red-950/20 px-2 py-0.5 rounded border border-red-500/10">Player</span>
+                <span className="text-[9px] uppercase font-bold tracking-widest text-red-500 bg-red-950/20 px-2 py-0.5 rounded border border-red-500/10">Người chơi</span>
               </div>
               <div className="mt-2 flex items-center gap-1">
                 {hpHearts(playerHp, PLAYER_MAX_HP).map((filled, idx) => (
@@ -471,7 +471,7 @@ export default function MiniGamePage() {
                 <p className="font-semibold text-white tracking-wider flex items-center gap-2 text-sm md:text-base">
                   <span className="text-lg">🇦🇷</span> Lionel Messi
                 </p>
-                <span className="text-[9px] uppercase font-bold tracking-widest text-blue-500 bg-blue-950/20 px-2 py-0.5 rounded border border-blue-500/10">Opponent</span>
+                <span className="text-[9px] uppercase font-bold tracking-widest text-blue-500 bg-blue-950/20 px-2 py-0.5 rounded border border-blue-500/10">Đối thủ</span>
               </div>
               <div className="mt-2 flex items-center gap-1">
                 {hpHearts(tigerHp, TIGER_MAX_HP).map((filled, idx) => (
@@ -764,7 +764,7 @@ export default function MiniGamePage() {
                   onClick={isSimulating ? startSimulation : resetGame}
                   className="flex-1 sm:flex-none font-black uppercase tracking-widest text-xs px-6 py-3 rounded-lg bg-heritage-gold text-black hover:bg-amber-400 transition-colors shadow-lg"
                 >
-                  {isSimulating ? 'Đấu lại' : 'Fight Again'}
+                  {isSimulating ? 'Đấu lại' : 'Đấu lại'}
                 </button>
                 {isSimulating && (
                   <button

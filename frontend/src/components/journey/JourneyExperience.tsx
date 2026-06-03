@@ -21,12 +21,12 @@ const PremiumGlobe = dynamic(() => import('@/components/journey/PremiumGlobe'), 
 const WorldMap = dynamic(() => import('@/components/journey/WorldMap'), { ssr: false });
 
 const fallbackLocations: JourneyLocation[] = [
-  { id: 1, country: 'Vietnam', latitude: 16.0544, longitude: 108.2022, description: 'Birthplace and departure point.', period: '1890–1911' },
-  { id: 4, country: 'USA', latitude: 40.7128, longitude: -74.006, description: 'Worked in Harlem, New York.', period: '1912–1913' },
-  { id: 3, country: 'England', latitude: 51.5074, longitude: -0.1278, description: 'Worked in London.', period: '1913–1917' },
-  { id: 2, country: 'France', latitude: 48.8566, longitude: 2.3522, description: 'Versailles petition and communist organizing.', period: '1917–1923' },
-  { id: 5, country: 'Soviet Union', latitude: 55.7558, longitude: 37.6173, description: 'Studied in Moscow.', period: '1923–1924' },
-  { id: 6, country: 'China', latitude: 23.1291, longitude: 113.2644, description: 'Revolutionary Youth League & CPV founding era.', period: '1924–1930' },
+  { id: 1, country: 'Vietnam', latitude: 16.0544, longitude: 108.2022, description: 'Quê hương và điểm xuất phát.', period: '1890–1911' },
+  { id: 4, country: 'USA', latitude: 40.7128, longitude: -74.006, description: 'Làm việc tại Harlem, New York.', period: '1912–1913' },
+  { id: 3, country: 'England', latitude: 51.5074, longitude: -0.1278, description: 'Làm việc tại Luân Đôn.', period: '1913–1917' },
+  { id: 2, country: 'France', latitude: 48.8566, longitude: 2.3522, description: 'Bản yêu sách Versailles và hoạt động cộng sản.', period: '1917–1923' },
+  { id: 5, country: 'Soviet Union', latitude: 55.7558, longitude: 37.6173, description: 'Học tập tại Moscow.', period: '1923–1924' },
+  { id: 6, country: 'China', latitude: 23.1291, longitude: 113.2644, description: 'Hội Thanh niên Cách mạng và thời kỳ thành lập Đảng.', period: '1924–1930' },
 ];
 
 export default function JourneyExperience() {
@@ -96,16 +96,16 @@ export default function JourneyExperience() {
             animate={{ opacity: 1 }}
           >
             <Sparkles className="mr-2 inline h-3 w-3" />
-            1911 — 1930 • National Salvation
+            1911 — 1930 • Cứu nước
           </motion.p>
           <TextReveal
             as="h1"
-            text="The Path Across Nations"
+            text="Con đường qua các quốc gia"
             className="journey-title mt-5 justify-center text-center font-display text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl"
             delay={0.1}
           />
           <p className="journey-subtitle mx-auto mt-5 max-w-xl text-sm leading-relaxed text-gray-400 md:text-base">
-            An immersive digital museum tracing Nguyen Tat Thanh&apos;s expedition from Saigon to Moscow and Guangzhou — six nations, one destiny.
+            Bảo tàng số tái hiện hành trình của Nguyễn Tất Thành từ Sài Gòn đến Moscow và Quảng Châu — sáu quốc gia, một số phận.
           </p>
 
           <div className="journey-toggle mt-8 inline-flex rounded-full border border-[#D4AF37]/20 bg-[#0A0A0A]/80 p-1 backdrop-blur-md">
@@ -120,7 +120,7 @@ export default function JourneyExperience() {
               )}
             >
               <Globe2 className="h-4 w-4" />
-              3D Globe
+              Quả địa cầu 3D
             </button>
             <button
               type="button"
@@ -133,7 +133,7 @@ export default function JourneyExperience() {
               )}
             >
               <Map className="h-4 w-4" />
-              2D Map
+              Bản đồ 2D
             </button>
           </div>
         </header>
@@ -155,7 +155,7 @@ export default function JourneyExperience() {
 
               <div className="absolute left-5 top-5 z-20 flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-[#050505]/70 px-4 py-2 text-[11px] text-[#FFD700] backdrop-blur-md">
                 <Compass className="h-3.5 w-3.5 animate-spin" style={{ animationDuration: '12s' }} />
-                Mission Control • Explore the route
+                Trung tâm điều hành • Khám phá tuyến đường
               </div>
 
               <div className="relative h-full w-full">

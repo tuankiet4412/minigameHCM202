@@ -2,7 +2,8 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
+import AppImage from '@/components/ui/AppImage';
+import { IDEOLOGY_HERO_PORTRAIT } from '@/lib/ideology-images';
 
 export default function IdeologyHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,7 +115,7 @@ export default function IdeologyHero() {
                   fontWeight: 600,
                 }}
               >
-                Ideology & Education
+                Tư tưởng & Giáo dục
               </span>
             </div>
 
@@ -132,7 +133,7 @@ export default function IdeologyHero() {
                 backgroundClip: 'text',
               }}
             >
-              Explore Ho Chi Minh Thought
+              Khám phá tư tưởng Hồ Chí Minh
             </h1>
 
             {/* Gold Divider */}
@@ -151,24 +152,24 @@ export default function IdeologyHero() {
                 marginBottom: '2rem',
               }}
             >
-              Discover the principles, revolutionary philosophy, and historical foundations of Ho Chi Minh&apos;s ideology. Entering a premium space dedicated to research, reflection, and study.
+              Tìm hiểu các nguyên lý, triết lý cách mạng và nền tảng lịch sử của tư tưởng Hồ Chí Minh — không gian nghiên cứu, suy ngẫm và học tập.
             </p>
 
             {/* Academic Badges */}
             <div className="flex flex-wrap gap-6 pt-4 border-t border-[#D4AF37]/10">
               <div className="flex flex-col">
-                <span className="text-[0.65rem] uppercase tracking-wider text-gray-500">Academy Scope</span>
-                <span className="text-sm font-semibold text-[#D4AF37] mt-0.5">8 Essential Topics</span>
+                <span className="text-[0.65rem] uppercase tracking-wider text-gray-500">Phạm vi học viện</span>
+                <span className="text-sm font-semibold text-[#D4AF37] mt-0.5">8 chủ đề cốt lõi</span>
               </div>
               <div className="h-10 w-px bg-white/10 hidden sm:block" />
               <div className="flex flex-col">
-                <span className="text-[0.65rem] uppercase tracking-wider text-gray-500">Historical Era</span>
+                <span className="text-[0.65rem] uppercase tracking-wider text-gray-500">Thời kỳ lịch sử</span>
                 <span className="text-sm font-semibold text-[#D4AF37] mt-0.5">1890 – 1969</span>
               </div>
               <div className="h-10 w-px bg-white/10 hidden sm:block" />
               <div className="flex flex-col">
-                <span className="text-[0.65rem] uppercase tracking-wider text-gray-500">Resource Level</span>
-                <span className="text-sm font-semibold text-[#D4AF37] mt-0.5">Primary Archives</span>
+                <span className="text-[0.65rem] uppercase tracking-wider text-gray-500">Mức tài liệu</span>
+                <span className="text-sm font-semibold text-[#D4AF37] mt-0.5">Lưu trữ gốc</span>
               </div>
             </div>
           </motion.div>
@@ -189,12 +190,12 @@ export default function IdeologyHero() {
 
               {/* Inner double border */}
               <div className="relative rounded-xl overflow-hidden border border-[#D4AF37]/20 aspect-[3/4]">
-                <Image
-                  src="https://images.unsplash.com/photo-1580810734915-9a55f3820e49?w=600&q=80"
-                  alt="Ho Chi Minh Academy Portrait"
+                <AppImage
+                  src={IDEOLOGY_HERO_PORTRAIT}
+                  alt="Tàu Amiral Latouche-Tréville — khởi đầu hành trình 1911"
                   fill
                   priority
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-[0.85] contrast-[1.05]"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-[0.8] contrast-[1.05] sepia-[0.18]"
                   sizes="(max-w-md) 100vw, 420px"
                 />
 

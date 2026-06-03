@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import AppImage from '@/components/ui/AppImage';
 import type { GalleryImage } from '@/lib/types';
 
 interface ArtifactModalProps {
@@ -11,13 +11,21 @@ interface ArtifactModalProps {
 }
 
 const TIMELINE_EVENTS = [
-  { year: '1890', label: 'Born in Kim Lien, Nghe An' },
-  { year: '1911', label: 'Departed from Saigon' },
-  { year: '1919', label: 'Versailles Conference' },
-  { year: '1920', label: 'Joined Communist International' },
-  { year: '1925', label: 'Founded Vietnamese Youth' },
-  { year: '1930', label: 'Founded Communist Party' },
+  { year: '1890', label: 'Sinh tại Kim Liên, Nghệ An' },
+  { year: '1911', label: 'Rời Sài Gòn' },
+  { year: '1919', label: 'Hội nghị Versailles' },
+  { year: '1920', label: 'Gia nhập Quốc tế Cộng sản' },
+  { year: '1925', label: 'Thành lập Hội Thanh niên' },
+  { year: '1930', label: 'Thành lập Đảng Cộng sản' },
 ];
+
+const CATEGORY_VI: Record<string, string> = {
+  photograph: 'Ảnh',
+  artifact: 'Hiện vật',
+  document: 'Tài liệu',
+  video: 'Video',
+  '3d': 'Triển lãm 3D',
+};
 
 export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
   useEffect(() => {
@@ -81,7 +89,7 @@ export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
                 (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
                 (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)';
               }}
-              aria-label="Close"
+              aria-label="Đóng"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -91,7 +99,7 @@ export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
             <div className="flex flex-col lg:flex-row">
               {/* ── Left: large image ── */}
               <div className="relative lg:w-[55%] flex-shrink-0" style={{ minHeight: '400px' }}>
-                <Image
+                <AppImage
                   src={image.image_url}
                   alt={image.title}
                   fill
@@ -124,7 +132,7 @@ export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
                       backdropFilter: 'blur(10px)',
                     }}
                   >
-                    {image.category || 'Photograph'}
+                    {CATEGORY_VI[image.category || 'photograph'] ?? image.category ?? 'Ảnh'}
                   </span>
                 </div>
                 {/* Year overlay bottom left */}
@@ -177,7 +185,7 @@ export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
                     marginBottom: '24px',
                   }}
                 >
-                  {image.description || 'This artifact represents a significant moment in Ho Chi Minh\'s extraordinary journey across the world in search of independence for Vietnam. Each piece in this collection tells part of the larger story of national liberation.'}
+                  {image.description || 'Hiện vật này gắn với một khoảnh khắc quan trọng trên hành trình phi thường của Hồ Chí Minh tìm đường độc lập cho Việt Nam.'}
                 </p>
 
                 {/* Location info */}
@@ -186,7 +194,7 @@ export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
                     <div className="flex items-center gap-2">
                       <span style={{ color: '#D4AF37', fontSize: '0.75rem' }}>📅</span>
                       <div>
-                        <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Year</div>
+                        <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Năm</div>
                         <div style={{ fontFamily: 'var(--font-playfair)', color: '#F4E4BC', fontSize: '0.9rem', fontWeight: 600 }}>{image.year}</div>
                       </div>
                     </div>
@@ -194,15 +202,15 @@ export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
                   <div className="flex items-center gap-2">
                     <span style={{ color: '#D4AF37', fontSize: '0.75rem' }}>📍</span>
                     <div>
-                      <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Location</div>
-                      <div style={{ fontFamily: 'var(--font-playfair)', color: '#F4E4BC', fontSize: '0.9rem', fontWeight: 600 }}>Vietnam</div>
+                      <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Địa điểm</div>
+                      <div style={{ fontFamily: 'var(--font-playfair)', color: '#F4E4BC', fontSize: '0.9rem', fontWeight: 600 }}>Việt Nam</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <span style={{ color: '#D4AF37', fontSize: '0.75rem' }}>🏛</span>
                     <div>
-                      <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Collection</div>
-                      <div style={{ fontFamily: 'var(--font-playfair)', color: '#F4E4BC', fontSize: '0.9rem', fontWeight: 600 }}>National Archive</div>
+                      <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Bộ sưu tập</div>
+                      <div style={{ fontFamily: 'var(--font-playfair)', color: '#F4E4BC', fontSize: '0.9rem', fontWeight: 600 }}>Lưu trữ quốc gia</div>
                     </div>
                   </div>
                 </div>
@@ -210,7 +218,7 @@ export function ArtifactModal({ image, onClose }: ArtifactModalProps) {
                 {/* Timeline placement */}
                 <div className="mb-6">
                   <div style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '12px' }}>
-                    Timeline Placement
+                    Vị trí trên dòng thời gian
                   </div>
                   <div className="relative">
                     <div className="absolute left-3 top-0 bottom-0 w-px" style={{ background: 'linear-gradient(180deg,rgba(212,175,55,0.5),transparent)' }} />
