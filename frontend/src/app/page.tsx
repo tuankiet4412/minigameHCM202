@@ -22,13 +22,13 @@ export default function HomePage() {
         <div className="noise-overlay absolute inset-0" />
         <ScrollReveal className="relative mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl font-bold text-white md:text-4xl">
-            Test Your Knowledge
+            Kiểm tra kiến thức
           </h2>
           <p className="mt-4 text-white/80">
-            Take our interactive quiz, compete on the leaderboard, and track your progress.
+            Làm câu đố tương tác, tranh bảng xếp hạng và theo dõi tiến độ của bạn.
           </p>
           <MagneticButton href="/quiz" className="mt-8 !border-white !text-white hover:!bg-white/10">
-            Start Quiz
+            Bắt đầu câu đố
           </MagneticButton>
         </ScrollReveal>
       </section>

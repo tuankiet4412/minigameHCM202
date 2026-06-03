@@ -1,4 +1,5 @@
 import type { EnrichedJourneyLocation } from '@/lib/journey-enrichment';
+import { countryLabelVi } from '@/lib/journey-enrichment';
 
 export const JOURNEY_ORDER = ['Vietnam', 'USA', 'England', 'France', 'Soviet Union', 'China'] as const;
 
@@ -47,14 +48,14 @@ export function createExpeditionMarkerHtml(loc: EnrichedJourneyLocation, isActiv
   const activeClass = isActive ? ' is-active' : '';
 
   return `
-    <div class="expedition-marker${activeClass}" role="button" aria-label="${loc.country}">
+    <div class="expedition-marker${activeClass}" role="button" aria-label="${countryLabelVi(loc.country)}">
       <div class="expedition-marker__ring expedition-marker__ring--outer"></div>
       <div class="expedition-marker__ring expedition-marker__ring--inner"></div>
       <div class="expedition-marker__core"></div>
       <div class="expedition-marker__beacon"></div>
       <div class="expedition-marker__label">
         <span class="expedition-marker__year">${loc.yearLabel ?? loc.period ?? ''}</span>
-        <span class="expedition-marker__country">${loc.country}</span>
+        <span class="expedition-marker__country">${countryLabelVi(loc.country)}</span>
         <span class="expedition-marker__event">${event}</span>
       </div>
     </div>
@@ -67,7 +68,7 @@ export function createExpeditionPopupHtml(loc: EnrichedJourneyLocation) {
     <div class="expedition-popup">
       <div class="expedition-popup__header">
         <span class="expedition-popup__badge">${loc.yearLabel ?? loc.period ?? ''}</span>
-        <strong class="expedition-popup__title">${loc.country}</strong>
+        <strong class="expedition-popup__title">${countryLabelVi(loc.country)}</strong>
       </div>
       ${event ? `<p class="expedition-popup__event">${event}</p>` : ''}
       <p class="expedition-popup__context">${loc.historicalContext ?? loc.description ?? ''}</p>

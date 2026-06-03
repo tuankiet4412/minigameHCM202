@@ -10,18 +10,18 @@ import ThemeToggle from '@/components/ui/ThemeToggle';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/timeline', label: 'Timeline' },
-  { href: '/journey', label: 'Journey' },
-  { href: '/gallery', label: 'Museum' },
-  { href: '/ideology', label: 'Ideology' },
-  { href: '/quiz', label: 'Quiz' },
+  { href: '/', label: 'Trang chủ' },
+  { href: '/timeline', label: 'Dòng thời gian' },
+  { href: '/journey', label: 'Hành trình' },
+  { href: '/gallery', label: 'Bảo tàng' },
+  { href: '/ideology', label: 'Tư tưởng' },
+  { href: '/quiz', label: 'Câu đố' },
 ];
 
 const gameLinks = [
   { href: '/minigame', label: 'Mini Game' },
-  { href: '/tank-game', label: '30/4 Tank' },
-  { href: '/caro', label: 'Caro' },
+  { href: '/tank-game', label: 'Xe tăng 30/4' },
+  { href: '/caro', label: 'Cờ caro' },
 ];
 
 function NavLink({
@@ -104,7 +104,7 @@ export default function Navbar() {
             : 'bg-transparent py-5'
         )}
         role="navigation"
-        aria-label="Main navigation"
+        aria-label="Điều hướng chính"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 lg:px-8">
           <Link
@@ -112,7 +112,7 @@ export default function Navbar() {
             className="font-display text-lg font-bold tracking-tight text-white md:text-xl"
           >
             <span className="text-heritage-gold">Hồ</span> Chí Minh
-            <span className="ml-1.5 text-xs font-normal text-gray-400">Journey</span>
+            <span className="ml-1.5 text-xs font-normal text-gray-400">Hành trình</span>
           </Link>
 
           {/* Desktop navigation */}
@@ -135,7 +135,7 @@ export default function Navbar() {
                 aria-haspopup="true"
               >
                 <Gamepad2 className="h-4 w-4" />
-                Games
+                Trò chơi
                 <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', gamesOpen && 'rotate-180')} />
               </button>
 
@@ -172,7 +172,7 @@ export default function Navbar() {
             <Link
               href="/admin"
               className="hidden rounded-full p-2.5 text-gray-300 transition-colors hover:bg-white/10 hover:text-heritage-gold lg:block"
-              aria-label="Admin dashboard"
+              aria-label="Bảng quản trị"
             >
               <LayoutDashboard className="h-4 w-4" />
             </Link>
@@ -189,7 +189,7 @@ export default function Navbar() {
               </Link>
             ) : (
               <Link href="/login" className="heritage-btn hidden !py-2 !px-5 text-xs lg:inline-flex">
-                Login
+                Đăng nhập
               </Link>
             )}
 
@@ -287,7 +287,7 @@ export default function Navbar() {
                   onClick={closeMenu}
                   className="heritage-btn flex w-full justify-center"
                 >
-                  Login
+                  Đăng nhập
                 </Link>
               </div>
             </motion.div>

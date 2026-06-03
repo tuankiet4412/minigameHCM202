@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Loading() {
   return (
-    <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4" role="status" aria-label="Loading">
+    <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4" role="status" aria-label="Đang tải">
       <div className="relative">
         <motion.div
           className="h-14 w-14 rounded-full border-2 border-heritage-gold/30"
@@ -17,8 +17,8 @@ export default function Loading() {
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
         />
       </div>
-      <p className="text-sm text-muted-foreground">Loading experience...</p>
-      <span className="sr-only">Loading</span>
+      <p className="text-sm text-muted-foreground">Đang tải trải nghiệm...</p>
+      <span className="sr-only">Đang tải</span>
     </div>
   );
 }

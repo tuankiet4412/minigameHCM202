@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import type { EnrichedJourneyLocation } from '@/lib/journey-enrichment';
+import { countryLabelVi } from '@/lib/journey-enrichment';
 import LuxuryPanel from '@/components/journey/LuxuryPanel';
 import { cn } from '@/lib/utils';
 
@@ -27,7 +28,7 @@ export default function JourneyProgressPanel({
   }, [selected?.country]);
 
   return (
-    <LuxuryPanel label="Expedition" title="Journey Timeline">
+    <LuxuryPanel label="Hành trình" title="Dòng thời gian">
       <div className="px-6 py-5">
         <div className="relative h-2 overflow-hidden rounded-full bg-white/5">
           <motion.div
@@ -39,7 +40,7 @@ export default function JourneyProgressPanel({
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
         </div>
         <p className="mt-2 text-center text-[10px] uppercase tracking-[0.25em] text-gray-500">
-          {Math.round(progressPercent)}% of journey traced
+          Đã khám phá {Math.round(progressPercent)}% hành trình
         </p>
       </div>
 
@@ -107,7 +108,7 @@ export default function JourneyProgressPanel({
                     />
                     <div className="min-w-0 flex-1">
                       <p className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">{loc.yearLabel}</p>
-                      <p className="truncate font-display text-sm font-semibold text-white">{loc.country}</p>
+                      <p className="truncate font-display text-sm font-semibold text-white">{countryLabelVi(loc.country)}</p>
                     </div>
                     <span className="text-[10px] font-mono text-gray-600">{String(i + 1).padStart(2, '0')}</span>
                   </div>
@@ -131,7 +132,7 @@ export default function JourneyProgressPanel({
 
       <div className="border-t border-[#D4AF37]/10 px-6 py-3.5 text-center">
         <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500">
-          {activeIndex + 1} of {locations.length} nations
+          {activeIndex + 1} / {locations.length} quốc gia
         </p>
       </div>
     </LuxuryPanel>

@@ -137,7 +137,7 @@ export default function TimelineExperience() {
                     <div className="rounded-[24px] border border-[#D4A74E]/20 bg-[#0A0A0A]/60 p-4 backdrop-blur-sm">
                       <TimelineScene3D events={filteredEvents} />
                       <p className="mt-4 text-center text-sm text-[#A8A8A8]">
-                        Drag to rotate • Scroll to explore the 3D timeline
+                        Kéo để xoay • Cuộn để khám phá dòng thời gian 3D
                       </p>
                     </div>
                   )}

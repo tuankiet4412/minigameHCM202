@@ -65,7 +65,7 @@ export default function TimelineDetailModal({
                   type="button"
                   onClick={onClose}
                   className="rounded-full border border-[#D4A74E]/20 p-2 text-[#A8A8A8] transition-colors hover:border-[#D4A74E]/40 hover:text-white"
-                  aria-label="Close"
+                  aria-label="Đóng"
                 >
                   <X className="h-5 w-5" />
                 </button>

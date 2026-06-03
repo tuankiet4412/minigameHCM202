@@ -32,7 +32,7 @@ export default function TimelineEventCard({
       onKeyDown={(e) => e.key === 'Enter' && onSelect(event)}
       role="button"
       tabIndex={0}
-      aria-label={`Explore ${event.title}, ${event.year}`}
+      aria-label={`Khám phá ${event.title}, ${event.year}`}
     >
       <div className="overflow-hidden rounded-[20px] border border-[#D4A74E]/20 bg-[#0B0B0B]/80 shadow-[0_16px_48px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-400 group-hover:border-[#F5C76B]/35 group-hover:shadow-[0_20px_56px_rgba(0,0,0,0.45),0_0_32px_rgba(212,167,78,0.12)]">
         {event.image_url && (
@@ -68,7 +68,7 @@ export default function TimelineEventCard({
             {event.description}
           </p>
           <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#D4A74E] transition-all group-hover:gap-3 group-hover:text-[#F5C76B]">
-            Explore Details
+            Xem chi tiết
             <ArrowRight className="h-4 w-4" />
           </span>
         </div>

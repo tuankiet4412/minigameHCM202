@@ -38,7 +38,7 @@ export default function Preloader() {
           exit={{ opacity: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-heritage-charcoal"
           role="status"
-          aria-label="Loading"
+          aria-label="Đang tải"
         >
           <div className="noise-overlay absolute inset-0 opacity-30" />
           <motion.div
@@ -50,9 +50,9 @@ export default function Preloader() {
               1911 — 1930
             </p>
             <h2 className="mt-4 font-display text-2xl font-bold text-white md:text-3xl">
-              Ho Chi Minh Journey
+              Hành trình Hồ Chí Minh
             </h2>
-            <p className="mt-2 text-sm text-gray-400">National Salvation</p>
+            <p className="mt-2 text-sm text-gray-400">Cứu nước</p>
           </motion.div>
 
           <div className="relative z-10 mt-12 w-64">

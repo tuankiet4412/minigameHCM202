@@ -45,7 +45,7 @@ export default function QuizPage() {
 
   const startQuiz = async () => {
     if (!isAuthenticated) {
-      toast.error('Please login to take the quiz');
+      toast.error('Vui lòng đăng nhập để làm câu đố');
       router.push('/login');
       return;
     }
@@ -58,7 +58,7 @@ export default function QuizPage() {
       setTimeLeft(QUIZ_TIME);
       setPhase('playing');
     } catch {
-      toast.error('Failed to load questions');
+      toast.error('Không tải được câu hỏi');
     } finally {
       setLoading(false);
     }
@@ -90,7 +90,7 @@ export default function QuizPage() {
       setPhase('results');
       api.quiz.leaderboard().then((data) => setLeaderboard(data as QuizResult[]));
     } catch {
-      toast.error('Failed to submit quiz');
+      toast.error('Gửi bài làm thất bại');
       setPhase('intro');
     }
   }, [answers, timeLeft]);
@@ -102,22 +102,22 @@ export default function QuizPage() {
   return (
     <div className="py-12 px-4">
       <div className="mx-auto max-w-2xl">
-        <h1 className="section-title text-center">Knowledge Quiz</h1>
+        <h1 className="section-title text-center">Câu đố kiến thức</h1>
 
         {phase === 'intro' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-10 text-center">
             <p className="text-gray-600 dark:text-gray-300">
-              Test your knowledge about Ho Chi Minh&apos;s ideology and journey.
-              10 random questions, 5-minute timer.
+              Kiểm tra kiến thức về tư tưởng và hành trình Hồ Chí Minh.
+              10 câu hỏi ngẫu nhiên, thời gian 5 phút.
             </p>
             <button onClick={startQuiz} className="heritage-btn mt-8 inline-flex items-center gap-2">
-              <Play className="h-5 w-5" /> Start Quiz
+              <Play className="h-5 w-5" /> Bắt đầu
             </button>
 
             {leaderboard.length > 0 && (
               <div className="museum-card mt-12 p-6 text-left">
                 <h2 className="flex items-center gap-2 font-display text-xl font-semibold">
-                  <Trophy className="h-6 w-6 text-heritage-gold" /> Leaderboard
+                  <Trophy className="h-6 w-6 text-heritage-gold" /> Bảng xếp hạng
                 </h2>
                 <ul className="mt-4 space-y-2">
                   {leaderboard.slice(0, 5).map((entry, i) => (
@@ -135,7 +135,7 @@ export default function QuizPage() {
         {phase === 'playing' && questions[current] && (
           <motion.div key={current} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="mt-10">
             <div className="flex justify-between items-center mb-6">
-              <span className="text-sm font-medium">Question {current + 1} / {questions.length}</span>
+              <span className="text-sm font-medium">Câu {current + 1} / {questions.length}</span>
               <span className="flex items-center gap-1 text-heritage-red font-bold">
                 <Clock className="h-4 w-4" /> {formatTime(timeLeft)}
               </span>
@@ -159,9 +159,9 @@ export default function QuizPage() {
 
         {phase === 'results' && (
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="mt-10 text-center museum-card p-8">
-            <h2 className="font-display text-3xl font-bold text-heritage-red dark:text-heritage-gold">Quiz Complete!</h2>
+            <h2 className="font-display text-3xl font-bold text-heritage-red dark:text-heritage-gold">Hoàn thành!</h2>
             <p className="mt-4 text-6xl font-bold">{score}%</p>
-            <button onClick={() => setPhase('intro')} className="heritage-btn mt-8">Try Again</button>
+            <button onClick={() => setPhase('intro')} className="heritage-btn mt-8">Làm lại</button>
           </motion.div>
         )}
       </div>

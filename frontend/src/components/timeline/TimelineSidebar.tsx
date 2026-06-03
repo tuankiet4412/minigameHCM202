@@ -19,10 +19,10 @@ export default function TimelineSidebar({
   const strokeDashoffset = circumference - (percent / 100) * circumference;
 
   const stats = [
-    { icon: Clock, label: 'Years of Journey', value: TIMELINE_STATS.years, suffix: '' },
-    { icon: Globe2, label: 'Countries Visited', value: TIMELINE_STATS.countries, suffix: '' },
-    { icon: Route, label: 'Distance Traveled', value: TIMELINE_STATS.distanceKm, suffix: '+' },
-    { icon: BookOpen, label: 'Historical Events', value: TIMELINE_STATS.events, suffix: '+' },
+    { icon: Clock, label: 'Năm hành trình', value: TIMELINE_STATS.years, suffix: '', isDistance: false },
+    { icon: Globe2, label: 'Quốc gia đã đến', value: TIMELINE_STATS.countries, suffix: '', isDistance: false },
+    { icon: Route, label: 'Quãng đường', value: TIMELINE_STATS.distanceKm, suffix: '+', isDistance: true },
+    { icon: BookOpen, label: 'Sự kiện lịch sử', value: TIMELINE_STATS.events, suffix: '+', isDistance: false },
   ];
 
   return (
@@ -34,7 +34,7 @@ export default function TimelineSidebar({
         className="rounded-[20px] border border-[#D4A74E]/20 bg-[#0A0A0A]/75 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(212,167,78,0.08)] backdrop-blur-xl"
       >
         <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#D4A74E]">
-          Journey Progress
+          Tiến độ hành trình
         </p>
 
         <div className="mt-6 flex flex-col items-center">
@@ -64,13 +64,13 @@ export default function TimelineSidebar({
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="font-display text-3xl font-bold text-[#F5C76B]">{percent}%</span>
-              <span className="text-[10px] uppercase tracking-wider text-[#A8A8A8]">Completed</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#A8A8A8]">Hoàn thành</span>
             </div>
           </div>
           <p className="mt-4 text-center text-sm text-[#D9D9D9]">
             <span className="font-semibold text-[#F5C76B]">{exploredCount}</span>
             {' / '}
-            {totalCount} Milestones Explored
+            {totalCount} cột mốc đã khám phá
           </p>
         </div>
       </motion.div>
@@ -82,7 +82,7 @@ export default function TimelineSidebar({
         className="rounded-[20px] border border-[#D4A74E]/20 bg-[#0A0A0A]/75 p-6 backdrop-blur-xl"
       >
         <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#D4A74E]">
-          Journey Overview
+          Tổng quan hành trình
         </p>
         <ul className="mt-5 space-y-4">
           {stats.map((stat) => (
@@ -93,7 +93,7 @@ export default function TimelineSidebar({
               <div>
                 <p className="font-display text-lg font-semibold text-white">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                  {stat.label.includes('Distance') && (
+                  {stat.isDistance && (
                     <span className="ml-1 text-sm font-normal text-[#A8A8A8]">km</span>
                   )}
                 </p>

@@ -38,7 +38,7 @@ export default function HeroSection() {
 
         <TextReveal
           as="h1"
-          text="Ho Chi Minh's Journey to Find the Path for National Salvation"
+          text="Hành trình Hồ Chí Minh tìm đường cứu nước"
           className="mt-6 font-display text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
           delay={0.2}
         />
@@ -49,8 +49,8 @@ export default function HeroSection() {
           transition={{ delay: 1.2, duration: 0.8 }}
           className="mx-auto mt-8 max-w-2xl text-lg italic text-heritage-gold-light/90 md:text-xl"
         >
-          &ldquo;Nothing is more precious than independence and freedom.&rdquo;
-          <footer className="mt-3 text-sm not-italic text-gray-400">— Ho Chi Minh</footer>
+          &ldquo;Không có gì quý hơn độc lập, tự do.&rdquo;
+          <footer className="mt-3 text-sm not-italic text-gray-400">— Hồ Chí Minh</footer>
         </motion.blockquote>
 
         <motion.div
@@ -59,9 +59,9 @@ export default function HeroSection() {
           transition={{ delay: 1.5 }}
           className="mt-12 flex flex-wrap justify-center gap-4"
         >
-          <MagneticButton href="/timeline">Explore Timeline</MagneticButton>
+          <MagneticButton href="/timeline">Khám phá dòng thời gian</MagneticButton>
           <MagneticButton href="/journey" variant="outline">
-            View Journey Map
+            Xem bản đồ hành trình
           </MagneticButton>
         </motion.div>
       </div>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import AppImage from '@/components/ui/AppImage';
 import type { GalleryImage } from '@/lib/types';
 
 interface ArtifactCardProps {
@@ -71,7 +71,7 @@ export function ArtifactCard({ image, index, onSelect, viewGrid = true }: Artifa
         }}
       >
         <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-xl">
-          <Image src={image.image_url} alt={image.title} fill className="object-cover" style={{ filter: 'sepia(0.2) contrast(1.05)' }} />
+          <AppImage src={image.image_url} alt={image.title} fill className="object-cover" style={{ filter: 'sepia(0.2) contrast(1.05)' }} />
         </div>
         <div className="flex-1 min-w-0 flex flex-col justify-center">
           <span className="inline-block rounded-full px-2 py-0.5 text-xs mb-1.5 w-fit" style={{ background: `${catColor}22`, color: catColor, fontFamily: 'var(--font-source)', fontSize: '0.62rem', letterSpacing: '0.1em', textTransform: 'uppercase', border: `1px solid ${catColor}33` }}>
@@ -122,7 +122,7 @@ export function ArtifactCard({ image, index, onSelect, viewGrid = true }: Artifa
       >
         {/* Image container */}
         <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
-          <Image
+          <AppImage
             src={image.image_url}
             alt={image.title}
             fill

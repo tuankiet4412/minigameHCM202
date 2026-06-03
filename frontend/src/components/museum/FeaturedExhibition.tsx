@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import AppImage from '@/components/ui/AppImage';
 import type { GalleryImage } from '@/lib/types';
 
 const FEATURED_SLIDES = [
@@ -11,8 +11,7 @@ const FEATURED_SLIDES = [
     title: 'Bến cảng Nhà Rồng',
     subtitle: '1911 — Sài Gòn',
     desc: 'Nơi người thanh niên Nguyễn Tất Thành ra đi tìm đường cứu nước ngày 5/6/1911, mở đầu hành trình hơn 30 năm bôn ba vì độc lập dân tộc.',
-    image_url:
-      'https://i1-vnexpress.vnecdn.net/2025/08/15/L1044370-copy_1755248877-1755249045.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=2nCPqU4VxkhSFcDgWQ2_9Q',
+    image_url: '/images/ideology/role-of-patriotism.jpg',
     tag: 'Ảnh tư liệu',
     tagColor: '#D4AF37',
     year: '1911',
@@ -23,8 +22,7 @@ const FEATURED_SLIDES = [
     title: 'Tàu Đô đốc Latouche-Tréville',
     subtitle: '1911 — Khởi đầu hành trình',
     desc: 'Con tàu đã đưa Nguyễn Tất Thành rời Tổ quốc, bắt đầu cuộc hành trình tìm con đường giải phóng dân tộc Việt Nam.',
-    image_url:
-      'https://i1-vnexpress.vnecdn.net/2025/08/15/L1044370_1755248877-1755249045.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=esCrrdXbROCcaVGSgbbFSg',
+    image_url: '/images/ideology/hero-portrait.jpg',
     tag: 'Ảnh tư liệu',
     tagColor: '#D4AF37',
     year: '1911',
@@ -113,7 +111,7 @@ export function FeaturedExhibition({ onSelect }: FeaturedExhibitionProps) {
               viewport={{ once: true }}
               style={{ fontFamily: 'var(--font-source)', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#D4AF37', marginBottom: '12px' }}
             >
-              ✦ &nbsp;Immersive Experience
+              ✦ &nbsp;Trải nghiệm số
             </motion.p>
 
             <motion.h2
@@ -130,7 +128,7 @@ export function FeaturedExhibition({ onSelect }: FeaturedExhibitionProps) {
                 marginBottom: '16px',
               }}
             >
-              Step into<br />History
+              Bước vào<br />lịch sử
             </motion.h2>
 
             <motion.p
@@ -140,7 +138,7 @@ export function FeaturedExhibition({ onSelect }: FeaturedExhibitionProps) {
               transition={{ delay: 0.2 }}
               style={{ fontFamily: 'var(--font-source)', color: 'rgba(255,255,255,0.45)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '28px' }}
             >
-              Explore rare artifacts, photographs, documents and exhibits that bring the journey to life.
+              Khám phá hiện vật, ảnh, tài liệu và triển lãm quý hiếm tái hiện hành trình.
             </motion.p>
 
             {/* Featured item details */}
@@ -219,7 +217,7 @@ export function FeaturedExhibition({ onSelect }: FeaturedExhibitionProps) {
                 (e.currentTarget as HTMLElement).style.borderColor = 'rgba(212,175,55,0.35)';
               }}
             >
-              Explore Collection
+              Khám phá bộ sưu tập
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-1 transition-transform">
                 <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -269,7 +267,7 @@ export function FeaturedExhibition({ onSelect }: FeaturedExhibitionProps) {
                       background: '#0a0800',
                     }}
                   >
-                    <Image
+                    <AppImage
                       src={slide.image_url}
                       alt={slide.title}
                       fill
@@ -322,7 +320,7 @@ export function FeaturedExhibition({ onSelect }: FeaturedExhibitionProps) {
               className="absolute left-0 lg:-left-6 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
               style={{ background: 'rgba(10,8,0,0.8)', border: '1px solid rgba(212,175,55,0.25)', color: '#D4AF37' }}
               onClick={() => setCenter(c => (c - 1 + FEATURED_SLIDES.length) % FEATURED_SLIDES.length)}
-              aria-label="Previous"
+              aria-label="Trước"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -332,7 +330,7 @@ export function FeaturedExhibition({ onSelect }: FeaturedExhibitionProps) {
               className="absolute right-0 lg:-right-6 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
               style={{ background: 'rgba(10,8,0,0.8)', border: '1px solid rgba(212,175,55,0.25)', color: '#D4AF37' }}
               onClick={() => setCenter(c => (c + 1) % FEATURED_SLIDES.length)}
-              aria-label="Next"
+              aria-label="Sau"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M5 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

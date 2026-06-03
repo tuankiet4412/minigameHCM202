@@ -22,7 +22,7 @@ export default function TimelineHero() {
 
         <TextReveal
           as="h1"
-          text="Historical Timeline"
+          text="Dòng thời gian lịch sử"
           className="mt-6 font-display text-4xl font-bold tracking-tight text-[#F5C76B] drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)] md:text-5xl lg:text-6xl"
           delay={0.1}
         />
@@ -33,8 +33,8 @@ export default function TimelineHero() {
           transition={{ delay: 0.35, duration: 0.6 }}
           className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#D9D9D9] drop-shadow-md md:text-lg"
         >
-          Journey through the pivotal moments that shaped a nation&apos;s destiny — from a village
-          in Nghe An to the founding of a revolutionary movement.
+          Đi qua những khoảnh khắc then chốt định hình vận mệnh dân tộc — từ làng quê Nghệ An
+          đến sự ra đời của phong trào cách mạng.
         </motion.p>
 
         <motion.div

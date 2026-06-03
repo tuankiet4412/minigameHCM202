@@ -7,11 +7,11 @@ import { JOURNEY_STATS } from '@/lib/journey-enrichment';
 import { LuxuryDivider } from '@/components/journey/LuxuryPanel';
 
 const stats = [
-  { icon: Globe2, label: 'Countries Visited', value: JOURNEY_STATS.countries, suffix: '' },
-  { icon: Clock, label: 'Years of Journey', value: JOURNEY_STATS.durationYears, suffix: '' },
-  { icon: Route, label: 'Distance Travelled', value: JOURNEY_STATS.distanceKm, suffix: ' km' },
-  { icon: BookOpen, label: 'Major Events', value: JOURNEY_STATS.events, suffix: '+' },
-  { icon: Award, label: 'Historical Legacy', value: JOURNEY_STATS.legacyScore, suffix: '%' },
+  { icon: Globe2, label: 'Quốc gia đã đến', value: JOURNEY_STATS.countries, suffix: '' },
+  { icon: Clock, label: 'Năm hành trình', value: JOURNEY_STATS.durationYears, suffix: '' },
+  { icon: Route, label: 'Quãng đường', value: JOURNEY_STATS.distanceKm, suffix: ' km' },
+  { icon: BookOpen, label: 'Sự kiện lớn', value: JOURNEY_STATS.events, suffix: '+' },
+  { icon: Award, label: 'Di sản lịch sử', value: JOURNEY_STATS.legacyScore, suffix: '%' },
 ];
 
 export default function JourneyStatsBar() {
@@ -24,8 +24,8 @@ export default function JourneyStatsBar() {
       className="journey-stats mt-8 overflow-hidden rounded-[24px] border border-[#D4AF37]/20 bg-[#0A0A0A]/80 p-8 shadow-[0_24px_64px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(212,175,55,0.06)] backdrop-blur-xl"
     >
       <div className="mb-6 text-center">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">Legacy Metrics</p>
-        <h3 className="mt-2 font-display text-xl text-white">The Scale of the Journey</h3>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">Chỉ số di sản</p>
+        <h3 className="mt-2 font-display text-xl text-white">Quy mô hành trình</h3>
       </div>
 
       <LuxuryDivider />

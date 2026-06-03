@@ -27,7 +27,7 @@ export default function TimelineCategoryNav({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.6 }}
       className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2 px-4"
-      aria-label="Timeline categories"
+      aria-label="Danh mục dòng thời gian"
     >
       <div className="flex max-w-[95vw] gap-1 overflow-x-auto rounded-full border border-[#D4A74E]/20 bg-[#0A0A0A]/90 p-1.5 shadow-[0_16px_48px_rgba(0,0,0,0.5)] backdrop-blur-xl scrollbar-none">
         {CATEGORIES.map(({ id, icon: Icon }) => {

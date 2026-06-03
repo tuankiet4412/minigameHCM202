@@ -2,81 +2,83 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'next/navigation';
-import Image from 'next/image';
+import AppImage from '@/components/ui/AppImage';
 import Link from 'next/link';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowLeft, Clock, BookOpen, ChevronRight, Bookmark } from 'lucide-react';
-import { api } from '@/lib/api';
+import { api, isApiEnabled } from '@/lib/api';
 import type { Article } from '@/lib/types';
 import Loading from '@/components/ui/Loading';
 import TimelinePageBackground from '@/components/timeline/TimelinePageBackground';
+import { categoryDisplayVi } from '@/components/ideology/CategoryFilter';
+import { getIdeologyArticleImage } from '@/lib/ideology-images';
 
-// Rich static content fallback matching the seeded database
+// Nội dung dự phòng tiếng Việt khi API không khả dụng
 const richFallbackArticles: Record<string, Article> = {
   'why-socialism': {
     id: 1,
     slug: 'why-socialism',
-    title: 'Why Ho Chi Minh Chose Socialism',
-    summary: 'Understanding the ideological journey that led Nguyen Ai Quoc to embrace Marxism-Leninism as the path to national liberation.',
+    title: 'Vì sao Hồ Chí Minh chọn con đường xã hội chủ nghĩa',
+    summary: 'Hành trình tư tưởng đưa Nguyễn Ái Quốc đến với chủ nghĩa Mác-Lênin như con đường giải phóng dân tộc.',
     category: 'Socialism',
     key_points: [
-      'Colonial exploitation required systemic change',
-      'Lenin\'s thesis linked national and social liberation',
-      'Socialism promised equality for all classes',
-      'Experience in France and USSR confirmed the theory'
+      'Bóc lột thực dân đòi hỏi thay đổi hệ thống',
+      'Luận cương Lênin gắn giải phóng dân tộc với giải phóng xã hội',
+      'Chủ nghĩa xã hội hứa hẹn bình đẳng cho mọi tầng lớp',
+      'Kinh nghiệm ở Pháp và Liên Xô khẳng định lý luận',
     ],
-    historical_context: 'After decades of seeking help from democratic powers without success, Ho Chi Minh concluded that only a revolutionary transformation of society could achieve true independence.',
-    content: 'Ho Chi Minh\'s embrace of socialism was not ideological dogma but a practical conclusion drawn from experience. Through his travels and study, he realized that national liberation must be paired with social emancipation. The Tours Congress of 1920 was a turning point, leading him to advocate for the liberation of all oppressed colonial peoples through the path of Marxism-Leninism.',
-    image_url: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80'
+    historical_context: 'Sau nhiều năm tìm kiếm sự giúp đỡ từ các cường quốc dân chủ không thành, Hồ Chí Minh kết luận chỉ cách mạng xã hội mới đạt độc lập thực sự.',
+    content: 'Hồ Chí Minh tiếp cận chủ nghĩa xã hội không phải giáo điều mà là kết luận thực tiễn. Qua hành trình và nghiên cứu, Người nhận thấy giải phóng dân tộc phải đi đôi với giải phóng xã hội. Đại hội Tours năm 1920 là bước ngoặt, đưa Người theo con đường Mác-Lênin vì giải phóng các dân tộc thuộc địa.',
+    image_url: getIdeologyArticleImage('why-socialism', 'Socialism'),
   },
   'national-independence-socialism': {
     id: 2,
     slug: 'national-independence-socialism',
-    title: 'National Independence and Socialism',
-    summary: 'How Ho Chi Minh unified the goals of national liberation with social revolution into a coherent revolutionary strategy.',
+    title: 'Độc lập dân tộc gắn với chủ nghĩa xã hội',
+    summary: 'Cách Hồ Chí Minh thống nhất mục tiêu giải phóng dân tộc với cách mạng xã hội thành chiến lược nhất quán.',
     category: 'National Independence',
     key_points: [
-      'Independence without social justice is incomplete',
-      'Colonialism and capitalism are interconnected systems',
-      'The working class leads the national liberation struggle',
-      'Land reform follows political independence'
+      'Độc lập không có công bằng xã hội là chưa trọn vẹn',
+      'Chủ nghĩa thực dân và tư bản là hai mặt của cùng hệ thống',
+      'Giai cấp công nhân lãnh đạo đấu tranh giải phóng dân tộc',
+      'Cải cách ruộng đất theo sau độc lập chính trị',
     ],
-    historical_context: 'Vietnam under French rule suffered both national subjugation and exploitation of workers and peasants, requiring a dual liberation struggle.',
-    content: 'For Ho Chi Minh, national independence and socialism were inseparable goals. He argued that the revolution must first achieve national sovereignty, then proceed to socialist construction to guarantee welfare, liberty, and happiness for the working class. This dual approach prevented a simple transition from colonial master to local exploiters.',
-    image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80'
+    historical_context: 'Việt Nam dưới ách thực dân Pháp vừa bị áp bức dân tộc vừa bị bóc lột giai cấp, đòi hỏi đấu tranh giải phóng kép.',
+    content: 'Với Hồ Chí Minh, độc lập dân tộc và chủ nghĩa xã hội là hai mục tiêu không tách rời. Cách mạng phải giành chủ quyền quốc gia, rồi tiến tới xây dựng chủ nghĩa xã hội để đảm bảo phúc lợi cho nhân dân lao động.',
+    image_url: getIdeologyArticleImage('national-independence-socialism', 'National Independence'),
   },
   'role-of-patriotism': {
     id: 3,
     slug: 'role-of-patriotism',
-    title: 'The Role of Patriotism',
-    summary: 'Patriotism as the emotional and moral foundation of Ho Chi Minh\'s revolutionary commitment.',
+    title: 'Vai trò của lòng yêu nước',
+    summary: 'Tình yêu Tổ quốc là nền tảng tinh thần và đạo đức của cam kết cách mạng Hồ Chí Minh.',
     category: 'Patriotism',
     key_points: [
-      'Love of country motivated the 1911 departure',
-      'Patriotism inspired sacrifice among revolutionaries',
-      'National culture must be preserved and developed',
-      'International solidarity complements patriotism'
+      'Yêu nước thúc đẩy cuộc ra đi năm 1911',
+      'Yêu nước truyền cảm hứng hy sinh cho người cách mạng',
+      'Văn hóa dân tộc cần được giữ gìn và phát triển',
+      'Đoàn kết quốc tế bổ sung cho yêu nước',
     ],
-    historical_context: 'Growing up in a patriotic scholar family during the height of French colonial rule, young Nguyen Sinh Cung absorbed deep love for Vietnam and hatred of oppression.',
-    content: 'Patriotism was the soul of Ho Chi Minh\'s revolution. It was the emotional force that unified the entire Vietnamese nation across religious and class lines. He believed that while Marxism-Leninism provided the scientific method, the patriotic tradition of the Vietnamese people was the primary engine of their struggle.',
-    image_url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80'
+    historical_context: 'Lớn lên trong gia đình nhà nho yêu nước thời thực dân Pháp, Nguyễn Sinh Cung thấm đẫm tình yêu Việt Nam và căm thù áp bức.',
+    content: 'Lòng yêu nước là linh hồn của cuộc cách mạng do Hồ Chí Minh lãnh đạo — sức mạnh tinh thần đoàn kết dân tộc. Mác-Lênin cung cấp phương pháp khoa học, còn truyền thống yêu nước là động lực then chốt của nhân dân Việt Nam.',
+    image_url: getIdeologyArticleImage('role-of-patriotism', 'Patriotism'),
   },
   'preparation-cpv': {
     id: 4,
     slug: 'preparation-cpv',
-    title: 'Preparation for the Communist Party of Vietnam',
-    summary: 'The organizational work from 1925 to 1930 that laid the foundation for Vietnam\'s revolutionary party.',
+    title: 'Chuẩn bị thành lập Đảng Cộng sản Việt Nam',
+    summary: 'Công tác tổ chức từ 1925 đến 1930 tạo nền tảng cho đảng cách mạng Việt Nam.',
     category: 'Party Building',
     key_points: [
-      'Revolutionary Youth League trained future leaders',
-      'Three communist groups unified in 1930',
-      'Hong Kong conference established the CPV',
-      'Political line combined patriotism with Marxism'
+      'Hội Việt Nam Cách mạng Thanh niên đào tạo cán bộ',
+      'Ba tổ chức cộng sản hợp nhất năm 1930',
+      'Hội nghị Hồng Kông thành lập Đảng',
+      'Đường lối kết hợp yêu nước với Mác-Lênin',
     ],
-    historical_context: 'Between founding the Revolutionary Youth League in 1925 and the CPV in 1930, Ho Chi Minh built the organizational infrastructure for revolution.',
-    content: 'The founding of the CPV in 1930 was the culmination of nearly two decades of preparation. Ho Chi Minh meticulously trained cadres in Guangzhou, publishing "Đường Kách Mệnh" (The Revolutionary Path) to provide a clear theoretical line. By uniting disparate groups, he ensured the revolution had a single, disciplined leadership.',
-    image_url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
-  }
+    historical_context: 'Từ khi thành lập Hội Thanh niên (1925) đến Đảng (1930), Hồ Chí Minh xây dựng cơ sở tổ chức cho cách mạng.',
+    content: 'Thành lập Đảng năm 1930 là đỉnh cao gần hai thập kỷ chuẩn bị. Tại Quảng Châu, Hồ Chí Minh đào tạo cán bộ và xuất bản «Đường Kách mệnh», hợp nhất các nhóm để có một lãnh đạo kỷ luật, thống nhất.',
+    image_url: getIdeologyArticleImage('preparation-cpv', 'Party Building'),
+  },
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -101,20 +103,30 @@ export default function ArticlePage() {
   });
 
   useEffect(() => {
-    if (slug) {
-      api.articles.get(slug as string)
-        .then((data) => setArticle(data as Article))
+    if (!slug) return;
+    if (!isApiEnabled) {
+      setArticle(richFallbackArticles[slug as string] || null);
+      setLoading(false);
+      return;
+    }
+    api.articles.get(slug as string)
+        .then((data) => {
+          const art = data as Article;
+          setArticle({
+            ...art,
+            image_url: getIdeologyArticleImage(art.slug, art.category, art.image_url),
+          });
+        })
         .catch(() => {
           // Fallback to static rich articles if backend is offline or returns error
           const localArticle = richFallbackArticles[slug as string];
           setArticle(localArticle || null);
         })
         .finally(() => setLoading(false));
-    }
   }, [slug]);
 
   if (loading) return <Loading />;
-  if (!article) return <div className="py-20 text-center text-[#D4AF37]">Article not found</div>;
+  if (!article) return <div className="py-20 text-center text-[#D4AF37]">Không tìm thấy bài viết</div>;
 
   const keyPoints = Array.isArray(article.key_points)
     ? article.key_points
@@ -123,13 +135,14 @@ export default function ArticlePage() {
     : [];
 
   const tagColor = CATEGORY_COLORS[article.category || ''] || '#D4AF37';
+  const bannerImage = getIdeologyArticleImage(article.slug, article.category, article.image_url);
 
   // Floating Table of Contents sections
   const tocItems = [
-    { id: 'hero-banner', label: 'Title & Summary' },
-    ...(article.historical_context ? [{ id: 'historical-context', label: 'Historical Context' }] : []),
-    ...(keyPoints.length > 0 ? [{ id: 'key-points', label: 'Key Philosophies' }] : []),
-    ...(article.content ? [{ id: 'full-content', label: 'Full Analysis' }] : []),
+    { id: 'hero-banner', label: 'Tiêu đề & tóm tắt' },
+    ...(article.historical_context ? [{ id: 'historical-context', label: 'Bối cảnh lịch sử' }] : []),
+    ...(keyPoints.length > 0 ? [{ id: 'key-points', label: 'Luận điểm cốt lõi' }] : []),
+    ...(article.content ? [{ id: 'full-content', label: 'Phân tích đầy đủ' }] : []),
   ];
 
   const handleScrollTo = (id: string) => {
@@ -165,7 +178,7 @@ export default function ArticlePage() {
             className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-[#D4AF37] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Academy
+            Quay lại học viện
           </Link>
         </div>
 
@@ -185,15 +198,15 @@ export default function ArticlePage() {
                 className="px-3 py-1 rounded-full text-[0.6rem] font-bold uppercase tracking-wider text-white shadow-md"
                 style={{ background: tagColor }}
               >
-                {article.category || 'Socialism'}
+                {categoryDisplayVi(article.category || 'Socialism')}
               </span>
               <span className="flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5 text-[#D4AF37]" />
-                6 mins read
+                6 phút đọc
               </span>
               <span className="flex items-center gap-1">
                 <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
-                Intermediate Level
+                Trung cấp
               </span>
             </div>
 
@@ -219,13 +232,13 @@ export default function ArticlePage() {
             </p>
 
             {/* Large Historical Image Banner */}
-            {article.image_url && (
+            {bannerImage && (
               <div className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden border border-[#D4AF37]/25 shadow-2xl my-8">
-                <Image
-                  src={article.image_url}
+                <AppImage
+                  src={bannerImage}
                   alt={article.title}
                   fill
-                  className="object-cover object-center filter brightness-[0.75]"
+                  className="object-cover object-center brightness-[0.75] sepia-[0.12]"
                   priority
                   sizes="100vw"
                 />
@@ -243,7 +256,7 @@ export default function ArticlePage() {
                     className="text-xl md:text-2xl font-bold text-[#FFF9E6]"
                     style={{ fontFamily: 'var(--font-playfair), serif' }}
                   >
-                    Historical Context
+                    Bối cảnh lịch sử
                   </h2>
                 </div>
                 <p className="text-gray-300 font-light leading-relaxed text-sm md:text-base">
@@ -261,7 +274,7 @@ export default function ArticlePage() {
                     className="text-xl md:text-2xl font-bold text-[#FFF9E6]"
                     style={{ fontFamily: 'var(--font-playfair), serif' }}
                   >
-                    Key Philosophical Directives
+                    Luận điểm tư tưởng cốt lõi
                   </h2>
                 </div>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
@@ -284,7 +297,7 @@ export default function ArticlePage() {
                     className="text-xl md:text-2xl font-bold text-[#FFF9E6]"
                     style={{ fontFamily: 'var(--font-playfair), serif' }}
                   >
-                    Academy Core Analysis
+                    Phân tích cốt lõi
                   </h2>
                 </div>
                 <p className="text-gray-300 font-light leading-relaxed text-sm md:text-base whitespace-pre-line">
@@ -301,7 +314,7 @@ export default function ArticlePage() {
               style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
             >
               <h3 className="text-xs uppercase tracking-widest text-[#D4AF37] font-semibold mb-4 border-b border-white/5 pb-2">
-                Course Syllabus
+                Mục lục khóa học
               </h3>
               <nav className="flex flex-col gap-3">
                 {tocItems.map((item) => (

@@ -40,10 +40,10 @@ export function CollectionGrid({ images, filter, sortNewest, viewGrid, onSelect 
       >
         <div className="text-5xl mb-4" style={{ opacity: 0.3 }}>🏛</div>
         <div style={{ fontFamily: 'var(--font-playfair)', color: 'rgba(255,255,255,0.3)', fontSize: '1.3rem', marginBottom: '8px' }}>
-          No items in this collection
+          Không có hiện vật trong danh mục này
         </div>
         <div style={{ fontFamily: 'var(--font-source)', color: 'rgba(255,255,255,0.2)', fontSize: '0.85rem' }}>
-          Try selecting a different category
+          Hãy chọn danh mục khác
         </div>
       </motion.div>
     );
