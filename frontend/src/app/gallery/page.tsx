@@ -7,12 +7,12 @@ import { api } from '@/lib/api';
 import type { GalleryImage } from '@/lib/types';
 
 // ── Museum Components ──────────────────────────────────────────
-import { MuseumHero }       from '@/components/museum/MuseumHero';
+import { MuseumHero } from '@/components/museum/MuseumHero';
 import { FeaturedExhibition } from '@/components/museum/FeaturedExhibition';
-import { MuseumFilterBar }  from '@/components/museum/MuseumFilterBar';
-import { CollectionGrid }   from '@/components/museum/CollectionGrid';
-import { MuseumStats }      from '@/components/museum/MuseumStats';
-import { ArtifactModal }    from '@/components/museum/ArtifactModal';
+import { MuseumFilterBar } from '@/components/museum/MuseumFilterBar';
+import { CollectionGrid } from '@/components/museum/CollectionGrid';
+import { MuseumStats } from '@/components/museum/MuseumStats';
+import { ArtifactModal } from '@/components/museum/ArtifactModal';
 import type { FilterCategory } from '@/components/museum/MuseumFilterBar';
 import TimelinePageBackground from '@/components/timeline/TimelinePageBackground';
 
@@ -25,100 +25,118 @@ const MuseumParticles = dynamic(
 const FALLBACK_GALLERY: GalleryImage[] = [
   {
     id: 1,
-    title: 'Leaving Vietnam 1911',
-    description: 'The port of Nha Rong where Nguyen Tat Thanh departed to find the path for national salvation. He boarded the Amiral Latouche-Tréville on June 5, 1911.',
-    image_url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
+    title: 'Bến cảng Nhà Rồng đầu thế kỷ 20 (nay là số 1 đường Nguyễn Tất Thành, TP HCM)',
+    description: 'Nơi Nguyễn Tất Thành (tên gọi Văn Ba) ra đi tìm đường cứu nước',
+    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/L1044370-copy_1755248877-1755249045.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=2nCPqU4VxkhSFcDgWQ2_9Q',
     year: 1911,
     category: 'photograph',
   },
   {
     id: 2,
-    title: 'Nguyen Tat Thanh Portrait',
-    description: 'A rare portrait of Nguyen Tat Thanh during his early years seeking the path for national salvation.',
-    image_url: 'https://images.unsplash.com/photo-1580810734915-9a55f3820e49?w=600&q=80',
-    year: 1910,
+    title: 'Tàu Đô đốc Latouche-Tréville',
+    description: 'Con tàu đã đưa thanh niên Nguyễn Tất Thành rời Tổ quốc, bắt đầu hành trình tìm đường cứu nước.',
+    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/L1044370_1755248877-1755249045.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=esCrrdXbROCcaVGSgbbFSg',
+    year: 1911,
     category: 'photograph',
   },
   {
     id: 3,
-    title: 'Travel Document 1911',
-    description: 'The travel document used by Nguyen Tat Thanh on his journey abroad. A precious primary source artifact preserved in the National Archive.',
-    image_url: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80',
+    title: 'Cảng Vieux-Port, Marseille đầu thế kỷ 20',
+    description: 'Nơi thanh niên Nguyễn Tất Thành lần đầu đặt chân đến nước Pháp',
+    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/DSC-3798-1755240269.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=jPn0fM4q3y8jG0FPNzOm-g',
     year: 1911,
-    category: 'document',
+    category: 'photograph',
   },
   {
     id: 4,
-    title: 'Hong Kong Conference 1930',
-    description: 'Nguyen Ai Quoc attended the Hong Kong Conference of the Communist Party of Indochina, unifying various factions into a single revolutionary force.',
-    image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80',
-    year: 1930,
-    category: 'photograph',
-  },
-  {
-    id: 5,
-    title: 'Paris Peace Conference 1919',
-    description: 'Nguyen Ai Quoc presented the petition of the Annamese people to the Versailles peace conference, demanding colonial independence.',
-    image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80',
-    year: 1919,
-    category: 'document',
-  },
-  {
-    id: 6,
-    title: 'Colonial Era Saigon',
-    description: 'Life in Saigon under French colonial rule at the turn of the 20th century. The context that shaped Ho Chi Minh\'s revolutionary path.',
-    image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80',
-    year: 1900,
-    category: 'photograph',
-  },
-  {
-    id: 7,
-    title: 'Revolutionary Training Guangzhou',
-    description: 'Nguyen Ai Quoc trained a generation of Vietnamese revolutionaries in Guangzhou (Canton) from 1924 to 1927.',
-    image_url: 'https://images.unsplash.com/photo-1518005020951-eccb994ad75d?w=600&q=80',
-    year: 1925,
-    category: 'artifact',
-  },
-  {
-    id: 8,
-    title: 'Founding of CPV',
-    description: 'The Communist Party of Vietnam was founded by Ho Chi Minh in Hong Kong in February 1930, unifying three separate communist groups.',
-    image_url: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80',
-    year: 1930,
-    category: 'photograph',
-  },
-  {
-    id: 9,
-    title: 'Kim Lien Village Birthplace',
-    description: 'The village of Kim Lien in Nghe An province, where Ho Chi Minh was born on May 19, 1890, as Nguyen Sinh Cung.',
-    image_url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80',
-    year: 1890,
-    category: 'artifact',
-  },
-  {
-    id: 10,
-    title: 'Tours Congress 1920',
-    description: 'At the Tours Congress of the French Section of the Workers\' International, Nguyen Ai Quoc voted to join the Communist International.',
-    image_url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
-    year: 1920,
-    category: 'document',
-  },
-  {
-    id: 11,
-    title: 'London Life 1914',
-    description: 'Nguyen Tat Thanh lived and worked in London from 1914 to 1917, learning about the British labor movement.',
-    image_url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80',
+    title: 'Trong những năm bôn ba, người thanh niên yêu nước trải qua nhiều công việc như phụ bếp tại khách sạn Carlton ở London, Anh trong bốn năm',
+    description: 'Nguyễn Tất Thành vừa mưu sinh vừa học tập, chuẩn bị hành trang tư tưởng tìm đường đến độc lập, tự do cho dân tộc.',
+    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/DSC-3792-1755240267.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=oaWQefdg5ky30S3-rtR5qQ',
     year: 1914,
     category: 'photograph',
   },
   {
-    id: 12,
-    title: 'Moscow Visit 1923',
-    description: 'Nguyen Ai Quoc traveled to Moscow to attend the Fifth Congress of the Communist International, deepening his Marxist education.',
-    image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80',
-    year: 1923,
+    id: 5,
+    title: 'Bản yêu sách 8 điểm đòi tự do dân chủ và quyền tự quyết cho người dân An Nam, ký tên Nguyễn Ái Quốc được gửi đến Hội nghị Versailles (Pháp) - mở đầu cho tiếng nói chính trị của người Việt tại diễn đàn quốc tế thời đó.',
+    description: '"Cải cách nền pháp lý ở Đông Dương bằng cách ban bố cho người bản xứ cũng được những đảm bảo về pháp lý như người Âu châu, xóa bỏ hoàn toàn và triệt để các tòa án đặc biệt dùng làm công cụ khủng bố và áp bức đối với bộ phận trung thực nhất trong nhân dân An Nam", điều 2 trong 8 điểm yêu sách nêu. Nhưng tất cả đều không được chấp thuận. Ảnh chụp đầu thập niên 1920 bên tờ báo L’Humannité - cơ quan ngôn luận của Đảng Cộng sản Pháp, nơi người thanh niên 30 tuổi đấu tranh cho quyền lợi các dân tộc thuộc địa. Những năm này, Người tích cực viết báo, tham gia phong trào cộng sản quốc tế.',
+    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/IMG-8609-copy-1755243280.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=lO5vnNbr0jzdmlL8JQk5LA',
+    year: 1919,
     category: 'photograph',
   },
+  {
+    id: 6,
+    title: 'Hồ sơ mật vụ Anh và ảnh Nguyễn Ái Quốc với bí danh Tống Văn Sơ bị bắt tại Hong Kong',
+    description: 'Hồ sơ mật vụ Anh và ảnh Nguyễn Ái Quốc với bí danh Tống Văn Sơ bị bắt tại Hong Kong năm 1931 theo yêu cầu mật thám Pháp. Dù được luật sư Loseby bào chữa và Tòa án Tối cao tuyên trả tự do, ông vẫn bị giam cầm tới cuối năm 1932 tại nhà tù Victoria (Hong Kong)',
+    image_url: 'https://i1-vnexpress.vnecdn.net/2025/08/15/DSC-3802-1755240275.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=fr0HO1YWGrtd-Draae9CCQ',
+    year: 1931,
+    category: 'photograph',
+  },
+  {
+  id: 7,
+  title: 'Máy chữ của Chủ tịch Hồ Chí Minh',
+  description: 'Máy chữ Chủ tịch Hồ Chí Minh sử dụng trong thời gian Người ở và làm việc tại Phủ Chủ tịch.',
+  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_55383101-800c-426f-92c9-56c464097661.jpg',
+  year: 0,
+  category: 'artifact',
+},
+{
+  id: 8,
+  title: 'Bộ quần áo kaki của Chủ tịch Hồ Chí Minh',
+  description: 'Bộ quần áo kaki Chủ tịch Hồ Chí Minh thường mặc khi đi thăm các địa phương trong nước, dự hội nghị và các cuộc họp Chính phủ.',
+  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_24c72dfb-9277-4be2-82c4-a5be56a401fd.jpg',
+  year: 0,
+  category: 'artifact',
+},
+{
+  id: 9,
+  title: 'Đôi dép cao su của Chủ tịch Hồ Chí Minh',
+  description: 'Đôi dép cao su Chủ tịch Hồ Chí Minh sử dụng khi đi thăm các địa phương trong nước và các quốc gia trên thế giới.',
+  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_b8808a76-dea9-4c3d-bc5d-04eb98d71450.jpg',
+  year: 0,
+  category: 'artifact',
+},
+{
+  id: 10,
+  title: 'Bộ dụng cụ tập thể dục của Chủ tịch Hồ Chí Minh',
+  description: 'Bộ dụng cụ tập thể dục gồm lò xo kéo tay, quả chùy, dụng cụ tập tay, quả bóng tennis... Bác sử dụng từ năm 1967 đến năm 1969.',
+  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg',
+  year: 1967,
+  category: 'artifact',
+},
+{
+  id: 11,
+  title: 'Chiếc quạt lá cọ của Chủ tịch Hồ Chí Minh',
+  description: 'Chiếc quạt lá cọ Bác Hồ sử dụng từ năm 1960 trong sinh hoạt hằng ngày.',
+  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_d47b036e-d242-4568-ad33-05d863f84750.jpg',
+  year: 1960,
+  category: 'artifact',
+},
+{
+  id: 12,
+  title: 'Chiếc đèn điện để bàn Bác sử dụng trong thời gian ở và làm việc tại Phủ Chủ tịch.',
+  description: 'Chiếc đèn điện để bàn Bác sử dụng trong thời gian ở và làm việc tại Phủ Chủ tịch.',
+  image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_0ec8baee-162f-46d2-85f0-47283ff5037b.jpg',
+  year: 0,
+  category: 'artifact',
+},
+{
+  id: 14,
+  title: 'Chiến thuật chiến lược quân sự Hồ Chí Minh',
+  description:
+    'Tác phẩm do Đỗ Hoàng Linh và Nguyễn Văn Dương sưu tầm, biên soạn, tập hợp các bài viết của Chủ tịch Hồ Chí Minh về quân sự. Cuốn sách làm rõ tư duy quân sự Hồ Chí Minh với nghệ thuật chiến tranh nhân dân, toàn dân đánh giặc, lấy nhỏ thắng lớn và phát huy sức mạnh tổng hợp của dân tộc.',
+  image_url: 'https://www.nxbctqg.org.vn/img_data/images/images/stories/Sachmoi/chienthuatchienluoc.jpg',
+  year: 2020,
+  category: 'document',
+},
+{
+  id: 15,
+  title: 'Bác Hồ gọi ấy là mùa xuân đến',
+  description:
+    'Cuốn sách giới thiệu những câu chuyện, tư tưởng và hoạt động của Chủ tịch Hồ Chí Minh trong mỗi dịp đón xuân, chúc Tết. Tác phẩm làm nổi bật những giá trị văn hóa, tinh thần và lời kêu gọi trồng cây, xây dựng đất nước ngày càng phát triển.',
+  image_url: 'https://static.oreka.vn/800-800_06374acb-6582-43fa-8a3d-ee8dd12ff471',
+  year: 2018,
+  category: 'document',
+},
 ];
 
 // ── Page skeleton while loading ────────────────────────────────
@@ -161,12 +179,12 @@ function MuseumSkeleton() {
 
 // ── Main Page ──────────────────────────────────────────────────
 export default function GalleryPage() {
-  const [images, setImages]       = useState<GalleryImage[]>([]);
-  const [selected, setSelected]   = useState<GalleryImage | null>(null);
-  const [loading, setLoading]     = useState(true);
-  const [filter, setFilter]       = useState<FilterCategory>('all');
+  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [selected, setSelected] = useState<GalleryImage | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<FilterCategory>('all');
   const [sortNewest, setSortNewest] = useState(true);
-  const [viewGrid, setViewGrid]   = useState(true);
+  const [viewGrid, setViewGrid] = useState(true);
   const collectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -258,8 +276,8 @@ export default function GalleryPage() {
             <div className="flex flex-wrap gap-4">
               {[
                 { color: '#D4AF37', label: 'Photograph' },
-                { color: '#C89B3C', label: 'Artifact'   },
-                { color: '#C1121F', label: 'Document'   },
+                { color: '#C89B3C', label: 'Artifact' },
+                { color: '#C1121F', label: 'Document' },
               ].map(l => (
                 <div key={l.label} className="flex items-center gap-1.5">
                   <div className="w-2 h-2 rounded-full" style={{ background: l.color }} />
