@@ -39,6 +39,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'static.oreka.vn',
       },
+      {
+        protocol: 'https',
+        hostname: 'bthcm.hue.gov.vn',
+      },
     ],
   },
 };

@@ -269,7 +269,7 @@ export function MuseumHero() {
             {/* Portrait image with cinematic overlay */}
             <div className="relative w-full h-full overflow-hidden rounded-[2rem]" style={{ background: '#0a0800' }}>
               <Image
-                src="https://images.unsplash.com/photo-1580810734915-9a55f3820e49?w=600&q=80"
+                src="https://i1-vnexpress.vnecdn.net/2025/08/15/DSC-3785-1755240257.jpg?w=1200&h=0&q=100&dpr=2&fit=crop&s=MpUt7QJyRwIN2fTVm-EnTA"
                 alt="Ho Chi Minh portrait"
                 fill
                 className="object-cover object-top"
