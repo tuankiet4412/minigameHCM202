@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import AppImage from '@/components/ui/AppImage';
 import type { GalleryImage } from '@/lib/types';
+import { galleryCategoryVi } from '@/lib/gallery-data';
 
 interface ArtifactCardProps {
   image: GalleryImage;
@@ -35,7 +36,7 @@ export function ArtifactCard({ image, index, onSelect, viewGrid = true }: Artifa
   const cat = (image.category || 'photograph').toLowerCase();
   const catColor = CATEGORY_COLORS[cat] || '#D4AF37';
   const catIcon  = CATEGORY_ICONS[cat]  || '📷';
-  const catLabel = cat.charAt(0).toUpperCase() + cat.slice(1);
+  const catLabel = galleryCategoryVi(cat);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
