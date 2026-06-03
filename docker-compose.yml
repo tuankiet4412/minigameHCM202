@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: hcm_journey
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - hcm_pg_data:/var/lib/postgresql/data
 
