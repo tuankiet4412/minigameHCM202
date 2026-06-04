@@ -143,7 +143,7 @@ export function enrichLocations(locations: JourneyLocation[]): EnrichedJourneyLo
       historicalContext: meta.historicalContext,
       impactOnJourney: meta.impactOnJourney,
       flagCode: meta.flagCode,
-      defaultImage: base.image_url ?? meta.defaultImage,
+      defaultImage: meta.defaultImage || base.image_url,
       description: base.description || meta.historicalContext,
       period: base.period ?? meta.yearLabel,
     };
