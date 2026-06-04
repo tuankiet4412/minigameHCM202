@@ -100,7 +100,7 @@ const ENRICHMENT: Record<
     historicalContext:
       'Moscow cung cấp đào tạo chính trị nghiêm túc và kết nối với phong trào cộng sản quốc tế.',
     impactOnJourney: 'Rèn nền tảng lý luận cho chiến lược cách mạng Việt Nam.',
-    defaultImage: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=800&q=80',
+    defaultImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Missile_Parade_Moscow_1964.jpg/1280px-Missile_Parade_Moscow_1964.jpg',
   },
   China: {
     yearLabel: '1924 – 1930',
