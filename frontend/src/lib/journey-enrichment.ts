@@ -48,7 +48,7 @@ const ENRICHMENT: Record<
     historicalContext:
       'Nguyễn Tất Thành rời Việt Nam trên tàu Amiral Latouche-Tréville, bắt đầu hành trình ba mươi năm tìm con đường cứu nước.',
     impactOnJourney: 'Điểm khởi hành — nơi tình yêu Tổ quốc trở thành sứ mệnh suốt đời qua nhiều châu lục.',
-    defaultImage: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80',
+    defaultImage: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80',
   },
   USA: {
     yearLabel: '1912 – 1913',
@@ -100,7 +100,7 @@ const ENRICHMENT: Record<
     historicalContext:
       'Moscow cung cấp đào tạo chính trị nghiêm túc và kết nối với phong trào cộng sản quốc tế.',
     impactOnJourney: 'Rèn nền tảng lý luận cho chiến lược cách mạng Việt Nam.',
-    defaultImage: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80',
+    defaultImage: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=800&q=80',
   },
   China: {
     yearLabel: '1924 – 1930',

@@ -90,11 +90,11 @@ async function seedData() {
 
   // Journey locations
   const locations = [
-    { country: 'Vietnam', country_code: 'VN', lat: 16.0544, lng: 108.2022, period: '1890–1911', description: 'Nơi sinh và những năm tháng tuổi trẻ tại Nghệ An, Huế, Phan Thiết và Sài Gòn. Tận mắt chứng kiến sự áp bức của thực dân trước khi ra đi năm 1911.', image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600' },
+    { country: 'Vietnam', country_code: 'VN', lat: 16.0544, lng: 108.2022, period: '1890–1911', description: 'Nơi sinh và những năm tháng tuổi trẻ tại Nghệ An, Huế, Phan Thiết và Sài Gòn. Tận mắt chứng kiến sự áp bức của thực dân trước khi ra đi năm 1911.', image_url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600' },
     { country: 'France', country_code: 'FR', lat: 48.8566, lng: 2.3522, period: '1911–1923', description: 'Làm nhiều công việc khác nhau, hoạt động chính trị, trình bản yêu sách năm 1919 tại Versailles và tham gia sáng lập Đảng Cộng sản Pháp năm 1920.', image_url: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600' },
     { country: 'England', country_code: 'GB', lat: 51.5074, lng: -0.1278, period: '1913–1914', description: 'Làm phụ bếp tại Khách sạn Carlton, Luân Đôn. Tìm hiểu thực tiễn phong trào công nhân và sự bóc lột của chủ nghĩa tư bản.', image_url: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600' },
     { country: 'USA', country_code: 'US', lat: 40.7128, lng: -74.006, period: '1912–1913', description: 'Làm việc tại New York và Boston. Quan sát đời sống cộng đồng người da đen và chứng kiến sự phân biệt chủng tộc tàn bạo.', image_url: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600' },
-    { country: 'Soviet Union', country_code: 'RU', lat: 55.7558, lng: 37.6173, period: '1923–1924', description: 'Học tại Trường Đại học Phương Đông ở Moscow. Nghiên cứu sâu sắc chủ nghĩa Mác-Lênin và vạch ra chiến lược cách mạng giải phóng dân tộc.', image_url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600' },
+    { country: 'Soviet Union', country_code: 'RU', lat: 55.7558, lng: 37.6173, period: '1923–1924', description: 'Học tại Trường Đại học Phương Đông ở Moscow. Nghiên cứu sâu sắc chủ nghĩa Mác-Lênin và vạch ra chiến lược cách mạng giải phóng dân tộc.', image_url: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=600' },
     { country: 'China', country_code: 'CN', lat: 23.1291, lng: 113.2644, period: '1924–1930', description: 'Thành lập Hội Việt Nam Cách mạng Thanh niên tại Quảng Châu. Đào tạo cán bộ và chuẩn bị các điều kiện thành lập Đảng Cộng sản Việt Nam tại Hồng Kông.', image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600' },
   ];
 
