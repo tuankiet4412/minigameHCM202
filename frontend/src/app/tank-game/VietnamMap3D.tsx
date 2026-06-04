@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useMemo, useEffect } from 'react';
+import { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Html, Line } from '@react-three/drei';
 import * as THREE from 'three';
@@ -17,65 +17,98 @@ export function geo(lat: number, lng: number): THREE.Vector3 {
   return new THREE.Vector3(x, 0, z);
 }
 
-// ── Vietnam border (simplified ~58 points, gives clear S-shape) ──────────────
-const BORDER: [number, number][] = [
-  // North border going east
-  [23.3, 102.2], [23.4, 103.0], [23.0, 103.5], [22.8, 104.1],
-  [22.9, 104.9], [22.3, 104.7], [21.5, 104.5], [21.5, 105.2],
-  // Northeast notch + coast
-  [21.0, 107.5], [21.0, 108.1], [20.5, 107.0], [20.0, 106.5],
-  // Central coast
-  [19.5, 105.8], [19.0, 105.6], [18.5, 105.8], [18.0, 106.1],
-  [17.8, 106.6], [17.0, 107.2], [16.5, 107.9], [16.0, 108.4],
-  [15.5, 108.9], [15.0, 109.2], [14.5, 109.4], [14.0, 109.5],
-  [13.5, 109.3], [13.0, 109.2], [12.5, 109.4], [12.0, 109.0],
-  [11.5, 108.7], [11.0, 108.2],
-  // South tapering
-  [10.5, 107.1], [10.0, 106.8], [9.5, 106.0], [9.0, 105.6],
-  [8.7, 105.0], [8.5, 104.8],
-  // Western coast Ca Mau going north
-  [8.8, 104.4], [9.0, 104.2], [9.5, 104.0], [10.0, 104.8],
-  [10.5, 104.3], [11.0, 103.5], [11.5, 103.2], [12.0, 102.8],
-  // Western border (Cambodia)
-  [12.5, 103.5], [13.0, 104.5], [13.5, 105.0], [14.0, 105.6],
-  // Western border (Laos)
-  [14.5, 107.2], [15.0, 107.5], [16.0, 106.7], [17.0, 105.8],
-  [18.0, 105.1], [19.0, 104.2], [20.0, 103.5], [21.0, 102.2],
-  [22.0, 102.6], [22.8, 102.3], [23.3, 102.2], // close
-];
+// ── Vietnam land (loaded from GeoJSON) ──────────────────────────────────────
 
-// ── Vietnam land + border ────────────────────────────────────────────────────
+// Simplify a polygon by keeping every Nth point, minimum keeps sharp corners
+function decimate(pts: [number, number][], every = 4): [number, number][] {
+  return pts.filter((_, i) => i % every === 0 || i === pts.length - 1);
+}
+
+// Convert GeoJSON [lng, lat] to our THREE.Vector3 via geo()
+function geoJsonRingToV3(ring: number[][]): [number, number, number][] {
+  return ring.map(([lng, lat]) => {
+    const v = geo(lat, lng);
+    return [v.x, 0, v.z] as [number, number, number];
+  });
+}
+
 function VietnamLand() {
-  const shape = useMemo(() => {
-    const s = new THREE.Shape();
-    const pts = BORDER.map(([lat, lng]) => {
-      const v = geo(lat, lng);
-      return new THREE.Vector2(v.x, -v.z); // -z due to rotation
-    });
-    s.moveTo(pts[0].x, pts[0].y);
-    pts.slice(1).forEach((p) => s.lineTo(p.x, p.y));
-    s.closePath();
-    return s;
+  const [polygons, setPolygons] = useState<[number, number][][]>([]);
+
+  useEffect(() => {
+    fetch('/vietnam.geojson')
+      .then(r => r.json())
+      .then((feature) => {
+        const geom = feature.geometry;
+        const rings: [number, number][][] = [];
+
+        if (geom.type === 'MultiPolygon') {
+          // Pick only largest polygon (mainland), skip tiny islands
+          const sorted = [...geom.coordinates].sort(
+            (a: number[][][], b: number[][][]) => b[0].length - a[0].length
+          );
+          // Take top 3 largest polygons (mainland + major islands)
+          for (let i = 0; i < Math.min(3, sorted.length); i++) {
+            rings.push(decimate(sorted[i][0] as [number, number][], 6));
+          }
+        } else if (geom.type === 'Polygon') {
+          rings.push(decimate(geom.coordinates[0] as [number, number][], 6));
+        }
+        setPolygons(rings);
+      })
+      .catch(() => {
+        // Fallback: simple approximate polygon
+        setPolygons([[[102.1, 23.4], [106.7, 22.5], [108.1, 20.9], [105.9, 19.7],
+          [106.3, 17.9], [108.3, 16.1], [109.4, 14.3], [108.8, 11.8],
+          [107.5, 10.6], [104.7, 8.5], [104.2, 8.6], [103.9, 9.0],
+          [102.8, 11.9], [105.0, 14.0], [107.4, 14.8], [107.0, 14.3],
+          [102.1, 23.4]] as [number, number][]]);
+      });
   }, []);
 
-  const borderPts = useMemo(
-    () => BORDER.map(([lat, lng]) => geo(lat, lng).toArray() as [number, number, number]),
-    []
-  );
+  const meshes = useMemo(() => {
+    return polygons.map((ring, pi) => {
+      // Build Shape for filled land (needs Vector2 with x/-z swap for rotation)
+      const s = new THREE.Shape();
+      const pts2d = ring.map(([lng, lat]) => {
+        const v = geo(lat, lng);
+        return new THREE.Vector2(v.x, -v.z);
+      });
+      if (pts2d.length < 3) return null;
+      s.moveTo(pts2d[0].x, pts2d[0].y);
+      pts2d.slice(1).forEach(p => s.lineTo(p.x, p.y));
+      s.closePath();
+
+      // Border line points
+      const borderPts = ring.map(([lng, lat]) => {
+        const v = geo(lat, lng);
+        return [v.x, 0, v.z] as [number, number, number];
+      });
+
+      return { shape: s, borderPts, key: pi };
+    }).filter(Boolean) as { shape: THREE.Shape; borderPts: [number, number, number][]; key: number }[];
+  }, [polygons]);
+
+  if (meshes.length === 0) return null;
 
   return (
     <group>
-      {/* Filled land */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.06, 0]}>
-        <shapeGeometry args={[shape]} />
-        <meshStandardMaterial color="#1a472a" roughness={0.95} />
-      </mesh>
-
-      {/* Green border glow */}
-      <Line points={borderPts} color="#4ade80" lineWidth={2} closed />
-
-      {/* Softer inner glow */}
-      <Line points={borderPts.map(([x, y, z]) => [x, y + 0.01, z] as [number, number, number])} color="#166534" lineWidth={1} closed />
+      {meshes.map(({ shape, borderPts, key }) => (
+        <group key={key}>
+          {/* Filled land */}
+          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.06, 0]}>
+            <shapeGeometry args={[shape]} />
+            <meshStandardMaterial color="#1a472a" roughness={0.95} />
+          </mesh>
+          {/* Green border glow */}
+          <Line points={borderPts} color="#4ade80" lineWidth={2} closed />
+          {/* Softer inner glow */}
+          <Line
+            points={borderPts.map(([x, y, z]) => [x, y + 0.01, z] as [number, number, number])}
+            color="#166534" lineWidth={1} closed
+          />
+        </group>
+      ))}
     </group>
   );
 }

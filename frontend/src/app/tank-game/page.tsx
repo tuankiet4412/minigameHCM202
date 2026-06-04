@@ -80,29 +80,8 @@ const MILESTONES = [
   },
 ];
 
-// ── Question bank (15 câu TTHCM + sự kiện 30/4) ──────────────────────────────
+// ── Question bank — 53 câu hỏi từ database (setup.js) ────────────────────────
 const ALL_QUESTIONS: Question[] = [
-  {
-    question: 'Chiến dịch Hồ Chí Minh lịch sử bắt đầu vào ngày nào?',
-    options: ['26/4/1975', '28/4/1975', '30/4/1975', '1/5/1975'],
-    correctIndex: 0,
-    explanation: 'Chiến dịch Hồ Chí Minh bắt đầu ngày 26/4/1975 và kết thúc thắng lợi vào 30/4/1975.',
-  },
-  {
-    question: 'Xe tăng nào húc đổ cổng chính Dinh Độc Lập vào ngày 30/4/1975?',
-    options: ['Xe tăng số 843', 'Xe tăng số 390', 'Xe tăng số 100', 'Xe tăng số 555'],
-    correctIndex: 1,
-    explanation: 'Xe tăng số 390 (Quân đoàn 2) húc đổ cổng chính Dinh Độc Lập lúc 11:30 ngày 30/4/1975.',
-  },
-  {
-    question: 'Tổng thống cuối cùng của Việt Nam Cộng hòa tuyên bố đầu hàng là ai?',
-    options: ['Nguyễn Văn Thiệu', 'Trần Văn Hương', 'Dương Văn Minh', 'Nguyễn Cao Kỳ'],
-    correctIndex: 2,
-    explanation: 'Dương Văn Minh tuyên bố đầu hàng vô điều kiện lúc 10:24 ngày 30/4/1975.',
-  },
-  {
-    question: 'Theo Hồ Chí Minh, điều gì là quý hơn tất cả?',
-    options: ['Tài nguyên thiên nhiên', 'Độc lập và tự do', 'Quân đội hùng mạnh', 'Kinh tế phát triển'],
     correctIndex: 1,
     explanation: '"Không có gì quý hơn độc lập tự do" — câu nói bất hủ của Chủ tịch Hồ Chí Minh.',
   },
@@ -402,14 +381,16 @@ export default function TankGamePage() {
               {/* Instructions */}
               <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-7 flex flex-col justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold text-heritage-gold mb-5">Cách chơi</h2>
-                  <div className="space-y-4 text-sm text-gray-300">
+                  <h2 className="text-2xl font-bold text-heritage-gold mb-1">Cách chơi</h2>
+                  <p className="text-[10px] text-gray-500 mb-4 italic">Hành trình 8 mốc lịch sử — từ Pác Bó đến Dinh Độc Lập</p>
+                  <div className="space-y-2 text-sm text-gray-300">
                     {[
-                      { icon: '🗺️', title: 'Hành trình', desc: 'Xe tăng 3D đi từ Hà Nội → Vinh → Huế → Đà Nẵng → Sài Gòn' },
-                      { icon: '❓', title: 'Câu hỏi', desc: 'Mỗi chặng = 1 câu hỏi về Tư tưởng Hồ Chí Minh' },
-                      { icon: '✅', title: 'Đúng', desc: 'Xe tăng 3D di chuyển đến thành phố tiếp theo, camera zoom theo' },
+                      { icon: '🗺️', title: 'Hành trình', desc: 'Xuất phát từ Pác Bó (1941) → Tân Trào → Hà Nội → Bến Hải → Trường Sơn → Buôn Ma Thuột → Xuân Lộc → Dinh Độc Lập (1975)' },
+                      { icon: '📜', title: 'Bài học lịch sử', desc: 'Mỗi địa điểm một sự kiện lịch sử hiện ra — đọc kỹ trước khi tiếp tục!' },
+                      { icon: '❓', title: 'Câu hỏi', desc: 'Trả lời đúng câu hỏi về Tư tưởng Hồ Chí Minh để xe tăng tiến lên' },
+                      { icon: '✅', title: 'Đúng', desc: 'Xe tăng 3D di chuyển đến địa điểm tiếp theo, camera tự động zoom theo' },
                       { icon: '❌', title: 'Sai', desc: 'Mất 1 mạng (có 3 mạng). Hết mạng = thua' },
-                      { icon: '🏆', title: 'Thắng', desc: 'Đến Sài Gòn → Húc đổ cổng Dinh Độc Lập!' },
+                      { icon: '🚩', title: 'Chiến thắng', desc: 'Tới Dinh Độc Lập → Xe tăng số 390 húc đổ cổng — Đất nước thống nhất!' },
                     ].map((item) => (
                       <div key={item.title} className="flex gap-3 p-3 rounded-xl bg-white/5 border border-white/5">
                         <span className="text-xl flex-shrink-0">{item.icon}</span>
