@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Trang chủ' },
+  { href: '/about', label: 'Về chúng tôi' },
   { href: '/timeline', label: 'Dòng thời gian' },
   { href: '/journey', label: 'Hành trình' },
   { href: '/gallery', label: 'Bảo tàng' },
