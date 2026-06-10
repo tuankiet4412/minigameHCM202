@@ -15,7 +15,7 @@ export default function TimelineHero() {
         >
           <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4A74E]/60" />
           <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[#E6B85C] drop-shadow-sm">
-            1890 — 1930
+            1890 — 1969
           </p>
           <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4A74E]/60" />
         </motion.div>

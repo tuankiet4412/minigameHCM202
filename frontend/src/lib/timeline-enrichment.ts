@@ -166,7 +166,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Bị bắt tại Hồng Kông',
     description: 'Bị cảnh sát Anh bắt giữ tại Hồng Kông theo yêu cầu của mật thám Pháp.',
     details: 'Nhờ sự giúp đỡ của luật sư Frank Loseby và Quốc tế Cộng sản, Người thoát khỏi án dẫn độ về Đông Dương. Đây là giai đoạn nguy hiểm nhất trong cuộc đời hoạt động cách mạng.',
-    image_url: 'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1583417646733-41ce1f8c6fb9?w=800&q=80',
   },
   {
     id: 14,
@@ -174,7 +174,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Trở về Việt Nam sau 30 năm',
     description: 'Về nước tại Pác Bó, Cao Bằng, trực tiếp lãnh đạo phong trào cách mạng.',
     details: 'Sau ba mươi năm bôn ba nước ngoài, Người trở về Tổ quốc, sống trong hang Pác Bó và thành lập Mặt trận Việt Minh, chuẩn bị lực lượng cho cuộc tổng khởi nghĩa.',
-    image_url: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=800&q=80',
   },
   {
     id: 15,
@@ -182,7 +182,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Thành lập Mặt trận Việt Minh',
     description: 'Sáng lập Việt Nam Độc lập Đồng minh Hội để đoàn kết toàn dân chống phát xít.',
     details: 'Việt Minh tập hợp mọi tầng lớp nhân dân không phân biệt giai cấp, tôn giáo, dân tộc trong một mặt trận thống nhất chống Nhật-Pháp, xây dựng căn cứ địa và phát triển lực lượng vũ trang.',
-    image_url: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_North_Vietnam_%281945%E2%80%931955%29.svg/960px-Flag_of_North_Vietnam_%281945%E2%80%931955%29.svg.png',
   },
   {
     id: 16,
@@ -190,7 +190,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Bị giam giữ tại Trung Quốc',
     description: 'Bị chính quyền Tưởng Giới Thạch bắt giam khi sang Trung Quốc liên lạc Đồng minh.',
     details: 'Bị giam 13 tháng qua hơn 30 nhà tù ở Quảng Tây. Trong thời gian này, Người sáng tác tập thơ "Nhật ký trong tù" — một kiệt tác văn học cách mạng thể hiện ý chí kiên cường bất khuất.',
-    image_url: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1584448651811-966a3ed2f2ba?w=800&q=80',
   },
   {
     id: 17,
@@ -198,7 +198,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Thành lập Đội Việt Nam Tuyên truyền Giải phóng quân',
     description: 'Ra chỉ thị thành lập đội quân vũ trang đầu tiên — tiền thân Quân đội Nhân dân Việt Nam.',
     details: 'Ngày 22/12/1944, Đội Việt Nam Tuyên truyền Giải phóng quân gồm 34 chiến sĩ được thành lập tại khu rừng Trần Hưng Đạo, Cao Bằng dưới sự chỉ huy của Võ Nguyên Giáp.',
-    image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/First_Indochina_War_COLLAGE.jpg/960px-First_Indochina_War_COLLAGE.jpg',
   },
   {
     id: 18,
@@ -206,7 +206,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Cách mạng Tháng Tám thành công',
     description: 'Lãnh đạo Tổng khởi nghĩa giành chính quyền trên toàn quốc.',
     details: 'Tận dụng thời cơ Nhật đầu hàng Đồng minh, Người phát động Tổng khởi nghĩa. Chỉ trong hai tuần (từ 14 đến 28/8/1945), nhân dân cả nước đồng loạt nổi dậy giành chính quyền, chấm dứt chế độ thực dân-phong kiến.',
-    image_url: 'https://images.unsplash.com/photo-1569974507005-6dc61f97fb5c?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/C%C3%A1ch_m%E1%BA%A1ng_th%C3%A1ng_8_b.jpg',
   },
   {
     id: 19,
@@ -214,7 +214,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Đọc Tuyên ngôn Độc lập',
     description: 'Đọc bản Tuyên ngôn Độc lập tại Quảng trường Ba Đình, khai sinh nước Việt Nam Dân chủ Cộng hòa.',
     details: 'Ngày 2/9/1945, trước hàng vạn đồng bào, Chủ tịch Hồ Chí Minh trịnh trọng đọc Tuyên ngôn Độc lập, mở đầu bằng câu trích từ Tuyên ngôn Độc lập Hoa Kỳ, khẳng định quyền tự do và độc lập của dân tộc Việt Nam trước toàn thế giới.',
-    image_url: 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/B%E1%BA%A3n_Tuy%C3%AAn_ng%C3%B4n_%C4%91%E1%BB%99c_l%E1%BA%ADp_c%E1%BB%A7a_n%C6%B0%E1%BB%9Bc_Vi%E1%BB%87t_Nam_D%C3%A2n_ch%E1%BB%A7_C%E1%BB%99ng_h%C3%B2a._-_Trung_t%C3%A2m_L%C6%B0u_tr%E1%BB%AF_qu%E1%BB%91c_gia_III._Ph%C3%B4ng_Ph%E1%BB%A7_Th%E1%BB%A7_t%C6%B0%E1%BB%9Bng%2C_h%E1%BB%93_s%C6%A1_586%2C_t%E1%BB%9D_s%E1%BB%91_1_%E2%80%93_3.jpg/960px-thumbnail.jpg',
   },
   {
     id: 20,
@@ -222,7 +222,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Lời kêu gọi Toàn quốc kháng chiến',
     description: 'Phát lời kêu gọi toàn dân đứng lên chống thực dân Pháp xâm lược lần thứ hai.',
     details: '"Chúng ta thà hy sinh tất cả, chứ nhất định không chịu mất nước, nhất định không chịu làm nô lệ!" — Lời hiệu triệu ngày 19/12/1946 mở đầu cuộc kháng chiến chống Pháp trường kỳ 9 năm.',
-    image_url: 'https://images.unsplash.com/photo-1534996858036-c1b0e25f0bdf?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Ho_Chi_Minh_-_1946_Portrait_%28cropped%29.jpg/960px-Ho_Chi_Minh_-_1946_Portrait_%28cropped%29.jpg',
   },
   {
     id: 21,
@@ -230,7 +230,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Chiến thắng Biên giới Thu-Đông',
     description: 'Chỉ đạo chiến dịch Biên giới, giải phóng vùng biên giới Việt-Trung.',
     details: 'Chiến dịch Biên giới Thu-Đông 1950 do Chủ tịch Hồ Chí Minh trực tiếp ra mặt trận chỉ đạo, đánh tan phòng tuyến biên giới của Pháp, mở đường liên lạc quốc tế và chuyển cuộc kháng chiến sang giai đoạn phản công.',
-    image_url: 'https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1506820247656-b072215c0e18?w=800&q=80',
   },
   {
     id: 22,
@@ -238,7 +238,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Chiến thắng Điện Biên Phủ',
     description: 'Chỉ đạo cuộc chiến "lừng lẫy năm châu, chấn động địa cầu" đánh bại thực dân Pháp.',
     details: 'Sau 56 ngày đêm chiến đấu (13/3 – 7/5/1954), quân và dân Việt Nam toàn thắng tại Điện Biên Phủ, buộc Pháp phải ký Hiệp định Geneva. Chiến thắng chấm dứt gần 100 năm đô hộ của thực dân Pháp ở Đông Dương.',
-    image_url: 'https://images.unsplash.com/photo-1569974507005-6dc61f97fb5c?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Victory_in_Battle_of_Dien_Bien_Phu.jpg/960px-Victory_in_Battle_of_Dien_Bien_Phu.jpg',
   },
   {
     id: 23,
@@ -246,7 +246,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Hiệp định Geneva',
     description: 'Ký kết Hiệp định Geneva, công nhận độc lập Việt Nam và tạm chia cắt đất nước.',
     details: 'Hiệp định chia Việt Nam tại vĩ tuyến 17, quy định tổng tuyển cử thống nhất năm 1956. Tuy chiến thắng quân sự vang dội, Người trăn trở vì đất nước chưa thống nhất trọn vẹn.',
-    image_url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/1954_Geneva_Conference.jpg',
   },
   {
     id: 24,
@@ -254,7 +254,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Mặt trận Dân tộc Giải phóng miền Nam',
     description: 'Ủng hộ thành lập Mặt trận Dân tộc Giải phóng miền Nam Việt Nam.',
     details: 'Ngày 20/12/1960, Mặt trận Dân tộc Giải phóng miền Nam được thành lập, tập hợp các lực lượng yêu nước chống lại chế độ Ngô Đình Diệm và sự can thiệp quân sự của Mỹ, đấu tranh thống nhất Tổ quốc.',
-    image_url: 'https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Achievement_of_the_National_Liberation_Front_of_Southern_Vietnam.svg/960px-Achievement_of_the_National_Liberation_Front_of_Southern_Vietnam.svg.png',
   },
   {
     id: 25,
@@ -262,7 +262,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: '"Không có gì quý hơn độc lập, tự do"',
     description: 'Phát lời kêu gọi nổi tiếng khẳng định ý chí kiên cường chống Mỹ.',
     details: 'Trước sự leo thang chiến tranh phá hoại miền Bắc của Mỹ, Chủ tịch Hồ Chí Minh ra lời kêu gọi ngày 17/7/1966 với câu bất hủ: "Không có gì quý hơn độc lập, tự do" — trở thành tuyên ngôn thời đại cho dân tộc Việt Nam.',
-    image_url: 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1559132225-b77891823eb5?w=800&q=80',
   },
   {
     id: 26,
@@ -270,7 +270,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Tổng tiến công Tết Mậu Thân',
     description: 'Chỉ đạo cuộc Tổng tiến công và nổi dậy Tết Mậu Thân trên toàn miền Nam.',
     details: 'Đêm 30 rạng sáng 31/1/1968, quân giải phóng đồng loạt tấn công hàng trăm mục tiêu trên toàn miền Nam, kể cả Đại sứ quán Mỹ ở Sài Gòn. Cuộc tiến công làm thay đổi cục diện chiến tranh, buộc Mỹ phải ngồi vào bàn đàm phán.',
-    image_url: 'https://images.unsplash.com/photo-1534996858036-c1b0e25f0bdf?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Tet_Offensive_map.png/960px-Tet_Offensive_map.png',
   },
   {
     id: 27,
@@ -278,7 +278,7 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Chủ tịch Hồ Chí Minh qua đời',
     description: 'Chủ tịch Hồ Chí Minh từ trần ngày 2/9/1969 tại Hà Nội, hưởng thọ 79 tuổi.',
     details: 'Người ra đi khi đất nước chưa thống nhất, để lại bản Di chúc thiêng liêng dặn dò toàn Đảng, toàn dân. Di chúc thể hiện tâm nguyện về thống nhất Tổ quốc, xây dựng đất nước và chăm lo đời sống nhân dân. "Tôi để lại muôn vàn tình thân yêu cho toàn dân, toàn Đảng, cho toàn thể bộ đội, cho các cháu thanh niên và nhi đồng."',
-    image_url: 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=800&q=80',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/L%C4%83ng_B%C3%A1c_-_NKS.jpg/960px-L%C4%83ng_B%C3%A1c_-_NKS.jpg',
   },
 ];
 
