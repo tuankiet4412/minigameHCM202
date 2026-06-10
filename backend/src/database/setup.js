@@ -50,7 +50,7 @@ async function seedData() {
       title: 'Hội nghị Hòa bình Versailles',
       description: 'Trình Bản Yêu sách 8 điểm đòi quyền tự do dân chủ cho nhân dân Việt Nam tại Hội nghị Hòa bình Paris.',
       details: 'Dưới bí danh Nguyễn Ái Quốc, Người đã đưa ra các yêu sách về dân quyền, tự do báo chí, tự do hội họp. Mặc dù bị các cường quốc phương Tây phớt lờ, tiếng vang của bản yêu sách đã thu hút sự chú ý của quốc tế đối với sự nghiệp của Việt Nam.',
-      image_url: '/images/ideology/role-of-patriotism.jpg',
+      image_url: '/images/ideology/national-independence-socialism.jpg',
       sort_order: 3,
     },
     {
@@ -66,7 +66,7 @@ async function seedData() {
       title: 'Thành lập Hội Việt Nam Cách mạng Thanh niên',
       description: 'Thành lập Hội Việt Nam Cách mạng Thanh niên tại Quảng Châu, Trung Quốc.',
       details: 'Hội Việt Nam Cách mạng Thanh niên đã đào tạo những thế hệ cán bộ nòng cốt đầu tiên của cách mạng Việt Nam. Các ấn phẩm như báo "Thanh Niên" đã truyền bá tư tưởng cách mạng vào trong nước.',
-      image_url: '/images/ideology/national-independence-socialism.jpg',
+      image_url: '/images/ideology/preparation-cpv.jpg',
       sort_order: 5,
     },
     {
@@ -82,7 +82,7 @@ async function seedData() {
       title: 'Bị bắt tại Hồng Kông',
       description: 'Bị cảnh sát Anh bắt giữ tại Hồng Kông theo yêu cầu của mật thám Pháp.',
       details: 'Nhờ sự giúp đỡ của luật sư Frank Loseby và Quốc tế Cộng sản, Người thoát khỏi án dẫn độ về Đông Dương. Đây là giai đoạn nguy hiểm nhất trong cuộc đời hoạt động cách mạng.',
-      image_url: 'https://images.unsplash.com/photo-1583417646733-41ce1f8c6fb9?w=800&q=80',
+      image_url: '/images/ideology/preparation-cpv.jpg',
       sort_order: 7,
     },
     {
@@ -90,7 +90,7 @@ async function seedData() {
       title: 'Trở về Việt Nam sau 30 năm',
       description: 'Về nước tại Pác Bó, Cao Bằng, trực tiếp lãnh đạo phong trào cách mạng.',
       details: 'Sau ba mươi năm bôn ba nước ngoài, Người trở về Tổ quốc, sống trong hang Pác Bó và thành lập Mặt trận Việt Minh, chuẩn bị lực lượng cho cuộc tổng khởi nghĩa.',
-      image_url: 'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=800&q=80',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_b8808a76-dea9-4c3d-bc5d-04eb98d71450.jpg',
       sort_order: 8,
     },
     {
@@ -98,7 +98,7 @@ async function seedData() {
       title: 'Thành lập Mặt trận Việt Minh',
       description: 'Sáng lập Việt Nam Độc lập Đồng minh Hội để đoàn kết toàn dân chống phát xít.',
       details: 'Việt Minh tập hợp mọi tầng lớp nhân dân không phân biệt giai cấp, tôn giáo, dân tộc trong một mặt trận thống nhất chống Nhật-Pháp, xây dựng căn cứ địa và phát triển lực lượng vũ trang.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_North_Vietnam_%281945%E2%80%931955%29.svg/960px-Flag_of_North_Vietnam_%281945%E2%80%931955%29.svg.png',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_b8808a76-dea9-4c3d-bc5d-04eb98d71450.jpg',
       sort_order: 9,
     },
     {
@@ -106,7 +106,7 @@ async function seedData() {
       title: 'Bị giam giữ tại Trung Quốc',
       description: 'Bị chính quyền Tưởng Giới Thạch bắt giam khi sang Trung Quốc liên lạc Đồng minh.',
       details: 'Bị giam 13 tháng qua hơn 30 nhà tù ở Quảng Tây. Trong thời gian này, Người sáng tác tập thơ "Nhật ký trong tù" — một kiệt tác văn học cách mạng thể hiện ý chí kiên cường bất khuất.',
-      image_url: 'https://images.unsplash.com/photo-1584448651811-966a3ed2f2ba?w=800&q=80',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_55383101-800c-426f-92c9-56c464097661.jpg',
       sort_order: 10,
     },
     {
@@ -114,7 +114,7 @@ async function seedData() {
       title: 'Thành lập Đội Việt Nam Tuyên truyền Giải phóng quân',
       description: 'Ra chỉ thị thành lập đội quân vũ trang đầu tiên — tiền thân Quân đội Nhân dân Việt Nam.',
       details: 'Ngày 22/12/1944, Đội Việt Nam Tuyên truyền Giải phóng quân gồm 34 chiến sĩ được thành lập tại khu rừng Trần Hưng Đạo, Cao Bằng dưới sự chỉ huy của Võ Nguyên Giáp.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/First_Indochina_War_COLLAGE.jpg/960px-First_Indochina_War_COLLAGE.jpg',
+      image_url: '/images/ideology/role-of-patriotism.jpg',
       sort_order: 11,
     },
     {
@@ -122,7 +122,7 @@ async function seedData() {
       title: 'Cách mạng Tháng Tám thành công',
       description: 'Lãnh đạo Tổng khởi nghĩa giành chính quyền trên toàn quốc.',
       details: 'Tận dụng thời cơ Nhật đầu hàng Đồng minh, Người phát động Tổng khởi nghĩa. Chỉ trong hai tuần (từ 14 đến 28/8/1945), nhân dân cả nước đồng loạt nổi dậy giành chính quyền, chấm dứt chế độ thực dân-phong kiến.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/C%C3%A1ch_m%E1%BA%A1ng_th%C3%A1ng_8_b.jpg',
+      image_url: '/images/ideology/national-independence-socialism.jpg',
       sort_order: 12,
     },
     {
@@ -130,7 +130,7 @@ async function seedData() {
       title: 'Đọc Tuyên ngôn Độc lập',
       description: 'Đọc bản Tuyên ngôn Độc lập tại Quảng trường Ba Đình, khai sinh nước Việt Nam Dân chủ Cộng hòa.',
       details: 'Ngày 2/9/1945, trước hàng vạn đồng bào, Chủ tịch Hồ Chí Minh trịnh trọng đọc Tuyên ngôn Độc lập, mở đầu bằng câu trích từ Tuyên ngôn Độc lập Hoa Kỳ, khẳng định quyền tự do và độc lập của dân tộc Việt Nam trước toàn thế giới.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/B%E1%BA%A3n_Tuy%C3%AAn_ng%C3%B4n_%C4%91%E1%BB%99c_l%E1%BA%ADp_c%E1%BB%A7a_n%C6%B0%E1%BB%9Bc_Vi%E1%BB%87t_Nam_D%C3%A2n_ch%E1%BB%A7_C%E1%BB%99ng_h%C3%B2a._-_Trung_t%C3%A2m_L%C6%B0u_tr%E1%BB%AF_qu%E1%BB%91c_gia_III._Ph%C3%B4ng_Ph%E1%BB%A7_Th%E1%BB%A7_t%C6%B0%E1%BB%9Bng%2C_h%E1%BB%93_s%C6%A1_586%2C_t%E1%BB%9D_s%E1%BB%91_1_%E2%80%93_3.jpg/960px-thumbnail.jpg',
+      image_url: '/images/ideology/national-independence-socialism.jpg',
       sort_order: 13,
     },
     {
@@ -138,7 +138,7 @@ async function seedData() {
       title: 'Lời kêu gọi Toàn quốc kháng chiến',
       description: 'Phát lời kêu gọi toàn dân đứng lên chống thực dân Pháp xâm lược lần thứ hai.',
       details: '"Chúng ta thà hy sinh tất cả, chứ nhất định không chịu mất nước, nhất định không chịu làm nô lệ!" — Lời hiệu triệu ngày 19/12/1946 mở đầu cuộc kháng chiến chống Pháp trường kỳ 9 năm.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Ho_Chi_Minh_-_1946_Portrait_%28cropped%29.jpg/960px-Ho_Chi_Minh_-_1946_Portrait_%28cropped%29.jpg',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_0ec8baee-162f-46d2-85f0-47283ff5037b.jpg',
       sort_order: 14,
     },
     {
@@ -146,7 +146,7 @@ async function seedData() {
       title: 'Chiến thắng Biên giới Thu-Đông',
       description: 'Chỉ đạo chiến dịch Biên giới, giải phóng vùng biên giới Việt-Trung.',
       details: 'Chiến dịch Biên giới Thu-Đông 1950 do Chủ tịch Hồ Chí Minh trực tiếp ra mặt trận chỉ đạo, đánh tan phòng tuyến biên giới của Pháp, mở đường liên lạc quốc tế và chuyển cuộc kháng chiến sang giai đoạn phản công.',
-      image_url: 'https://images.unsplash.com/photo-1506820247656-b072215c0e18?w=800&q=80',
+      image_url: '/images/ideology/hero-portrait.jpg',
       sort_order: 15,
     },
     {
@@ -154,7 +154,7 @@ async function seedData() {
       title: 'Chiến thắng Điện Biên Phủ',
       description: 'Chỉ đạo cuộc chiến "lừng lẫy năm châu, chấn động địa cầu" đánh bại thực dân Pháp.',
       details: 'Sau 56 ngày đêm chiến đấu (13/3 – 7/5/1954), quân và dân Việt Nam toàn thắng tại Điện Biên Phủ, buộc Pháp phải ký Hiệp định Geneva. Chiến thắng chấm dứt gần 100 năm đô hộ của thực dân Pháp ở Đông Dương.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Victory_in_Battle_of_Dien_Bien_Phu.jpg/960px-Victory_in_Battle_of_Dien_Bien_Phu.jpg',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_d47b036e-d242-4568-ad33-05d863f84750.jpg',
       sort_order: 16,
     },
     {
@@ -162,7 +162,7 @@ async function seedData() {
       title: 'Hiệp định Geneva',
       description: 'Ký kết Hiệp định Geneva, công nhận độc lập Việt Nam và tạm chia cắt đất nước.',
       details: 'Hiệp định chia Việt Nam tại vĩ tuyến 17, quy định tổng tuyển cử thống nhất năm 1956. Tuy chiến thắng quân sự vang dội, Người trăn trở vì đất nước chưa thống nhất trọn vẹn.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/1954_Geneva_Conference.jpg',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_d47b036e-d242-4568-ad33-05d863f84750.jpg',
       sort_order: 17,
     },
     {
@@ -170,7 +170,7 @@ async function seedData() {
       title: 'Mặt trận Dân tộc Giải phóng miền Nam',
       description: 'Ủng hộ thành lập Mặt trận Dân tộc Giải phóng miền Nam Việt Nam.',
       details: 'Ngày 20/12/1960, Mặt trận Dân tộc Giải phóng miền Nam được thành lập, tập hợp các lực lượng yêu nước chống lại chế độ Ngô Đình Diệm và sự can thiệp quân sự của Mỹ, đấu tranh thống nhất Tổ quốc.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Achievement_of_the_National_Liberation_Front_of_Southern_Vietnam.svg/960px-Achievement_of_the_National_Liberation_Front_of_Southern_Vietnam.svg.png',
+      image_url: '/images/ideology/role-of-patriotism.jpg',
       sort_order: 18,
     },
     {
@@ -178,7 +178,7 @@ async function seedData() {
       title: '"Không có gì quý hơn độc lập, tự do"',
       description: 'Phát lời kêu gọi nổi tiếng khẳng định ý chí kiên cường chống Mỹ.',
       details: 'Trước sự leo thang chiến tranh phá hoại miền Bắc của Mỹ, Chủ tịch Hồ Chí Minh ra lời kêu gọi ngày 17/7/1966 với câu bất hủ: "Không có gì quý hơn độc lập, tự do" — trở thành tuyên ngôn thời đại cho dân tộc Việt Nam.',
-      image_url: 'https://images.unsplash.com/photo-1559132225-b77891823eb5?w=800&q=80',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_0ec8baee-162f-46d2-85f0-47283ff5037b.jpg',
       sort_order: 19,
     },
     {
@@ -186,7 +186,7 @@ async function seedData() {
       title: 'Tổng tiến công Tết Mậu Thân',
       description: 'Chỉ đạo cuộc Tổng tiến công và nổi dậy Tết Mậu Thân trên toàn miền Nam.',
       details: 'Đêm 30 rạng sáng 31/1/1968, quân giải phóng đồng loạt tấn công hàng trăm mục tiêu trên toàn miền Nam, kể cả Đại sứ quán Mỹ ở Sài Gòn. Cuộc tiến công làm thay đổi cục diện chiến tranh, buộc Mỹ phải ngồi vào bàn đàm phán.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Tet_Offensive_map.png/960px-Tet_Offensive_map.png',
+      image_url: '/images/ideology/preparation-cpv.jpg',
       sort_order: 20,
     },
     {
@@ -194,7 +194,7 @@ async function seedData() {
       title: 'Chủ tịch Hồ Chí Minh qua đời',
       description: 'Chủ tịch Hồ Chí Minh từ trần ngày 2/9/1969 tại Hà Nội, hưởng thọ 79 tuổi.',
       details: 'Người ra đi khi đất nước chưa thống nhất, để lại bản Di chúc thiêng liêng dặn dò toàn Đảng, toàn dân. Di chúc thể hiện tâm nguyện về thống nhất Tổ quốc, xây dựng đất nước và chăm lo đời sống nhân dân.',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/L%C4%83ng_B%C3%A1c_-_NKS.jpg/960px-L%C4%83ng_B%C3%A1c_-_NKS.jpg',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg',
       sort_order: 21,
     },
   ];
@@ -210,12 +210,12 @@ async function seedData() {
 
   // Journey locations
   const locations = [
-    { country: 'Vietnam', country_code: 'VN', lat: 16.0544, lng: 108.2022, period: '1890–1911', description: 'Nơi sinh và những năm tháng tuổi trẻ tại Nghệ An, Huế, Phan Thiết và Sài Gòn. Tận mắt chứng kiến sự áp bức của thực dân trước khi ra đi năm 1911.', image_url: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600' },
-    { country: 'France', country_code: 'FR', lat: 48.8566, lng: 2.3522, period: '1911–1923', description: 'Làm nhiều công việc khác nhau, hoạt động chính trị, trình bản yêu sách năm 1919 tại Versailles và tham gia sáng lập Đảng Cộng sản Pháp năm 1920.', image_url: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600' },
-    { country: 'England', country_code: 'GB', lat: 51.5074, lng: -0.1278, period: '1913–1914', description: 'Làm phụ bếp tại Khách sạn Carlton, Luân Đôn. Tìm hiểu thực tiễn phong trào công nhân và sự bóc lột của chủ nghĩa tư bản.', image_url: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600' },
-    { country: 'USA', country_code: 'US', lat: 40.7128, lng: -74.006, period: '1912–1913', description: 'Làm việc tại New York và Boston. Quan sát đời sống cộng đồng người da đen và chứng kiến sự phân biệt chủng tộc tàn bạo.', image_url: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600' },
-    { country: 'Soviet Union', country_code: 'RU', lat: 55.7558, lng: 37.6173, period: '1923–1924', description: 'Học tại Trường Đại học Phương Đông ở Moscow. Nghiên cứu sâu sắc chủ nghĩa Mác-Lênin và vạch ra chiến lược cách mạng giải phóng dân tộc.', image_url: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=600' },
-    { country: 'China', country_code: 'CN', lat: 23.1291, lng: 113.2644, period: '1924–1930', description: 'Thành lập Hội Việt Nam Cách mạng Thanh niên tại Quảng Châu. Đào tạo cán bộ và chuẩn bị các điều kiện thành lập Đảng Cộng sản Việt Nam tại Hồng Kông.', image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600' },
+    { country: 'Vietnam', country_code: 'VN', lat: 16.0544, lng: 108.2022, period: '1890–1911', description: 'Nơi sinh và những năm tháng tuổi trẻ tại Nghệ An, Huế, Phan Thiết và Sài Gòn. Tận mắt chứng kiến sự áp bức của thực dân trước khi ra đi năm 1911.', image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg' },
+    { country: 'France', country_code: 'FR', lat: 48.8566, lng: 2.3522, period: '1911–1923', description: 'Làm nhiều công việc khác nhau, hoạt động chính trị, trình bản yêu sách năm 1919 tại Versailles và tham gia sáng lập Đảng Cộng sản Pháp năm 1920.', image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg' },
+    { country: 'England', country_code: 'GB', lat: 51.5074, lng: -0.1278, period: '1913–1914', description: 'Làm phụ bếp tại Khách sạn Carlton, Luân Đôn. Tìm hiểu thực tiễn phong trào công nhân và sự bóc lột của chủ nghĩa tư bản.', image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg' },
+    { country: 'USA', country_code: 'US', lat: 40.7128, lng: -74.006, period: '1912–1913', description: 'Làm việc tại New York và Boston. Quan sát đời sống cộng đồng người da đen và chứng kiến sự phân biệt chủng tộc tàn bạo.', image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg' },
+    { country: 'Soviet Union', country_code: 'RU', lat: 55.7558, lng: 37.6173, period: '1923–1924', description: 'Học tại Trường Đại học Phương Đông ở Moscow. Nghiên cứu sâu sắc chủ nghĩa Mác-Lênin và vạch ra chiến lược cách mạng giải phóng dân tộc.', image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg' },
+    { country: 'China', country_code: 'CN', lat: 23.1291, lng: 113.2644, period: '1924–1930', description: 'Thành lập Hội Việt Nam Cách mạng Thanh niên tại Quảng Châu. Đào tạo cán bộ và chuẩn bị các điều kiện thành lập Đảng Cộng sản Việt Nam tại Hồng Kông.', image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg' },
   ];
 
   await pool.query('DELETE FROM journey_locations');
@@ -237,7 +237,7 @@ async function seedData() {
       key_points: ['Sự bóc lột của thực dân đòi hỏi sự thay đổi mang tính hệ thống', 'Luận cương của Lênin gắn kết giải phóng dân tộc và giải phóng xã hội', 'Chủ nghĩa xã hội hứa hẹn sự bình đẳng cho mọi giai cấp', 'Trải nghiệm ở Pháp và Liên Xô khẳng định lý luận này'],
       historical_context: 'Sau nhiều thập kỷ tìm kiếm sự giúp đỡ từ các cường quốc dân chủ mà không thành công, Hồ Chí Minh kết luận rằng chỉ có một cuộc cách mạng biến đổi xã hội mới có thể đạt được nền độc lập thực sự.',
       content: 'Việc Hồ Chí Minh lựa chọn chủ nghĩa xã hội không phải là giáo điều tư tưởng mà là một kết luận thực tiễn rút ra từ kinh nghiệm...',
-      image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg',
     },
     {
       slug: 'national-independence-socialism',
@@ -246,7 +246,7 @@ async function seedData() {
       key_points: ['Độc lập mà không có công bằng xã hội là không trọn vẹn', 'Chủ nghĩa thực dân và chủ nghĩa tư bản là những hệ thống gắn kết nhau', 'Giai cấp công nhân lãnh đạo cuộc đấu tranh giải phóng dân tộc', 'Cải cách ruộng đất đi theo sau độc lập chính trị'],
       historical_context: 'Việt Nam dưới thời Pháp thuộc phải chịu đựng cả sự khuất phục về mặt quốc gia và sự bóc lột công nhân, nông dân, đòi hỏi một cuộc đấu tranh giải phóng kép.',
       content: 'Đối với Hồ Chí Minh, độc lập dân tộc và chủ nghĩa xã hội là hai mục tiêu không thể tách rời...',
-      image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg',
     },
     {
       slug: 'role-of-patriotism',
@@ -255,7 +255,7 @@ async function seedData() {
       key_points: ['Lòng yêu nước thôi thúc quyết định ra đi năm 1911', 'Chủ nghĩa yêu nước truyền cảm hứng hy sinh cho những người làm cách mạng', 'Văn hóa dân tộc phải được bảo tồn và phát triển', 'Đoàn kết quốc tế bổ sung cho chủ nghĩa yêu nước'],
       historical_context: 'Lớn lên trong một gia đình nho giáo yêu nước giữa lúc thực dân Pháp cai trị khốc liệt, chàng thanh niên Nguyễn Sinh Cung đã thấm nhuần tình yêu sâu sắc đối với Việt Nam và lòng căm thù sự áp bức.',
       content: 'Chủ nghĩa yêu nước là linh hồn của cuộc cách mạng của Hồ Chí Minh...',
-      image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg',
     },
     {
       slug: 'preparation-cpv',
@@ -264,7 +264,7 @@ async function seedData() {
       key_points: ['Hội Việt Nam Cách mạng Thanh niên đào tạo các nhà lãnh đạo tương lai', 'Ba nhóm cộng sản hợp nhất vào năm 1930', 'Hội nghị Hồng Kông thành lập ĐCSVN', 'Đường lối chính trị kết hợp chủ nghĩa yêu nước với chủ nghĩa Mác'],
       historical_context: 'Giữa việc thành lập Hội Việt Nam Cách mạng Thanh niên năm 1925 và ĐCSVN năm 1930, Hồ Chí Minh đã xây dựng cơ sở hạ tầng tổ chức cho cách mạng.',
       content: 'Việc thành lập ĐCSVN năm 1930 là đỉnh cao của gần hai thập kỷ chuẩn bị...',
-      image_url: 'https://images.unsplash.com/photo-1518005020951-eccb994ad75d?w=800',
+      image_url: 'https://hnm.1cdn.vn/2020/05/07/hanoimoi.com.vn-uploads-album-20200507-_97db8450-73e6-467b-9c2b-4e96e1dec9d3.jpg',
     },
   ];
 
