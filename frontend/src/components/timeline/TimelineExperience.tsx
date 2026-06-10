@@ -53,7 +53,14 @@ export default function TimelineExperience() {
   useEffect(() => {
     api.timeline
       .list()
-      .then((data) => setRawEvents(data as TimelineEvent[]))
+      .then((data) => {
+        const events = data as TimelineEvent[];
+        if (events.length < FALLBACK_TIMELINE_EVENTS.length) {
+          setRawEvents(FALLBACK_TIMELINE_EVENTS);
+        } else {
+          setRawEvents(events);
+        }
+      })
       .catch(() => setRawEvents(FALLBACK_TIMELINE_EVENTS))
       .finally(() => setLoading(false));
   }, []);
