@@ -12,6 +12,15 @@ import {
   Users,
   Building2,
   Star,
+  Swords,
+  Megaphone,
+  Heart,
+  Crown,
+  Flame,
+  FileText,
+  Shield,
+  Globe,
+  Sparkles,
 } from 'lucide-react';
 import type { TimelineIconKey } from '@/lib/timeline-enrichment';
 
@@ -26,6 +35,15 @@ export const TIMELINE_ICON_MAP: Record<TimelineIconKey, LucideIcon> = {
   users: Users,
   building: Building2,
   star: Star,
+  swords: Swords,
+  megaphone: Megaphone,
+  heart: Heart,
+  crown: Crown,
+  flame: Flame,
+  filetext: FileText,
+  shield: Shield,
+  globe: Globe,
+  sparkles: Sparkles,
 };
 
 export function getTimelineIcon(key: TimelineIconKey): LucideIcon {

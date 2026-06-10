@@ -11,6 +11,15 @@ import {
   Users,
   Building2,
   Star,
+  Swords,
+  Megaphone,
+  Heart,
+  Crown,
+  Flame,
+  FileText,
+  Shield,
+  Globe,
+  Sparkles,
 } from 'lucide-react';
 
 export type TimelineCategory = 'all' | 'vietnam' | 'world' | 'politics' | 'organizations';
@@ -25,7 +34,16 @@ export type TimelineIconKey =
   | 'graduation'
   | 'users'
   | 'building'
-  | 'star';
+  | 'star'
+  | 'swords'
+  | 'megaphone'
+  | 'heart'
+  | 'crown'
+  | 'flame'
+  | 'filetext'
+  | 'shield'
+  | 'globe'
+  | 'sparkles';
 
 export type EnrichedTimelineEvent = TimelineEvent & {
   location: string;
@@ -142,6 +160,126 @@ export const FALLBACK_TIMELINE_EVENTS: TimelineEvent[] = [
     details: 'Cột mốc quyết định — biến tầm nhìn thành lực lượng cách mạng có tổ chức.',
     image_url: 'https://images.unsplash.com/photo-1518005020951-eccb994ad75d?w=800&q=80',
   },
+  {
+    id: 13,
+    year: 1931,
+    title: 'Bị bắt tại Hồng Kông',
+    description: 'Bị cảnh sát Anh bắt giữ tại Hồng Kông theo yêu cầu của mật thám Pháp.',
+    details: 'Nhờ sự giúp đỡ của luật sư Frank Loseby và Quốc tế Cộng sản, Người thoát khỏi án dẫn độ về Đông Dương. Đây là giai đoạn nguy hiểm nhất trong cuộc đời hoạt động cách mạng.',
+    image_url: 'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=800&q=80',
+  },
+  {
+    id: 14,
+    year: 1941,
+    title: 'Trở về Việt Nam sau 30 năm',
+    description: 'Về nước tại Pác Bó, Cao Bằng, trực tiếp lãnh đạo phong trào cách mạng.',
+    details: 'Sau ba mươi năm bôn ba nước ngoài, Người trở về Tổ quốc, sống trong hang Pác Bó và thành lập Mặt trận Việt Minh, chuẩn bị lực lượng cho cuộc tổng khởi nghĩa.',
+    image_url: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80',
+  },
+  {
+    id: 15,
+    year: 1941,
+    title: 'Thành lập Mặt trận Việt Minh',
+    description: 'Sáng lập Việt Nam Độc lập Đồng minh Hội để đoàn kết toàn dân chống phát xít.',
+    details: 'Việt Minh tập hợp mọi tầng lớp nhân dân không phân biệt giai cấp, tôn giáo, dân tộc trong một mặt trận thống nhất chống Nhật-Pháp, xây dựng căn cứ địa và phát triển lực lượng vũ trang.',
+    image_url: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80',
+  },
+  {
+    id: 16,
+    year: 1942,
+    title: 'Bị giam giữ tại Trung Quốc',
+    description: 'Bị chính quyền Tưởng Giới Thạch bắt giam khi sang Trung Quốc liên lạc Đồng minh.',
+    details: 'Bị giam 13 tháng qua hơn 30 nhà tù ở Quảng Tây. Trong thời gian này, Người sáng tác tập thơ "Nhật ký trong tù" — một kiệt tác văn học cách mạng thể hiện ý chí kiên cường bất khuất.',
+    image_url: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&q=80',
+  },
+  {
+    id: 17,
+    year: 1944,
+    title: 'Thành lập Đội Việt Nam Tuyên truyền Giải phóng quân',
+    description: 'Ra chỉ thị thành lập đội quân vũ trang đầu tiên — tiền thân Quân đội Nhân dân Việt Nam.',
+    details: 'Ngày 22/12/1944, Đội Việt Nam Tuyên truyền Giải phóng quân gồm 34 chiến sĩ được thành lập tại khu rừng Trần Hưng Đạo, Cao Bằng dưới sự chỉ huy của Võ Nguyên Giáp.',
+    image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+  },
+  {
+    id: 18,
+    year: 1945,
+    title: 'Cách mạng Tháng Tám thành công',
+    description: 'Lãnh đạo Tổng khởi nghĩa giành chính quyền trên toàn quốc.',
+    details: 'Tận dụng thời cơ Nhật đầu hàng Đồng minh, Người phát động Tổng khởi nghĩa. Chỉ trong hai tuần (từ 14 đến 28/8/1945), nhân dân cả nước đồng loạt nổi dậy giành chính quyền, chấm dứt chế độ thực dân-phong kiến.',
+    image_url: 'https://images.unsplash.com/photo-1569974507005-6dc61f97fb5c?w=800&q=80',
+  },
+  {
+    id: 19,
+    year: 1945,
+    title: 'Đọc Tuyên ngôn Độc lập',
+    description: 'Đọc bản Tuyên ngôn Độc lập tại Quảng trường Ba Đình, khai sinh nước Việt Nam Dân chủ Cộng hòa.',
+    details: 'Ngày 2/9/1945, trước hàng vạn đồng bào, Chủ tịch Hồ Chí Minh trịnh trọng đọc Tuyên ngôn Độc lập, mở đầu bằng câu trích từ Tuyên ngôn Độc lập Hoa Kỳ, khẳng định quyền tự do và độc lập của dân tộc Việt Nam trước toàn thế giới.',
+    image_url: 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=800&q=80',
+  },
+  {
+    id: 20,
+    year: 1946,
+    title: 'Lời kêu gọi Toàn quốc kháng chiến',
+    description: 'Phát lời kêu gọi toàn dân đứng lên chống thực dân Pháp xâm lược lần thứ hai.',
+    details: '"Chúng ta thà hy sinh tất cả, chứ nhất định không chịu mất nước, nhất định không chịu làm nô lệ!" — Lời hiệu triệu ngày 19/12/1946 mở đầu cuộc kháng chiến chống Pháp trường kỳ 9 năm.',
+    image_url: 'https://images.unsplash.com/photo-1534996858036-c1b0e25f0bdf?w=800&q=80',
+  },
+  {
+    id: 21,
+    year: 1950,
+    title: 'Chiến thắng Biên giới Thu-Đông',
+    description: 'Chỉ đạo chiến dịch Biên giới, giải phóng vùng biên giới Việt-Trung.',
+    details: 'Chiến dịch Biên giới Thu-Đông 1950 do Chủ tịch Hồ Chí Minh trực tiếp ra mặt trận chỉ đạo, đánh tan phòng tuyến biên giới của Pháp, mở đường liên lạc quốc tế và chuyển cuộc kháng chiến sang giai đoạn phản công.',
+    image_url: 'https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?w=800&q=80',
+  },
+  {
+    id: 22,
+    year: 1954,
+    title: 'Chiến thắng Điện Biên Phủ',
+    description: 'Chỉ đạo cuộc chiến "lừng lẫy năm châu, chấn động địa cầu" đánh bại thực dân Pháp.',
+    details: 'Sau 56 ngày đêm chiến đấu (13/3 – 7/5/1954), quân và dân Việt Nam toàn thắng tại Điện Biên Phủ, buộc Pháp phải ký Hiệp định Geneva. Chiến thắng chấm dứt gần 100 năm đô hộ của thực dân Pháp ở Đông Dương.',
+    image_url: 'https://images.unsplash.com/photo-1569974507005-6dc61f97fb5c?w=800&q=80',
+  },
+  {
+    id: 23,
+    year: 1954,
+    title: 'Hiệp định Geneva',
+    description: 'Ký kết Hiệp định Geneva, công nhận độc lập Việt Nam và tạm chia cắt đất nước.',
+    details: 'Hiệp định chia Việt Nam tại vĩ tuyến 17, quy định tổng tuyển cử thống nhất năm 1956. Tuy chiến thắng quân sự vang dội, Người trăn trở vì đất nước chưa thống nhất trọn vẹn.',
+    image_url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80',
+  },
+  {
+    id: 24,
+    year: 1960,
+    title: 'Mặt trận Dân tộc Giải phóng miền Nam',
+    description: 'Ủng hộ thành lập Mặt trận Dân tộc Giải phóng miền Nam Việt Nam.',
+    details: 'Ngày 20/12/1960, Mặt trận Dân tộc Giải phóng miền Nam được thành lập, tập hợp các lực lượng yêu nước chống lại chế độ Ngô Đình Diệm và sự can thiệp quân sự của Mỹ, đấu tranh thống nhất Tổ quốc.',
+    image_url: 'https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?w=800&q=80',
+  },
+  {
+    id: 25,
+    year: 1966,
+    title: '"Không có gì quý hơn độc lập, tự do"',
+    description: 'Phát lời kêu gọi nổi tiếng khẳng định ý chí kiên cường chống Mỹ.',
+    details: 'Trước sự leo thang chiến tranh phá hoại miền Bắc của Mỹ, Chủ tịch Hồ Chí Minh ra lời kêu gọi ngày 17/7/1966 với câu bất hủ: "Không có gì quý hơn độc lập, tự do" — trở thành tuyên ngôn thời đại cho dân tộc Việt Nam.',
+    image_url: 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=800&q=80',
+  },
+  {
+    id: 26,
+    year: 1968,
+    title: 'Tổng tiến công Tết Mậu Thân',
+    description: 'Chỉ đạo cuộc Tổng tiến công và nổi dậy Tết Mậu Thân trên toàn miền Nam.',
+    details: 'Đêm 30 rạng sáng 31/1/1968, quân giải phóng đồng loạt tấn công hàng trăm mục tiêu trên toàn miền Nam, kể cả Đại sứ quán Mỹ ở Sài Gòn. Cuộc tiến công làm thay đổi cục diện chiến tranh, buộc Mỹ phải ngồi vào bàn đàm phán.',
+    image_url: 'https://images.unsplash.com/photo-1534996858036-c1b0e25f0bdf?w=800&q=80',
+  },
+  {
+    id: 27,
+    year: 1969,
+    title: 'Chủ tịch Hồ Chí Minh qua đời',
+    description: 'Chủ tịch Hồ Chí Minh từ trần ngày 2/9/1969 tại Hà Nội, hưởng thọ 79 tuổi.',
+    details: 'Người ra đi khi đất nước chưa thống nhất, để lại bản Di chúc thiêng liêng dặn dò toàn Đảng, toàn dân. Di chúc thể hiện tâm nguyện về thống nhất Tổ quốc, xây dựng đất nước và chăm lo đời sống nhân dân. "Tôi để lại muôn vàn tình thân yêu cho toàn dân, toàn Đảng, cho toàn thể bộ đội, cho các cháu thanh niên và nhi đồng."',
+    image_url: 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=800&q=80',
+  },
 ];
 
 const EXTRA_ENRICHMENT: Record<number, Omit<EnrichedTimelineEvent, keyof TimelineEvent>> = {
@@ -151,6 +289,21 @@ const EXTRA_ENRICHMENT: Record<number, Omit<EnrichedTimelineEvent, keyof Timelin
   10: { location: 'Moscow, Liên Xô', category: 'world', icon: GraduationCap },
   11: { location: 'Quảng Châu, Trung Quốc', category: 'organizations', icon: Building2 },
   12: { location: 'Đông Nam Á', category: 'organizations', icon: Star },
+  13: { location: 'Hồng Kông', category: 'politics', icon: Shield },
+  14: { location: 'Pác Bó, Cao Bằng, Việt Nam', category: 'vietnam', icon: Flag },
+  15: { location: 'Cao Bằng, Việt Nam', category: 'organizations', icon: Users },
+  16: { location: 'Quảng Tây, Trung Quốc', category: 'world', icon: BookOpen },
+  17: { location: 'Cao Bằng, Việt Nam', category: 'vietnam', icon: Swords },
+  18: { location: 'Toàn quốc, Việt Nam', category: 'vietnam', icon: Flame },
+  19: { location: 'Quảng trường Ba Đình, Hà Nội', category: 'vietnam', icon: Megaphone },
+  20: { location: 'Hà Nội, Việt Nam', category: 'politics', icon: Megaphone },
+  21: { location: 'Biên giới Việt-Trung', category: 'vietnam', icon: Swords },
+  22: { location: 'Điện Biên Phủ, Việt Nam', category: 'vietnam', icon: Crown },
+  23: { location: 'Geneva, Thụy Sĩ', category: 'politics', icon: FileText },
+  24: { location: 'Miền Nam, Việt Nam', category: 'organizations', icon: Globe },
+  25: { location: 'Hà Nội, Việt Nam', category: 'politics', icon: Sparkles },
+  26: { location: 'Toàn miền Nam, Việt Nam', category: 'vietnam', icon: Flame },
+  27: { location: 'Hà Nội, Việt Nam', category: 'vietnam', icon: Heart },
 };
 
 export function enrichTimelineEvents(events: TimelineEvent[]): EnrichedTimelineEvent[] {
@@ -167,11 +320,11 @@ export function enrichTimelineEvents(events: TimelineEvent[]): EnrichedTimelineE
 }
 
 export const TIMELINE_STATS = {
-  years: 40,
-  countries: 6,
-  distanceKm: 20000,
-  events: 12,
-  totalMilestones: 12,
+  years: 79,
+  countries: 8,
+  distanceKm: 30000,
+  events: 27,
+  totalMilestones: 27,
 };
 
 export const TIMELINE_QUOTE = {
